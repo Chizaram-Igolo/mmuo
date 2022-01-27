@@ -1,15 +1,13 @@
 import type { NextPage } from "next";
-import Form from "../components/Form";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMicrophone, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
 import { useAuth } from "../contexts/AuthContext";
+import SignInForm from "../components/signinform";
 
 const Home: NextPage = () => {
   const { user } = useAuth();
-
-  console.log(user);
 
   return (
     <>
@@ -30,7 +28,7 @@ const Home: NextPage = () => {
 
       <section className="py-4 px-8 md:px-18 lg:px-20 xl:px-24 z-20">
         <div className="flex flex-col md:flex-row mb-8">
-          <div className="md:flex-1 lg:flex-[1.6] mt-8 mb-8 md:mr-12 lg:mr-16 z-20">
+          <div className="md:flex-1 lg:flex-[1.4] xl:flex-[1.6] mt-8 mb-8 md:mr-12 lg:mr-16 z-20">
             <div className="mb-24">
               <h1>
                 Language learning made easy and fun. <br />
@@ -116,7 +114,8 @@ const Home: NextPage = () => {
           </div>
           <div className="flex-1 z-20">
             <div className="css-tsp5x1 e7kuofc1 relative bg-white rounded-lg text-[#080b2d] py-[3.5rem] px-12 shadow-[0_5px_5px_-2px_rgba(0,8,36,0.2)]">
-              <Form />
+              {/* <Form /> */}
+              <SignInForm />
             </div>
           </div>
         </div>
@@ -229,7 +228,7 @@ const Home: NextPage = () => {
         </div>
       </section>
 
-      <section id="NewCTABand" className="css-dx1ooz e1q0semo0 z-20">
+      <section id="NewCTABand" className="css-dx1ooz e1q0semo0 z-20 mb-8">
         <div className="css-1k87evg e1qd68fe0 z-20">
           <div className="css-go06gt e119w9pv0 flex bg-[#1d1d2c] rounded-[5px] py-[6.25rem] px-16 z-20">
             <div className="css-18p4bom e119w9pv1 z-20">

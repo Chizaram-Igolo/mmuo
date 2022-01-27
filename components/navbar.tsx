@@ -16,6 +16,7 @@ import {
   XIcon,
 } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
+import Link from "next/link";
 
 const solutions = [
   {
@@ -97,15 +98,17 @@ export default function Nav() {
       <div className="mx-auto px-8 md:px-8 lg:px-20 xl:px-24">
         <div className="flex justify-between items-center py-4 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
-            <a href="#">
-              <span className="sr-only">Workflow</span>
-              {/* <img
+            <Link href="/">
+              <a>
+                <span className="sr-only">Workflow</span>
+                {/* <img
                 className="h-8 w-auto sm:h-10"
                 src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                 alt=""
               /> */}
-              <h2 className="text-slate-800">mmūō</h2>
-            </a>
+                <h2 className="text-slate-800">mmūō</h2>
+              </a>
+            </Link>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
             <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-0 focus:ring-inset focus:ring-indigo-500">
@@ -288,18 +291,19 @@ export default function Nav() {
             </Popover>
           </Popover.Group>
           <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-            <a
-              href="#"
-              className="whitespace-nowrap text-base font-medium px-4 py-2 border border-slate-200 rounded-md text-gray-500 hover:text-gray-900"
-            >
-              Sign in
-            </a>
-            <a
-              href="#"
-              className="ml-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-600 hover:bg-green-700"
-            >
-              Sign up
-            </a>
+            <Link href="/signin">
+              <a
+                href="#"
+                className="whitespace-nowrap text-base font-medium px-4 py-2 border border-slate-200 rounded-md text-gray-500 hover:text-gray-900"
+              >
+                Sign in
+              </a>
+            </Link>
+            <Link href="/signup">
+              <a className="ml-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-600 hover:bg-green-700">
+                Sign up
+              </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -380,20 +384,24 @@ export default function Nav() {
                 ))}
               </div>
               <div>
-                <a
-                  href="#"
-                  className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-600 hover:bg-green-700"
-                >
-                  Sign up
-                </a>
-                <p className="mt-6 text-center text-base font-medium text-gray-500">
-                  Existing customer?{" "}
+                <Link href="/signup">
                   <a
                     href="#"
-                    className="text-indigo-600 hover:text-indigo-500 border border-slate-600"
+                    className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-600 hover:bg-green-700"
                   >
-                    Sign in
+                    Sign up
                   </a>
+                </Link>
+                <p className="mt-6 text-center text-base font-medium text-gray-500">
+                  Existing customer?{" "}
+                  <Link href="/signin">
+                    <a
+                      href="#"
+                      className="text-indigo-600 hover:text-indigo-500 border border-slate-600"
+                    >
+                      Sign in
+                    </a>
+                  </Link>
                 </p>
               </div>
             </div>

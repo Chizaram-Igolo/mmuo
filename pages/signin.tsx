@@ -1,10 +1,12 @@
 import type { NextPage } from "next";
 
 import { useAuth } from "../contexts/AuthContext";
-import SignUpForm from "../components/signupform";
+import SignInForm from "../components/signinform";
 
-const SignUp: NextPage = () => {
+const SignIn: NextPage = () => {
   const { user } = useAuth();
+
+  console.log(user);
 
   return (
     <>
@@ -12,7 +14,7 @@ const SignUp: NextPage = () => {
         <div className="flex flex-col md:flex-row mb-8">
           <div className="flex-1 min-w-[20rem] max-w-[28rem] z-20 mx-auto">
             <div className="css-tsp5x1 e7kuofc1 relative bg-white rounded-lg text-[#080b2d] py-[2rem] px-6 md:px-12 shadow-[0_5px_5px_-2px_rgba(0,8,36,0.2)]">
-              <SignUpForm />
+              <SignInForm />
             </div>
           </div>
         </div>
@@ -21,4 +23,4 @@ const SignUp: NextPage = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;

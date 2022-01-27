@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div className="css-n7hb8q mt-8 mb-5 px-8 md:px-16 lg:px-20">
+    <div className="css-n7hb8q mb-5 px-8 md:px-16 lg:px-20">
       <div className="css-1p94y5j flex flex-row">
         <div>
           <img
