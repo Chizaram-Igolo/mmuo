@@ -94,7 +94,7 @@ function classNames(...classes: string[]) {
 export default function Nav() {
   return (
     <Popover className="relative bg-white border-b-2 border-gray-100 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 ">
+      <div className="mx-auto px-8 md:px-8 lg:px-20 xl:px-24">
         <div className="flex justify-between items-center py-4 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <a href="#">
@@ -104,7 +104,7 @@ export default function Nav() {
                 src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                 alt=""
               /> */}
-              <h2>mmūō</h2>
+              <h2 className="text-slate-800">mmūō</h2>
             </a>
           </div>
           <div className="-mr-2 -my-2 md:hidden">

@@ -4,7 +4,7 @@ import { SpeakerphoneIcon, XIcon } from "@heroicons/react/outline";
 export default function Banner() {
   return (
     <div className="bg-slate-900">
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      <div className="mx-auto sm:px-6 px-8 md:px-8 lg:px-20 xl:px-24">
         <div className="flex items-center justify-between flex-wrap">
           <div className="w-0 flex-1 flex items-center">
             <span className="flex p-1 rounded-lg bg-green-800">
@@ -24,7 +24,7 @@ export default function Banner() {
           <div className="order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto">
             <a
               href="#"
-              className="flex items-center justify-center px-4 py-1 border border-transparent rounded-md shadow-sm text-sm font-medium text-green-600 bg-white hover:bg-green-50"
+              className="flex items-center justify-center px-4 py-[0.20rem] border border-transparent rounded-md shadow-sm text-sm font-medium text-slate-500 bg-white hover:bg-slate-50"
             >
               Learn more
             </a>
@@ -32,7 +32,7 @@ export default function Banner() {
           <div className="order-2 flex-shrink-0 sm:order-3 sm:ml-3">
             <button
               type="button"
-              className="-mr-1 flex p-2 rounded-md hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-white sm:-mr-2"
+              className="-mr-1 flex p-2 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-white sm:-mr-2"
             >
               <span className="sr-only">Dismiss</span>
               <XIcon className="h-6 w-6 text-white" aria-hidden="true" />

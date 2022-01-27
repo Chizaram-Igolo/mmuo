@@ -6,6 +6,8 @@
 @import "animated-dashed-line.css";
 @import "fonts.css";
 
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css";
+
 html,
 body {
   padding: 0;
@@ -260,37 +262,13 @@ a {
   margin-bottom: 0;
 }
 
-.css-alhp3m.button-link.is-small {
-  padding: 12px 24px;
-}
-
-.css-alhp3m.button-link.is-primary {
-  background-color: #0069ff;
-  border: 1px solid #0069ff;
-  color: #fff;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
-}
-
-.css-alhp3m.button-link.is-squared {
-  border-radius: 8px;
-}
-
-.css-alhp3m.button-link {
+.button-link {
   font-family: "WorkSans_SemiBold", "Helvetica", "san-serif";
-  cursor: pointer !important;
-}
-
-.css-alhp3m {
-  margin: 0 auto;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
 }
 
 .navbar-link,
 a {
-  color: #5b6886;
+  /* color: #5b6886; */
   text-decoration: none;
 }
 
