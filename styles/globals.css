@@ -24,6 +24,7 @@ a {
 
 * {
   box-sizing: border-box;
+  font-family: "WorkSans", "Helvetica", sans-serif;
 }
 
 @layer base {

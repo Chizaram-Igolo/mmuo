@@ -1,5 +1,11 @@
 import { useEffect, useState, useContext, createContext } from "react";
-import firebase, { auth, projectDatabase } from "../firebase/config";
+import firebase, {
+  auth,
+  appAuth,
+  projectDatabase,
+  ref,
+  onValue,
+} from "../firebase/config";
 
 const AuthContext = createContext();
 
@@ -9,43 +15,40 @@ export const AuthProvider = ({ children }) => {
 
   // Create new user.
   function signup(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password);
+    return appAuth.createUserWithEmailAndPassword(auth, email, password);
   }
 
   function signin(email, password) {
-    return auth.signInWithEmailAndPassword(email, password);
+    return appAuth.signInWithEmailAndPassword(auth, email, password);
   }
 
   function signout() {
-    return auth.signOut();
+    return appAuth.signOut(auth);
   }
 
   function resetPassword(email) {
-    return auth.sendPasswordResetEmail(email);
+    return appAuth.sendPasswordResetEmail(auth, email);
   }
 
   function updateEmail(email) {
-    return user.updateEmail(email);
+    return appAuth.updateEmail(user, email);
   }
 
   function updatePassword(password) {
-    return user.updatePassword(password);
+    return appAuth.updatePassword(user, password);
   }
 
   function updateProfile(details) {
-    return user.updateProfile(details);
+    return appAuth.updateProfile(user, details);
   }
 
   function reauthenticateUser(email, password) {
-    const credential = firebase.auth.EmailAuthProvider.credential(
-      email,
-      password
-    );
+    const credential = appAuth.EmailAuthProvider.credential(email, password);
     return user.reauthenticateWithCredential(credential);
   }
 
   function deleteAccount() {
-    return user.delete();
+    return appAuth.deleteUser(user);
   }
 
   useEffect(() => {
@@ -61,13 +64,12 @@ export const AuthProvider = ({ children }) => {
     // Get the user's full profile details.
 
     if (user != null) {
-      const unsubscribe = projectDatabase
-        .ref(`users/${user.uid}`)
-        .on("value", (snap) => {
-          if (snap) {
-            setUserProfile(snap.val());
-          }
-        });
+      const unsubscribe = ref(projectDatabase, `users/${user.uid}`);
+      onValue(unsubscribe, (snap) => {
+        if (snap) {
+          setUserProfile(snap.val());
+        }
+      });
 
       return unsubscribe;
     }

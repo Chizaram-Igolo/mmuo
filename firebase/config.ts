@@ -1,7 +1,7 @@
 import getConfig from "next/config";
 
 import { initializeApp, getApp, getApps, FirebaseApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import * as appAuth from "firebase/auth";
 import {
   getFirestore,
   serverTimestamp,
@@ -16,6 +16,7 @@ import {
   query as dbQuery,
   ref,
   set,
+  onValue,
 } from "firebase/database";
 import { getStorage } from "firebase/storage";
 import { getFunctions } from "firebase/functions";
@@ -71,7 +72,7 @@ if (getApps().length) {
 }
 
 // Initialize Firebase Auth, Firestore, Storage and Functions
-const auth = getAuth(app);
+const auth = appAuth.getAuth(app);
 const projectDatabase = getDatabase(app);
 const projectFirestore = getFirestore(app);
 const projectStorage = getStorage(app);
@@ -82,6 +83,7 @@ const dbTimestamp = dbServerTimestamp;
 export default app;
 export {
   auth,
+  appAuth,
   projectDatabase,
   projectFirestore,
   projectStorage,
@@ -93,6 +95,7 @@ export {
   dbQuery,
   ref,
   set,
+  onValue,
   timestamp,
   dbTimestamp,
 };

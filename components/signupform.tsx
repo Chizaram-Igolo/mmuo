@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import React, { useState, useRef, RefObject } from "react";
+import React, { useState } from "react";
+
+import AlertMessage from "../components/alertmessage";
 import { useAuth } from "../contexts/AuthContext";
 
 import {
@@ -15,13 +17,13 @@ import {
   getDocs,
   dbQuery,
   set,
+  appAuth,
 } from "../firebase/config";
 
 export default function SignUpForm() {
   const [username, setUsername] = useState("");
-
-  const emailRef: RefObject<HTMLInputElement> = useRef(null);
-  const passwordRef: RefObject<HTMLInputElement> = useRef(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const { signup } = useAuth();
 
@@ -29,6 +31,10 @@ export default function SignUpForm() {
   const [confirmPassError, setConfirmPassError] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  function clearMessages() {
+    // setError("");
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -40,32 +46,21 @@ export default function SignUpForm() {
       const snapshot = await getDocs(
         query(
           collection(projectFirestore, "users"),
-          where("username", "==", username)
+          where("username", "==", username.toLocaleLowerCase())
         )
       );
 
-      console.log(snapshot);
+      console.log(snapshot.empty && username);
 
-      if (
-        snapshot.empty &&
-        emailRef.current?.value &&
-        passwordRef.current?.value
-      ) {
-        const userCredential = await signup(
-          emailRef.current.value,
-          passwordRef.current.value
-        );
+      if (snapshot.empty && email && password) {
+        const userCredential = await signup(email, password);
 
         const { user } = userCredential;
 
-        console.log(
-          username,
-          emailRef.current.value,
-          passwordRef.current.value
-        );
+        console.log(username, email, password);
 
         // await userCredential.user.sendEmailVerification();
-        await userCredential.user.updateProfile({
+        await appAuth.updateProfile(user, {
           displayName: username,
           photoURL: "/profile/user.jpg",
         });
@@ -76,7 +71,7 @@ export default function SignUpForm() {
           photoURL: user.photoURL,
           showOnlineStatus: true,
           showLastSeenDate: true,
-          creationDate: dbTimestamp,
+          creationDate: dbTimestamp(),
         });
 
         router.push("/");
@@ -84,7 +79,15 @@ export default function SignUpForm() {
         setError(`Username '${username}' is already taken.`);
       }
     } catch (err: any) {
-      setError(err.message);
+      if (err.code === "auth/email-already-in-use") {
+        setError("Email address already in use.");
+      } else if (err.code === "auth/network-request-failed") {
+        setError(
+          "It seems your internet connection isn't very good right now."
+        );
+      } else {
+        setError(err.message);
+      }
       console.log(err);
     }
 
@@ -103,13 +106,28 @@ export default function SignUpForm() {
         <p className="css-oztn6x e7kuofc0 text-[#535772] text-base font-semibold tracking-[-0.01875rem] leading-6 m-0 text-center">
           Sign up to get started!
         </p>
+
+        {error && (
+          <>
+            <AlertMessage
+              message={error}
+              severity="error"
+              isOpen={error.length > 0}
+              clearMessages={clearMessages}
+              keepOpen={true}
+            />
+          </>
+        )}
+
         <div className="inputFormWrapper relative inline-flex flex-col mt-4 w-full">
           <input
             aria-label="username"
             type="text"
             minLength={2}
-            name="user[name]"
+            name="username"
             placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             required
             className="relative bg-white border border-[#c0c2d3] rounded-lg focus:outline-none active:outline-none shadow-[0px_4px_0px_rgba(91,105,135,0.2)] hover:shadow-[0px_2px_0px_rgba(91,105,135,0.2)] text-[#031b4e] cursor-text text-base mb-4 py-[0.55rem] px-[1rem] w-full transition-all duration-2008"
           />
@@ -117,9 +135,10 @@ export default function SignUpForm() {
             aria-label="email"
             type="email"
             minLength={2}
-            name="user[email]"
+            name="email"
             placeholder="Email"
-            ref={emailRef}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
             className="relative bg-white border border-[#c0c2d3] rounded-lg focus:outline-none active:outline-none shadow-[0px_4px_0px_rgba(91,105,135,0.2)] hover:shadow-[0px_2px_0px_rgba(91,105,135,0.2)] text-[#031b4e] cursor-text text-base mb-4 py-[0.55rem] px-[1rem] w-full transition-all duration-2008"
           />
@@ -127,8 +146,10 @@ export default function SignUpForm() {
             aria-label="password"
             type="password"
             minLength={8}
-            name="user[password]"
+            name="password"
             placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
             className="relative bg-white border border-[#c0c2d3] rounded-lg focus:outline-none active:outline-none shadow-[0px_4px_0px_rgba(91,105,135,0.2)] hover:shadow-[0px_2px_0px_rgba(91,105,135,0.2)] text-[#031b4e] cursor-text text-base mb-4 py-[0.55rem] px-[1rem] w-full transition-all duration-200"
           />
