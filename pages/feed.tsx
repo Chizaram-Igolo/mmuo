@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import { useAuth } from "../contexts/AuthContext";
 import SignInForm from "../components/signinform";
 
-const SignIn: NextPage = () => {
+const Feed: NextPage = () => {
   const { user } = useAuth();
 
   return (
@@ -21,4 +21,4 @@ const SignIn: NextPage = () => {
   );
 };
 
-export default SignIn;
+export default Feed;

@@ -46,20 +46,15 @@ export default function SignUpForm() {
       const snapshot = await getDocs(
         query(
           collection(projectFirestore, "users"),
-          where("username", "==", username.toLocaleLowerCase())
+          where("username", "==", username)
         )
       );
-
-      console.log(snapshot.empty && username);
 
       if (snapshot.empty && email && password) {
         const userCredential = await signup(email, password);
 
         const { user } = userCredential;
 
-        console.log(username, email, password);
-
-        // await userCredential.user.sendEmailVerification();
         await appAuth.updateProfile(user, {
           displayName: username,
           photoURL: "/profile/user.jpg",
@@ -74,7 +69,10 @@ export default function SignUpForm() {
           creationDate: dbTimestamp(),
         });
 
-        router.push("/");
+        setUsername("");
+        setEmail("");
+        setPassword("");
+        router.push("/feed");
       } else {
         setError(`Username '${username}' is already taken.`);
       }
@@ -88,7 +86,6 @@ export default function SignUpForm() {
       } else {
         setError(err.message);
       }
-      console.log(err);
     }
 
     setLoading(false);
@@ -97,9 +94,7 @@ export default function SignUpForm() {
   return (
     <form
       className="form-align-left"
-      action="https://cloud.digitalocean.com/registrations"
       id="heroHomeFormVariant"
-      method="post"
       onSubmit={handleSubmit}
     >
       <span className="formWrapperParent">

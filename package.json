@@ -18,12 +18,14 @@
     "@material-ui/lab": "^4.0.0-alpha.60",
     "autoprefixer": "^10.4.2",
     "firebase": "^9.6.4",
+    "formik": "^2.2.9",
     "material-icons": "^1.10.6",
     "next": "12.0.8",
     "postcss": "^8.4.5",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "tailwindcss": "^3.0.15"
+    "tailwindcss": "^3.0.15",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/node": "17.0.10",
