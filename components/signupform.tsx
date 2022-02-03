@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 import React, { useState } from "react";
 
@@ -9,16 +10,13 @@ import { useAuth } from "../contexts/AuthContext";
 import {
   dbTimestamp,
   projectDatabase,
-  projectFirestore,
-  collection,
   ref,
-  where,
-  query,
-  getDocs,
-  dbQuery,
   set,
   appAuth,
 } from "../firebase/config";
+
+import googleLogo from "../public/google-logo.svg";
+import githubLogo from "../public/github-logo.svg";
 
 export default function SignUpForm() {
   const [username, setUsername] = useState("");
@@ -43,21 +41,13 @@ export default function SignUpForm() {
       setError("");
       setLoading(true);
 
-      const snapshot = await getDocs(
-        query(
-          collection(projectFirestore, "users"),
-          where("username", "==", username)
-        )
-      );
-
-      if (snapshot.empty && email && password) {
+      if (email && password) {
         const userCredential = await signup(email, password);
 
         const { user } = userCredential;
 
         await appAuth.updateProfile(user, {
           displayName: username,
-          photoURL: "/profile/user.jpg",
         });
 
         await set(ref(projectDatabase, "users/" + user.uid), {
@@ -83,6 +73,8 @@ export default function SignUpForm() {
         setError(
           "It seems your internet connection isn't very good right now."
         );
+      } else if (err.message.indexOf("offline") !== -1) {
+        setError("You don't have an internet connection.");
       } else {
         setError(err.message);
       }
@@ -180,24 +172,14 @@ export default function SignUpForm() {
             href="https://cloud.digitalocean.com/registrations/google"
             className="flex w-full sm:w-[80%] md:w-full xl:w-[100%] items-center justify-center self-center bg-white mb-2 border border-[#c0c2d3] rounded-lg shadow-[0_4px_0_rgb(222,225,231)] hover:shadow-[0_2px_0_rgb(222,225,231)] box-border text-[#000824] font-medium py-2 px-6 transition-all duration-200"
           >
-            <img
-              data-src="https://www-static.cdn.prismic.io/www-static/7b66f955-63dd-41f5-a403-e6727b24d4ea_google-logo.svg"
-              src="https://www-static.cdn.prismic.io/www-static/7b66f955-63dd-41f5-a403-e6727b24d4ea_google-logo.svg"
-              alt="Google Icon"
-              className="blur-up css-181q7mr ls-is-cached lazyloaded"
-            />
+            <Image src={googleLogo} alt="Google Icon" />
             &nbsp; Google
           </a>
           <a
             href="https://cloud.digitalocean.com/registrations/github"
             className="flex w-full sm:w-[80%] md:w-full xl:w-[100%] items-center justify-center self-center bg-white mb-2 border border-[#c0c2d3] rounded-lg shadow-[0_4px_0_rgb(222,225,231)] hover:shadow-[0_2px_0_rgb(222,225,231)] box-border text-[#000824] font-medium py-2 px-6 transition-all duration-200"
           >
-            <img
-              data-src="https://www-static.cdn.prismic.io/www-static/0a3e37e0-1706-41d5-98d1-854585205a5e_github-logo.svg"
-              src="https://www-static.cdn.prismic.io/www-static/0a3e37e0-1706-41d5-98d1-854585205a5e_github-logo.svg"
-              alt="GitHub Icon"
-              className="blur-up css-181q7mr ls-is-cached lazyloaded"
-            />
+            <Image src={githubLogo} alt="GitHub Icon" />
             &nbsp; Meta
           </a>
         </div>

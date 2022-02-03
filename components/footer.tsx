@@ -1,16 +1,16 @@
-import React from "react";
+import Image from "next/image";
 
 export default function Footer() {
   return (
     <div className="css-n7hb8q mb-5 px-8 md:px-16 lg:px-20">
       <div className="css-1p94y5j flex flex-row">
         <div>
-          <img
-            data-src="https://images.prismic.io/www-static%2F903fd83b-8963-42c2-baf6-44f4d6bb83f2_digitalocean-logo-mark.svg?auto=compress,format"
+          {/* <Image
             src="https://images.prismic.io/www-static%2F903fd83b-8963-42c2-baf6-44f4d6bb83f2_digitalocean-logo-mark.svg?auto=compress,format"
             alt="Digital Ocean logo"
-            className="logo blur-up css-1pq2esu ls-is-cached lazyloaded"
-          />
+            width={48}
+            height={48}
+          /> */}
           <p className="copyright">© 2021 Mmuo, LLC. All rights reserved.</p>
         </div>
 
@@ -22,12 +22,12 @@ export default function Footer() {
                 rel="nofollow"
                 className="css-kgdro inline-block h-full transition-all duration-100"
               >
-                <img
-                  data-src="https://www-static.cdn.prismic.io/www-static/4c2ca1f4-35be-488b-93fb-9a7ef42a02f2_linkedin-social-icon.svg"
+                {/* <Image
                   src="https://www-static.cdn.prismic.io/www-static/4c2ca1f4-35be-488b-93fb-9a7ef42a02f2_linkedin-social-icon.svg"
-                  alt="social media icon"
-                  className="null blur-up css-1pq2esu ls-is-cached lazyloaded"
-                />
+                  alt="Digital Ocean logo"
+                  width={16}
+                  height={16}
+                /> */}
               </a>
             </li>
             <li>
@@ -36,12 +36,12 @@ export default function Footer() {
                 rel="nofollow"
                 className="css-kgdro inline-block h-full transition-all duration-100"
               >
-                <img
-                  data-src="https://www-static.cdn.prismic.io/www-static/1f4c0b73-f446-4798-9888-69d16f788fff_dev-social-icon.svg"
+                {/* <Image
                   src="https://www-static.cdn.prismic.io/www-static/1f4c0b73-f446-4798-9888-69d16f788fff_dev-social-icon.svg"
-                  alt="social media icon"
-                  className="null blur-up css-1pq2esu ls-is-cached lazyloaded"
-                />
+                  alt="Digital Ocean logo"
+                  width={16}
+                  height={16}
+                /> */}
               </a>
             </li>
             <li>
@@ -50,12 +50,12 @@ export default function Footer() {
                 rel="nofollow"
                 className="css-kgdro inline-block h-full transition-all duration-100"
               >
-                <img
-                  data-src="https://www-static.cdn.prismic.io/www-static/8d2a15bd-f909-4f2c-b205-c5554342ec45_glassdoor-social-icon.svg"
+                {/* <Image
                   src="https://www-static.cdn.prismic.io/www-static/8d2a15bd-f909-4f2c-b205-c5554342ec45_glassdoor-social-icon.svg"
-                  alt="social media icon"
-                  className="null blur-up css-1pq2esu ls-is-cached lazyloaded"
-                />
+                  alt="Digital Ocean logo"
+                  width={16}
+                  height={16}
+                /> */}
               </a>
             </li>
           </ul>

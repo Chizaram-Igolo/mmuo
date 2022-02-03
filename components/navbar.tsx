@@ -3,7 +3,6 @@ import { Fragment, useState } from "react";
 import { Popover, Transition, Disclosure, Menu } from "@headlessui/react";
 import {
   BookmarkAltIcon,
-  CalendarIcon,
   ChartBarIcon,
   CursorClickIcon,
   BellIcon,
@@ -20,6 +19,7 @@ import { ChevronDownIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 import { useAuth } from "../contexts/AuthContext";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const solutions = [
   {
@@ -91,12 +91,6 @@ const recentPosts = [
   { id: 3, name: "Improve your customer experience", href: "#" },
 ];
 
-const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
-];
-
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
@@ -118,8 +112,14 @@ export default function Nav() {
     }
   }
 
+  const userNavigation = [
+    { name: "Learn", route: "/feed" },
+    { name: "Your Profile", route: "/profile" },
+    { name: "Settings", route: "/settings" },
+  ];
+
   return (
-    <Popover className="relative bg-white border-b-2 border-gray-100 z-50">
+    <Popover className="sticky top-0 bg-white border-b-2 border-gray-100 z-50">
       <div className="mx-auto px-8 md:px-8 lg:px-20 xl:px-24">
         <div className="flex justify-between items-center py-4 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
@@ -350,13 +350,26 @@ export default function Nav() {
 
                   <Menu as="div" className="ml-6 relative">
                     <div>
-                      <Menu.Button className="max-w-xs bg-transparent rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                      <Menu.Button className="max-w-xs bg-transparent rounded-full flex items-center text-sm focus:outline-none active:ring-2 active:ring-offset-2 active:ring-offset-gray-800 active:ring-white">
                         <span className="sr-only">Open user menu</span>
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src={"user.imageUrl"}
-                          alt=""
-                        />
+                        {user.photoURL && (
+                          <Image
+                            src={user.photoURL}
+                            alt="Profile Picture"
+                            width={32}
+                            height={32}
+                            className="rounded-full"
+                          />
+                        )}
+                        {!user.photoURL && user.displayName && (
+                          <div className="inline-block h-8 w-8 text-center bg-slate-800 rounded-full">
+                            {user && "displayName" in user && (
+                              <span className="text-white leading-8">
+                                {user.displayName[0].toUpperCase()}
+                              </span>
+                            )}
+                          </div>
+                        )}
                       </Menu.Button>
                     </div>
                     <Transition
@@ -372,23 +385,29 @@ export default function Nav() {
                         {userNavigation.map((item) => (
                           <Menu.Item key={item.name}>
                             {({ active }) => (
-                              <a
-                                href={item.href}
-                                className={classNames(
-                                  active ? "bg-gray-100" : "",
-                                  "block px-4 py-2 text-base text-gray-700"
-                                )}
-                                onClick={
-                                  item.name.toLowerCase() === "sign out"
-                                    ? handleSignout
-                                    : () => {}
-                                }
-                              >
-                                {item.name}
-                              </a>
+                              <Link href={item.route}>
+                                <a
+                                  className={classNames(
+                                    active ? "bg-gray-100" : "",
+                                    "block px-4 py-2 text-base text-gray-700"
+                                  )}
+                                >
+                                  {item.name}
+                                </a>
+                              </Link>
                             )}
                           </Menu.Item>
                         ))}
+                        <Menu.Item>
+                          <span
+                            className={classNames(
+                              "block px-4 py-2 text-base text-gray-700 cursor-pointer"
+                            )}
+                            onClick={handleSignout}
+                          >
+                            Sign out
+                          </span>
+                        </Menu.Item>
                       </Menu.Items>
                     </Transition>
                   </Menu>
@@ -416,11 +435,11 @@ export default function Nav() {
             <div className="pt-5 pb-6 px-5">
               <div className="flex items-center justify-between">
                 <div>
-                  <img
+                  {/* <img
                     className="h-8 w-auto"
                     src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                     alt="Workflow"
-                  />
+                  /> */}
                 </div>
                 <div className="-mr-2">
                   <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-0 focus:ring-inset focus:ring-indigo-500">
@@ -486,7 +505,7 @@ export default function Nav() {
                       </a>
                     </Link>
 
-                    <Link href="/signin">
+                    <Link href="/signin" passHref>
                       <p className="mt-6 text-center text-base font-medium text-gray-500">
                         Existing customer?{" "}
                         <a
@@ -506,18 +525,31 @@ export default function Nav() {
                     <div className="pt-4 pb-3 border-t-[2px] border-gray-400">
                       <div className="flex items-center px-5">
                         <div className="flex-shrink-0">
-                          <img
-                            className="h-10 w-10 rounded-full"
-                            src={"user.imageUrl"}
-                            alt=""
-                          />
+                          {user.photoURL && (
+                            <Image
+                              src={user.photoURL}
+                              alt="Profile Picture"
+                              width={32}
+                              height={32}
+                              className="rounded-full"
+                            />
+                          )}
+                          {!user.photoURL && user.displayName && (
+                            <div className="inline-block h-8 w-8 text-center bg-slate-800 rounded-full">
+                              {user && "displayName" in user && (
+                                <span className="text-white leading-8">
+                                  {user.displayName[0].toUpperCase()}
+                                </span>
+                              )}
+                            </div>
+                          )}
                         </div>
                         <div className="ml-3">
-                          <div className="text-base font-medium leading-none text-white">
-                            {/* {user.name} */}
+                          <div className="text-base font-medium leading-none">
+                            {user.displayName}
                           </div>
-                          <div className="text-sm font-medium leading-none text-gray-400">
-                            {/* {user.email} */}
+                          <div className="text-sm font-medium leading-none">
+                            {user.email}
                           </div>
                         </div>
                         <button
@@ -530,14 +562,20 @@ export default function Nav() {
                       </div>
                       <div className="mt-3 px-2 space-y-1 text-left">
                         {userNavigation.map((item) => (
-                          <a
-                            key={item.name}
-                            href={item.href}
-                            className="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:bg-slate-200"
-                          >
-                            {item.name}
-                          </a>
+                          <Link href={item.route} key={item.name}>
+                            <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:bg-slate-200">
+                              {item.name}
+                            </a>
+                          </Link>
                         ))}
+                        <span
+                          className={classNames(
+                            "block px-3 py-2 text-base text-gray-700 cursor-pointer"
+                          )}
+                          onClick={handleSignout}
+                        >
+                          Sign out
+                        </span>
                       </div>
                     </div>
                   </>

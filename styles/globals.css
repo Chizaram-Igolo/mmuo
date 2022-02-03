@@ -27,6 +27,10 @@ a {
   font-family: "WorkSans", "Helvetica", sans-serif;
 }
 
+.bold {
+  font-family: "WorkSans_Bold", sans-serif;
+}
+
 @layer base {
   h1 {
     @apply text-6xl;
@@ -42,6 +46,12 @@ a {
     @apply font-extrabold;
   }
 
+  .module-h3 {
+    font-size: 1.125rem;
+    font-family: "WorkSans_Bold", sans-serif;
+    @apply font-bold;
+  }
+
   .btn {
     @apply px-4 py-2 rounded font-semibold bg-gray-400 text-black;
   }
@@ -54,6 +64,12 @@ a {
     font-family: "WorkSans_Medium", sans-serif;
     @apply font-medium;
   }
+}
+
+.vert-dash-line {
+  stroke: #888;
+  stroke-dasharray: 7;
+  stroke-width: 6px;
 }
 
 .css-oztn6x {
@@ -213,10 +229,10 @@ a {
   text-align: center; */
 }
 
-.subtitle:not(:last-child),
+/* .subtitle:not(:last-child),
 .title:not(:last-child) {
   margin-bottom: 1.5rem;
-}
+} */
 
 .css-1qqke53.subtitle.medium,
 .css-1qqke53.subtitle p.medium,
