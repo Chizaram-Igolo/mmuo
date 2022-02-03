@@ -47,8 +47,8 @@ a {
   }
 
   .module-h3 {
-    font-size: 1.125rem;
-    font-family: "WorkSans_Bold", sans-serif;
+    font-size: 1.1rem;
+    font-family: "WorkSans_SemiBold", sans-serif;
     @apply font-bold;
   }
 

@@ -17,3 +17,8 @@
   font-family: "WorkSans_Bold";
   src: url("./fonts/WorkSans/WorkSans-Bold.ttf");
 }
+
+@font-face {
+  font-family: "WorkSans_ExtraBold";
+  src: url("./fonts/WorkSans/WorkSans-Bold.ttf");
+}
