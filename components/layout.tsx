@@ -45,7 +45,6 @@ const Layout: React.FC = ({ children }): JSX.Element => {
       {loading && <TopBarProgress />}
       <Head>
         <title>Mmūō - Learn Languages the fun and easy way</title>
-        {/* <script src="./topbar.min.js"></script> */}
       </Head>
       <Navbar />
       {children}

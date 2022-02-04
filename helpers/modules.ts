@@ -32,9 +32,17 @@ import {
   faCubes,
   faQuoteLeft,
   faHeart,
+  IconDefinition,
 } from "@fortawesome/free-solid-svg-icons";
 
 export { modules };
+
+export interface IModule {
+  name: string;
+  relatedToNext: false;
+  bg: string;
+  icon: IconDefinition;
+}
 
 const modules = [
   {

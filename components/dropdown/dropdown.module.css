@@ -40,7 +40,7 @@
   background: #ffffff;
   border-radius: 8px;
   position: absolute;
-  top: 80px;
+  top: 82px;
   /* right: 0; */
   width: 300px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
@@ -58,18 +58,37 @@
 }
 
 .menu ul {
+  position: relative;
   list-style: none;
   padding: 0;
   margin: 0;
+  /* z-index: 50 !important; */
 }
 
 .menu li {
   border-bottom: 1px solid #dddddd;
+  text-align: center;
 }
 
 .menu li a {
   text-decoration: none;
-  color: #333333;
-  padding: 15px 20px;
+  color: #222222;
+  padding: 14px 20px 15px;
   display: block;
+  font-family: "WorkSans_SemiBold", sans-serif;
+  font-size: 1.1rem;
+}
+
+.arrowHead {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  bottom: calc(95% - 6px);
+  left: 8%;
+  /* margin-top: 50px; */
+  margin-left: -5px;
+  border-style: solid;
+  background-color: #ffffff;
+  box-shadow: -1px -1px 0px 0px rgba(0, 0, 0, 0.1);
+  transform: rotate(45deg);
 }

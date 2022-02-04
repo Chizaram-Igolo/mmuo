@@ -20,7 +20,8 @@
     "**/*.ts",
     "**/*.tsx",
     "helpers/hooks/useDetectOutsideClick.js",
-    "components/dropdown.jsx"
+    "components/dropdown/dropdown.jsx",
+    "components/infotip.tsx"
   ],
   "exclude": ["node_modules"]
 }
