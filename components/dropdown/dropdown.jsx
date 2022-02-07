@@ -11,7 +11,7 @@ import { faLightbulb } from "@fortawesome/free-regular-svg-icons";
  * Read the blog post here:
  * https://letsbuildui.dev/articles/building-a-dropdown-menu-component-with-react-hooks
  */
-export default function Dropdown({ children, classNames }) {
+export default function Dropdown({ children, classNames, isAlpha }) {
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
   const onClick = () => {
@@ -19,20 +19,22 @@ export default function Dropdown({ children, classNames }) {
   };
 
   let cNs = "";
+  let actionText = "Get Started";
 
   if (classNames) {
     cNs = classNames;
   }
 
+  if (isAlpha) {
+    actionText = "Go to Alphabets";
+  }
+
   return (
-    <div className={styles.container}>
-      <div className={styles["menu-container"]}>
-        <button
-          onClick={onClick}
-          className={`${styles["menu-trigger"]} ${cNs}`}
-        >
+    <div className={`${styles.container} w-[100%] ${cNs}`}>
+      <div className={`${styles["menu-container"]}`}>
+        <div onClick={onClick} className={`${styles["menu-trigger"]}`}>
           {children}
-        </button>
+        </div>
         <nav
           ref={dropdownRef}
           className={`${styles["menu"]} ${
@@ -43,19 +45,25 @@ export default function Dropdown({ children, classNames }) {
           <ul>
             <li>
               <Link href="tips">
-                <a>
-                  Read Tips &nbsp;
-                  <FontAwesomeIcon
-                    icon={faLightbulb}
-                    className="cursor-pointer text-[#222222]"
-                  />
+                <a className="font-bold">
+                  <span className="heavy-span inline-block border-b-[0.15rem] py-[1.9rem] border-dotted border-[#282828] cursor-pointer px-3">
+                    <strong>
+                      Read Tips &nbsp;
+                      <FontAwesomeIcon
+                        icon={faLightbulb}
+                        className="cursor-pointer text-[#222222]"
+                      />
+                    </strong>
+                  </span>
                 </a>
               </Link>
             </li>
             <li>
-              <a href="#">
-                <ActionButton>Get Started </ActionButton>
-              </a>
+              <Link href="alpha">
+                <a>
+                  <ActionButton>{actionText} </ActionButton>
+                </a>
+              </Link>
             </li>
             {/* <li>
               <a href="#">

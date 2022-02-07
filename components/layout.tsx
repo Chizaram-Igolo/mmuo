@@ -39,8 +39,9 @@ const Layout: React.FC = ({ children }): JSX.Element => {
 
   return (
     <div className="">
-      {router.pathname.indexOf("feed") === -1 &&
-        router.pathname.indexOf("sign") === -1 && <Banner />}
+      {/* {router.pathname.indexOf("sign") === -1 &&
+        router.pathname.indexOf("exercise") === -1 &&
+        router.pathname.indexOf("feed") === -1 && <Banner />} */}
 
       {loading && <TopBarProgress />}
       <Head>

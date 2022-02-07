@@ -1,6 +1,9 @@
 import type { NextPage } from "next";
+import Link from "next/link";
 
 import React from "react";
+import GoBack from "../../components/backlink";
+import ActionButton from "../../components/buttons/actionbutton";
 
 import InfoTip from "../../components/infotip";
 
@@ -11,7 +14,7 @@ const Tips: NextPage = () => {
         <div className="py-6 w-[100%] lg:w-[60%]">
           <h2 className="text-[#333333] mb-4">Welcome</h2>
           <p className="mb-4">
-            ǹdeèwo!. Welcome to the Igbo course. In Igbo, there are 5 tones that
+            Ǹdeèwo! Welcome to the Igbo course. In Igbo, there are 5 tones that
             you need to be aware of; high tones, low tones, mid tones, rising
             tones and falling tones.
           </p>
@@ -62,9 +65,27 @@ const Tips: NextPage = () => {
             .
           </p>
 
-          <InfoTip severity="warning">
+          <InfoTip severity="warning" className="mt-7">
             <strong>High tones are usually not marked.</strong>
           </InfoTip>
+
+          <p className="mb-12">
+            Now let's started learning the alphabets of the Igbo language!
+          </p>
+
+          <div className="flex flex-row">
+            <div className="flex-1 pt-4">
+              <GoBack />
+            </div>
+
+            <div>
+              <Link href="alpha">
+                <a>
+                  <ActionButton>Go to Alphabets</ActionButton>
+                </a>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </>

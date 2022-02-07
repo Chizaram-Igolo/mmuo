@@ -8,7 +8,7 @@
 
 .button-3d {
   position: relative;
-  width: auto;
+  /* width: auto; */
   display: inline-block;
   color: #ecf0f1;
   text-decoration: none;

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <div className="css-n7hb8q mb-5 px-8 md:px-16 lg:px-20">
+    <div className="css-n7hb8q absolute bottom-100 w-[100%] mb-5 px-8 md:px-16 lg:px-20 pb-4">
       <div className="css-1p94y5j flex flex-row">
         <div>
           {/* <Image
@@ -11,7 +11,9 @@ export default function Footer() {
             width={48}
             height={48}
           /> */}
-          <p className="copyright">© 2021 Mmuo, LLC. All rights reserved.</p>
+          <p className="copyright text-sm md:text-base">
+            © 2021 Mmuo, LLC. All rights reserved.
+          </p>
         </div>
 
         <div>

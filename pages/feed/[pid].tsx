@@ -363,8 +363,8 @@ const firstModule = modules[0] as IModule;
 
 const FeedPage: NextPage = () => {
   const chainLineSVG = (
-    <div className="max-w-[4rem]">
-      <svg height="44" width="500" className="block w-[6px] mt-2 mb-3 mx-auto">
+    <div className="max-w-[4rem] ml-10">
+      <svg height="44" width="500" className="block w-[6px] mt-2 mb-3 ">
         <line className="vert-dash-line" x1="0" y1="0" x2="0" y2="40" />
       </svg>
     </div>
@@ -374,9 +374,9 @@ const FeedPage: NextPage = () => {
     <>
       <section className="py-4 pb-24 px-8 md:px-18 lg:px-20 xl:px-24 z-20 min-h-[28rem] bg-white">
         <div className="py-6">
-          <Dropdown classNames="mb-12">
+          {/* <Dropdown classNames="mb-8" isAlpha={true}>
             <div
-              className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-green-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 max-w-[3.8rem] z-20 h-[3.8rem] mb-[0.85rem] first:mt-0 ${firstModule.bg} text-[#080b2d] rounded-full`}
+              className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-green-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 max-w-[3.8rem] z-20 h-[3.8rem] mb-[0.85rem] first:mt-0 ${firstModule.bg} rounded-full mx-auto md:ml-3`}
             >
               <span className="text-[1.8rem] leading-[3.8rem]">
                 <FontAwesomeIcon
@@ -385,58 +385,136 @@ const FeedPage: NextPage = () => {
                 />
               </span>
             </div>
-            <h3 className="w-max module-h3 mt-3 text-center text-[#080b2d] mb-[0.8rem] last:mb-0">
+            <h3 className="w-max module-h3 mt-3 text-center mb-[0.8rem] last:mb-0 mx-auto">
               {firstModule.name}
             </h3>
-          </Dropdown>
+          </Dropdown> */}
+
+          <div className="flex w-[18rem] gap-x-6 mb-12 bg-[#fafde2] pt-6 pb-4 pl-4 md:rounded-r-full">
+            <Dropdown classNames="border" isAlpha={true}>
+              <div>
+                <div
+                  className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-green-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 min-w-[3.8rem] max-w-[3.8rem] z-20 h-[3.8rem] mb-[0.85rem] first:mt-0 ${firstModule.bg} rounded-full mx-auto md:ml-3`}
+                >
+                  <span className="text-[1.8rem] leading-[3.8rem]">
+                    <FontAwesomeIcon
+                      icon={faSortAlphaDown}
+                      className="text-white cursor-pointer"
+                    />
+                  </span>
+                </div>
+              </div>
+              <div className="">
+                <h3 className="w-max module-h3 text-center last:mb-0">
+                  {firstModule.name}
+                </h3>
+                <span>Technical advisor</span>
+              </div>
+            </Dropdown>
+          </div>
 
           {modules.slice(1).map((module) => {
             if (!Array.isArray(module)) {
               return (
                 <React.Fragment key={module.name}>
-                  <Dropdown>
-                    <div
-                      className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-purple-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 max-w-[3.8rem] z-20 h-[3.8rem] mb-[0.85rem] first:mt-0 ${module.bg} text-[#080b2d] rounded-full`}
-                    >
-                      <span className="text-[1.8rem] leading-[3.8rem]">
-                        <FontAwesomeIcon
-                          icon={faSortAlphaDown}
-                          className="text-white cursor-pointer"
-                        />
-                      </span>
+                  <div className="flex w-[18rem] gap-x-6 mb-4 bg-gray-100 pt-6 pb-4 pl-4 md:rounded-r-full">
+                    <div>
+                      <div
+                        className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-purple-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 min-w-[3.8rem] max-w-[3.8rem] z-20 h-[3.8rem] mb-[0.85rem] first:mt-0 ${module.bg} rounded-full mx-auto md:ml-3`}
+                      >
+                        <span className="text-[1.8rem] leading-[3.8rem]">
+                          <FontAwesomeIcon
+                            icon={module.icon}
+                            className="text-white cursor-pointer"
+                          />
+                        </span>
+                      </div>
                     </div>
-                    <h3 className="w-max module-h3 mt-3 text-center text-[#080b2d] mb-[0.rem] last:mb-0">
-                      {module.name}
-                    </h3>
-                  </Dropdown>
-                  {chainLineSVG}
+                    <div className="">
+                      <h3 className="w-max module-h3 text-center last:mb-0">
+                        {module.name}
+                      </h3>
+                      <span>Technical advisor</span>
+                    </div>
+                  </div>
+
+                  <div className="hidden md:block">
+                    {modules.indexOf(module) < modules.length - 1 &&
+                      chainLineSVG}
+                  </div>
+                  <div className="mb-8 md:hidden"></div>
                 </React.Fragment>
               );
             } else {
               return (
                 <React.Fragment key={module[0].name + modules.indexOf(module)}>
-                  <div className="flex flex-row max-w-lg gap-x-12 gap-y-6 flex-wrap">
+                  <div className="flex flex-row gap-x-12 gap-y-12 md:max-w-[70%] flex-wrap bg-gray-100 pt-6 pb-4 pl-4 md:rounded-r-full">
                     {module.map((item) => (
-                      <Dropdown key={item.name}>
-                        <div className="w-[5.5rem]">
-                          <div
-                            className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-purple-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 max-w-[3.8rem] z-20 h-[3.8rem] mb-[0.85rem] first:mt-0 ${item.bg} text-[#080b2d] rounded-full`}
-                          >
-                            <span className="text-[1.8rem] leading-[3.8rem]">
-                              <FontAwesomeIcon
-                                icon={item.icon}
-                                className="text-white cursor-pointer"
-                              />
-                            </span>
+                      // <Dropdown
+                      //   key={item.name}
+                      //   classNames="mb-0"
+                      //   isAlpha={false}
+                      // >
+                      //   <div className="w-[6rem]">
+                      //     <div
+                      //       className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-purple-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 max-w-[3.8rem] z-20 h-[3.8rem] first:mt-0 ${item.bg} rounded-full mx-auto md:ml-3`}
+                      //     >
+                      //       <span className="text-[1.8rem] leading-[3.8rem]">
+                      //         <FontAwesomeIcon
+                      //           icon={item.icon}
+                      //           className="text-white cursor-pointer"
+                      //         />
+                      //       </span>
+                      //     </div>
+                      //     <h3 className="w-max module-h3 mt-3 text-center last:mb-0 mx-auto md:ml-2">
+                      //       {item.name}
+                      //     </h3>
+                      //   </div>
+                      // </Dropdown>
+
+                      // <div className="flex items-center">
+                      //   <span className="text-[1.8rem] leading-[3.8rem]">
+                      //     <FontAwesomeIcon
+                      //       icon={item.icon}
+                      //       className="text-white cursor-pointer"
+                      //     />
+                      //   </span>
+                      //   <div>
+                      //     <strong>Andrew Alfred</strong>
+                      //     <span>Technical advisor</span>
+                      //   </div>
+                      // </div>
+
+                      <>
+                        <div className="flex w-[18rem] gap-x-6">
+                          <div>
+                            <div
+                              className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-purple-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 min-w-[3.8rem] max-w-[3.8rem] z-20 h-[3.8rem] mb-[0.85rem] first:mt-0 ${item.bg} rounded-full mx-auto md:ml-3`}
+                            >
+                              <span className="text-[1.8rem] leading-[3.8rem]">
+                                <FontAwesomeIcon
+                                  icon={item.icon}
+                                  className="text-white cursor-pointer"
+                                />
+                              </span>
+                            </div>
                           </div>
-                          <h3 className="w-max module-h3 mt-3 text-center text-[#080b2d] mb-[0.2rem] last:mb-0">
-                            {item.name}
-                          </h3>
+                          <div className="">
+                            <h3 className="w-max module-h3 text-center last:mb-0">
+                              {item.name}
+                            </h3>
+                            <span>Technical advisor</span>
+                          </div>
                         </div>
-                      </Dropdown>
+                      </>
                     ))}
                   </div>
-                  {modules.indexOf(module) < modules.length - 1 && chainLineSVG}
+
+                  <div className="hidden md:block">
+                    {modules.indexOf(module) < modules.length - 1 &&
+                      chainLineSVG}
+                  </div>
+                  <div className="mb-8 md:hidden"></div>
                 </React.Fragment>
               );
             }
