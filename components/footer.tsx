@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Footer() {
   return (
     <div className="css-n7hb8q absolute bottom-100 w-[100%] mb-5 px-8 md:px-16 lg:px-20 pb-4">

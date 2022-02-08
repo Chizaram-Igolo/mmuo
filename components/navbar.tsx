@@ -41,19 +41,19 @@ const solutions = [
     href: "#",
     icon: ShieldCheckIcon,
   },
-  {
-    name: "Integrations",
-    description: "Connect with third-party tools that you're already using.",
-    href: "#",
-    icon: ViewGridIcon,
-  },
-  {
-    name: "Automations",
-    description:
-      "Build strategic funnels that will drive your customers to convert",
-    href: "#",
-    icon: RefreshIcon,
-  },
+  // {
+  //   name: "Integrations",
+  //   description: "Connect with third-party tools that you're already using.",
+  //   href: "#",
+  //   icon: ViewGridIcon,
+  // },
+  // {
+  //   name: "Automations",
+  //   description:
+  //     "Build strategic funnels that will drive your customers to convert",
+  //   href: "#",
+  //   icon: RefreshIcon,
+  // },
 ];
 const callsToAction = [
   { name: "Watch Demo", href: "#", icon: PlayIcon },
@@ -74,12 +74,12 @@ const resources = [
     href: "#",
     icon: BookmarkAltIcon,
   },
-  {
-    name: "Security",
-    description: "Understand how we take your privacy seriously.",
-    href: "#",
-    icon: ShieldCheckIcon,
-  },
+  // {
+  //   name: "Security",
+  //   description: "Understand how we take your privacy seriously.",
+  //   href: "#",
+  //   icon: ShieldCheckIcon,
+  // },
 ];
 const recentPosts = [
   { id: 1, name: "Boost your conversion rate", href: "#" },

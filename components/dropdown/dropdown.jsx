@@ -6,12 +6,13 @@ import { useDetectOutsideClick } from "../../helpers/hooks/useDetectOutsideClick
 import ActionButton from "../buttons/actionbutton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLightbulb } from "@fortawesome/free-regular-svg-icons";
+import ActionButton2 from "../buttons/actionbutton2";
 
 /*
  * Read the blog post here:
  * https://letsbuildui.dev/articles/building-a-dropdown-menu-component-with-react-hooks
  */
-export default function Dropdown({ children, classNames, isAlpha }) {
+export default function Dropdown({ children, classNames, isAlpha, isGroup }) {
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
   const onClick = () => {
@@ -19,6 +20,7 @@ export default function Dropdown({ children, classNames, isAlpha }) {
   };
 
   let cNs = "";
+  let positionObj = {};
   let actionText = "Get Started";
 
   if (classNames) {
@@ -29,8 +31,12 @@ export default function Dropdown({ children, classNames, isAlpha }) {
     actionText = "Go to Alphabets";
   }
 
+  if (isGroup) {
+    positionObj = { marginTop: "-1.6rem", marginLeft: "-1rem" };
+  }
+
   return (
-    <div className={`${styles.container} w-[100%] ${cNs}`}>
+    <div className={`${styles.container} md:w-fit ${cNs}`}>
       <div className={`${styles["menu-container"]}`}>
         <div onClick={onClick} className={`${styles["menu-trigger"]}`}>
           {children}
@@ -40,6 +46,7 @@ export default function Dropdown({ children, classNames, isAlpha }) {
           className={`${styles["menu"]} ${
             isActive ? styles["active"] : styles["inactive"]
           }`}
+          style={positionObj}
         >
           <div className={styles.arrowHead}></div>
           <ul>
@@ -61,7 +68,8 @@ export default function Dropdown({ children, classNames, isAlpha }) {
             <li>
               <Link href="alpha">
                 <a>
-                  <ActionButton>{actionText} </ActionButton>
+                  {/* <ActionButton>{actionText}</ActionButton> */}
+                  <ActionButton2>{actionText}</ActionButton2>
                 </a>
               </Link>
             </li>

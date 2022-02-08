@@ -364,7 +364,7 @@ const firstModule = modules[0] as IModule;
 const FeedPage: NextPage = () => {
   const chainLineSVG = (
     <div className="max-w-[4rem] ml-10">
-      <svg height="44" width="500" className="block w-[6px] mt-2 mb-3 ">
+      <svg height="44" width="500" className="block w-[6px] mt-2 mb-0">
         <line className="vert-dash-line" x1="0" y1="0" x2="0" y2="40" />
       </svg>
     </div>
@@ -390,8 +390,8 @@ const FeedPage: NextPage = () => {
             </h3>
           </Dropdown> */}
 
-          <div className="flex w-[18rem] gap-x-6 mb-12 bg-[#fafde2] pt-6 pb-4 pl-4 md:rounded-r-full">
-            <Dropdown classNames="border" isAlpha={true}>
+          <Dropdown classNames="" isAlpha={true}>
+            <div className="flex flex-row md:w-[18rem] gap-x-6 mb-0 bg-[#fafde2] pt-6 pb-4 pl-4 md:rounded-r-full">
               <div>
                 <div
                   className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-green-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 min-w-[3.8rem] max-w-[3.8rem] z-20 h-[3.8rem] mb-[0.85rem] first:mt-0 ${firstModule.bg} rounded-full mx-auto md:ml-3`}
@@ -410,39 +410,44 @@ const FeedPage: NextPage = () => {
                 </h3>
                 <span>Technical advisor</span>
               </div>
-            </Dropdown>
+            </div>
+          </Dropdown>
+          <div className="md:block">
+            {modules.indexOf(module) < modules.length - 1 && chainLineSVG}
           </div>
 
           {modules.slice(1).map((module) => {
             if (!Array.isArray(module)) {
               return (
                 <React.Fragment key={module.name}>
-                  <div className="flex w-[18rem] gap-x-6 mb-4 bg-gray-100 pt-6 pb-4 pl-4 md:rounded-r-full">
-                    <div>
-                      <div
-                        className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-purple-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 min-w-[3.8rem] max-w-[3.8rem] z-20 h-[3.8rem] mb-[0.85rem] first:mt-0 ${module.bg} rounded-full mx-auto md:ml-3`}
-                      >
-                        <span className="text-[1.8rem] leading-[3.8rem]">
-                          <FontAwesomeIcon
-                            icon={module.icon}
-                            className="text-white cursor-pointer"
-                          />
-                        </span>
+                  <Dropdown classNames="" isAlpha={false}>
+                    <div className="flex w-[18rem] gap-x-6 mb-4 bg-gray-100 pt-6 pb-4 pl-4 md:rounded-r-full">
+                      <div>
+                        <div
+                          className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-purple-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 min-w-[3.8rem] max-w-[3.8rem] z-20 h-[3.8rem] mb-[0.85rem] first:mt-0 ${module.bg} rounded-full mx-auto md:ml-3`}
+                        >
+                          <span className="text-[1.8rem] leading-[3.8rem]">
+                            <FontAwesomeIcon
+                              icon={module.icon}
+                              className="text-white cursor-pointer"
+                            />
+                          </span>
+                        </div>
+                      </div>
+                      <div className="">
+                        <h3 className="w-max module-h3 text-center last:mb-0">
+                          {module.name}
+                        </h3>
+                        <span>Technical advisor</span>
                       </div>
                     </div>
-                    <div className="">
-                      <h3 className="w-max module-h3 text-center last:mb-0">
-                        {module.name}
-                      </h3>
-                      <span>Technical advisor</span>
-                    </div>
-                  </div>
+                  </Dropdown>
 
-                  <div className="hidden md:block">
+                  <div className="md:block">
                     {modules.indexOf(module) < modules.length - 1 &&
                       chainLineSVG}
                   </div>
-                  <div className="mb-8 md:hidden"></div>
+                  <div className="mb-0 md:hidden"></div>
                 </React.Fragment>
               );
             } else {
@@ -485,8 +490,8 @@ const FeedPage: NextPage = () => {
                       //   </div>
                       // </div>
 
-                      <>
-                        <div className="flex w-[18rem] gap-x-6">
+                      <Dropdown classNames="" isAlpha={false} isGroup={true}>
+                        <div className="flex w-[18rem] gap-x-6 mb-0">
                           <div>
                             <div
                               className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-purple-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 min-w-[3.8rem] max-w-[3.8rem] z-20 h-[3.8rem] mb-[0.85rem] first:mt-0 ${item.bg} rounded-full mx-auto md:ml-3`}
@@ -506,15 +511,15 @@ const FeedPage: NextPage = () => {
                             <span>Technical advisor</span>
                           </div>
                         </div>
-                      </>
+                      </Dropdown>
                     ))}
                   </div>
 
-                  <div className="hidden md:block">
+                  <div className="md:block">
                     {modules.indexOf(module) < modules.length - 1 &&
                       chainLineSVG}
                   </div>
-                  <div className="mb-8 md:hidden"></div>
+                  <div className="mb-0 md:hidden"></div>
                 </React.Fragment>
               );
             }
