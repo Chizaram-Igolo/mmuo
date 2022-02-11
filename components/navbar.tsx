@@ -131,7 +131,7 @@ export default function Nav() {
                 src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                 alt=""
               /> */}
-                <h2 className="text-slate-800">mmūō</h2>
+                <h2 className="text-gray-900">mmūō</h2>
               </a>
             </Link>
           </div>
@@ -142,19 +142,19 @@ export default function Nav() {
             </Popover.Button>
           </div>
           <Popover.Group as="nav" className="hidden md:flex space-x-10">
-            <Popover className="relative">
+            {/* <Popover className="relative">
               {({ open }) => (
                 <>
                   <Popover.Button
                     className={classNames(
-                      open ? "text-gray-900" : "text-gray-500",
+                      open ? "text-gray-900" : "text-gray-600",
                       "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-indigo-500"
                     )}
                   >
                     <span>Solutions</span>
                     <ChevronDownIcon
                       className={classNames(
-                        open ? "text-gray-600" : "text-gray-400",
+                        open ? "text-gray-600" : "text-gray-00",
                         "ml-2 h-5 w-5 group-hover:text-gray-500"
                       )}
                       aria-hidden="true"
@@ -215,28 +215,28 @@ export default function Nav() {
                   </Transition>
                 </>
               )}
-            </Popover>
+            </Popover> */}
 
-            <a
+            {/* <a
               href="#"
-              className="text-base font-medium text-gray-500 hover:text-gray-900"
+              className="text-base font-medium text-gray-600 hover:text-gray-900"
             >
               Pricing
-            </a>
+            </a> */}
 
             <Popover className="relative">
               {({ open }) => (
                 <>
                   <Popover.Button
                     className={classNames(
-                      open ? "text-gray-900" : "text-gray-500",
+                      open ? "text-gray-900" : "text-gray-600",
                       "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:ring-indigo-500"
                     )}
                   >
                     <span>More</span>
                     <ChevronDownIcon
                       className={classNames(
-                        open ? "text-gray-600" : "text-gray-400",
+                        open ? "text-gray-600" : "text-gray-500",
                         "ml-2 h-5 w-5 group-hover:text-gray-500"
                       )}
                       aria-hidden="true"

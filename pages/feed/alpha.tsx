@@ -74,8 +74,11 @@ const Alphabet: NextPage = () => {
             ))}{" "}
             {Array(remainderFlexBoxes)
               .fill("")
-              .map(() => (
-                <div className="flex-1 basis-4 md:basis-8 min-w-[5rem]"></div>
+              .map((idx) => (
+                <div
+                  className="flex-1 basis-4 md:basis-8 min-w-[5rem]"
+                  key={idx}
+                ></div>
               ))}
           </div>
 

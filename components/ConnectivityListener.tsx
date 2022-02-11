@@ -9,16 +9,30 @@ const ConnectivityListener = () => {
 export function useConnectivityListener() {
   const { addToast, removeToast } = useToasts();
   const [isOnline, setOnline] = useState(
-    window ? window.navigator.onLine : false
+    typeof window !== "undefined" ? window.navigator.onLine : false
   );
   const toastId = useRef(null);
 
   useEffect(() => {
     const onlineHandler = () => setOnline(true);
+
     const offlineHandler = () => setOnline(false);
 
     window.addEventListener("online", onlineHandler);
     window.addEventListener("offline", offlineHandler);
+
+    window.navigator.connection.addEventListener("change", async () => {
+      try {
+        const online = await fetch(
+          "https://jsonplaceholder.typicode.com/todos/1"
+        );
+        if (online.ok) {
+          onlineHandler();
+        }
+      } catch (err) {
+        offlineHandler();
+      }
+    });
 
     return () => {
       window.removeEventListener("online", onlineHandler);
@@ -29,13 +43,11 @@ export function useConnectivityListener() {
   useUpdateEffect(() => {
     const content = (
       <Fragment>
-        <span className="semi-bold-text" style={{ fontSize: "1.1em" }}>
+        <span className="toast-h3" style={{ fontSize: "1.1em" }}>
           {isOnline ? "Online" : "Offline"}
         </span>
         <div style={{ fontSize: "1.1em" }}>
-          {isOnline
-            ? "You are back online."
-            : `You went offline. \n We will keep updating your UI with your changes and push the updates to our server when you get back online. :)`}
+          {isOnline ? "You are back online." : "You are currently offline."}
         </div>
       </Fragment>
     );

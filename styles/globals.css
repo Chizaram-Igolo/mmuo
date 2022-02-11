@@ -76,6 +76,10 @@ a {
     font-family: "WorkSans_SemiBold", sans-serif;
   }
 
+  textarea {
+    resize: none;
+  }
+
   h1 {
     @apply text-6xl;
     @apply leading-tight;
@@ -101,6 +105,12 @@ a {
     font-family: "WorkSans_Bold", sans-serif;
     @apply font-bold;
     @apply text-stone-900;
+  }
+
+  .toast-h3 {
+    font-size: 1.1rem;
+    font-family: "WorkSans_Bold", sans-serif;
+    @apply font-bold;
   }
 
   .btn {

@@ -50,7 +50,7 @@ const Exercise: NextPage = () => {
 
           <div className="flex flex-row">
             <ActiveButton
-              classNames="w-[100%] md:w-[80%] mx-auto text-[1.1rem]"
+              classNames="w-[100%] md:w-[100%] mx-auto text-[1.1rem]"
               onClick={changeShowResult}
             >
               Check Answer

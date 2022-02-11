@@ -3,7 +3,6 @@ import { useRef } from "react";
 
 import styles from "./dropdown.module.css";
 import { useDetectOutsideClick } from "../../helpers/hooks/useDetectOutsideClick";
-import ActionButton from "../buttons/actionbutton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLightbulb } from "@fortawesome/free-regular-svg-icons";
 import ActionButton2 from "../buttons/actionbutton2";
@@ -28,7 +27,7 @@ export default function Dropdown({ children, classNames, isAlpha, isGroup }) {
   }
 
   if (isAlpha) {
-    actionText = "Go to Alphabets";
+    actionText = "Go to Alphabet";
   }
 
   if (isGroup) {
@@ -51,7 +50,7 @@ export default function Dropdown({ children, classNames, isAlpha, isGroup }) {
           <div className={styles.arrowHead}></div>
           <ul>
             <li>
-              <Link href="tips">
+              <Link href="/feed/tips">
                 <a className="font-bold">
                   <span className="heavy-span inline-block border-b-[0.15rem] py-[1.9rem] border-dotted border-[#282828] cursor-pointer px-3">
                     <strong>
@@ -66,18 +65,13 @@ export default function Dropdown({ children, classNames, isAlpha, isGroup }) {
               </Link>
             </li>
             <li>
-              <Link href="alpha">
+              <Link href="/feed/alpha">
                 <a>
                   {/* <ActionButton>{actionText}</ActionButton> */}
                   <ActionButton2>{actionText}</ActionButton2>
                 </a>
               </Link>
             </li>
-            {/* <li>
-              <a href="#">
-                <ActiveButton>Get Started</ActiveButton>
-              </a>
-            </li> */}
           </ul>
         </nav>
       </div>

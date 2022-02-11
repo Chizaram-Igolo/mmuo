@@ -3,6 +3,9 @@ import Head from "next/head";
 
 const TopBarProgress = require("react-topbar-progress-indicator");
 
+import { ToastProvider } from "react-toast-notifications";
+import ConnectivityListener from "./ConnectivityListener";
+
 import Banner from "./banner";
 import Navbar from "./navbar";
 import Footer from "./footer";
@@ -39,17 +42,23 @@ const Layout: React.FC = ({ children }): JSX.Element => {
 
   return (
     <div className="">
-      {/* {router.pathname.indexOf("sign") === -1 &&
+      <ToastProvider>
+        <ConnectivityListener />
+        {/* {router.pathname.indexOf("sign") === -1 &&
         router.pathname.indexOf("exercise") === -1 &&
         router.pathname.indexOf("feed") === -1 && <Banner />} */}
 
-      {loading && <TopBarProgress />}
-      <Head>
-        <title>Mmūō - Learn Languages the fun and easy way</title>
-      </Head>
-      <Navbar />
-      {children}
-      <Footer />
+        {loading && <TopBarProgress />}
+        <Head>
+          <title>Mmūō - Learn Languages the fun and easy way</title>
+        </Head>
+
+        {router.pathname.indexOf("sidebar") === -1 && <Navbar />}
+
+        {children}
+
+        {router.pathname.indexOf("sidebar") === -1 && <Footer />}
+      </ToastProvider>
     </div>
   );
 };

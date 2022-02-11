@@ -37,6 +37,7 @@ import {
   faQuoteLeft,
   faHeart,
   IconDefinition,
+  faCrown,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Dropdown from "../../components/dropdown/dropdown";
@@ -228,8 +229,6 @@ const modules = [
       bg: "bg-red-600",
       icon: faQuoteLeft,
     },
-  ],
-  [
     {
       name: "Proverbs",
       relatedToNext: false,
@@ -390,8 +389,8 @@ const FeedPage: NextPage = () => {
             </h3>
           </Dropdown> */}
 
-          <Dropdown classNames="" isAlpha={true}>
-            <div className="flex flex-row md:w-[18rem] gap-x-6 mb-0 bg-[#fafde2] pt-6 pb-4 pl-4 md:rounded-r-full">
+          <Dropdown classNames="md:w-fit" isAlpha={true} isGroup={false}>
+            <div className="flex flex-row md:w-[18rem] gap-x-6 mb-0 bg-[#f3fdd2] pt-6 pb-4 pl-4 md:rounded-r-full">
               <div>
                 <div
                   className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-green-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 min-w-[3.8rem] max-w-[3.8rem] z-20 h-[3.8rem] mb-[0.85rem] first:mt-0 ${firstModule.bg} rounded-full mx-auto md:ml-3`}
@@ -408,19 +407,39 @@ const FeedPage: NextPage = () => {
                 <h3 className="w-max module-h3 text-center last:mb-0">
                   {firstModule.name}
                 </h3>
-                <span>Technical advisor</span>
+                <div className="flex mt-1 gap-x-1">
+                  <span className="inline-block text-yellow-400 text-[1.2rem]">
+                    <FontAwesomeIcon icon={faCrown} className="" />
+                  </span>
+                  <span className="inline-block text-yellow-400 text-[1.2rem]">
+                    <FontAwesomeIcon icon={faCrown} className="" />
+                  </span>
+                  <span className="inline-block text-yellow-400 text-[1.2rem]">
+                    <FontAwesomeIcon icon={faCrown} className="" />
+                  </span>
+                  <span className="inline-block text-gray-300 text-[1.2rem]">
+                    <FontAwesomeIcon icon={faCrown} className="" />
+                  </span>
+                  <span className="inline-block text-gray-300 text-[1.2rem]">
+                    <FontAwesomeIcon icon={faCrown} className="" />
+                  </span>
+                </div>
               </div>
             </div>
           </Dropdown>
           <div className="md:block">
-            {modules.indexOf(module) < modules.length - 1 && chainLineSVG}
+            {modules.indexOf(firstModule) < modules.length - 1 && chainLineSVG}
           </div>
 
           {modules.slice(1).map((module) => {
             if (!Array.isArray(module)) {
               return (
                 <React.Fragment key={module.name}>
-                  <Dropdown classNames="" isAlpha={false}>
+                  <Dropdown
+                    classNames="md:w-fit"
+                    isAlpha={false}
+                    isGroup={false}
+                  >
                     <div className="flex w-[18rem] gap-x-6 mb-4 bg-gray-100 pt-6 pb-4 pl-4 md:rounded-r-full">
                       <div>
                         <div
@@ -438,7 +457,23 @@ const FeedPage: NextPage = () => {
                         <h3 className="w-max module-h3 text-center last:mb-0">
                           {module.name}
                         </h3>
-                        <span>Technical advisor</span>
+                        <div className="flex mt-1 gap-x-1">
+                          <span className="inline-block text-gray-300 text-[1.2rem]">
+                            <FontAwesomeIcon icon={faCrown} className="" />
+                          </span>
+                          <span className="inline-block text-gray-300 text-[1.2rem]">
+                            <FontAwesomeIcon icon={faCrown} className="" />
+                          </span>
+                          <span className="inline-block text-gray-300 text-[1.2rem]">
+                            <FontAwesomeIcon icon={faCrown} className="" />
+                          </span>
+                          <span className="inline-block text-gray-300 text-[1.2rem]">
+                            <FontAwesomeIcon icon={faCrown} className="" />
+                          </span>
+                          <span className="inline-block text-gray-300 text-[1.2rem]">
+                            <FontAwesomeIcon icon={faCrown} className="" />
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </Dropdown>
@@ -490,7 +525,12 @@ const FeedPage: NextPage = () => {
                       //   </div>
                       // </div>
 
-                      <Dropdown classNames="" isAlpha={false} isGroup={true}>
+                      <Dropdown
+                        classNames=""
+                        isAlpha={false}
+                        isGroup={true}
+                        key={item.name}
+                      >
                         <div className="flex w-[18rem] gap-x-6 mb-0">
                           <div>
                             <div
@@ -508,7 +548,23 @@ const FeedPage: NextPage = () => {
                             <h3 className="w-max module-h3 text-center last:mb-0">
                               {item.name}
                             </h3>
-                            <span>Technical advisor</span>
+                            <div className="flex mt-1 gap-x-1">
+                              <span className="inline-block text-gray-300 text-[1.2rem]">
+                                <FontAwesomeIcon icon={faCrown} className="" />
+                              </span>
+                              <span className="inline-block text-gray-300 text-[1.2rem]">
+                                <FontAwesomeIcon icon={faCrown} className="" />
+                              </span>
+                              <span className="inline-block text-gray-300 text-[1.2rem]">
+                                <FontAwesomeIcon icon={faCrown} className="" />
+                              </span>
+                              <span className="inline-block text-gray-300 text-[1.2rem]">
+                                <FontAwesomeIcon icon={faCrown} className="" />
+                              </span>
+                              <span className="inline-block text-gray-300 text-[1.2rem]">
+                                <FontAwesomeIcon icon={faCrown} className="" />
+                              </span>
+                            </div>
                           </div>
                         </div>
                       </Dropdown>
