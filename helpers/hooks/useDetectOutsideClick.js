@@ -12,7 +12,7 @@ export const useDetectOutsideClick = (el, initialState) => {
     const onClick = (e) => {
       // If the active element exists and is clicked outside of
       if (el.current !== null && !el.current.contains(e.target)) {
-        setIsActive(!isActive);
+        setIsActive(false);
       }
     };
 
@@ -26,5 +26,6 @@ export const useDetectOutsideClick = (el, initialState) => {
     };
   }, [isActive, el]);
 
+  // console.log("useDetect...", isActive);
   return [isActive, setIsActive];
 };

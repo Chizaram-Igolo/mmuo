@@ -36,23 +36,22 @@ export default function Dropdown({ children, classNames, isAlpha, isGroup }) {
 
   return (
     <div className={`${styles.container} md:w-fit ${cNs}`}>
-      <div className={`${styles["menu-container"]}`}>
+      <div className={`${styles["menu-container"]}`} ref={dropdownRef}>
         <div onClick={onClick} className={`${styles["menu-trigger"]}`}>
           {children}
         </div>
         <nav
-          ref={dropdownRef}
           className={`${styles["menu"]} ${
             isActive ? styles["active"] : styles["inactive"]
           }`}
           style={positionObj}
         >
           <div className={styles.arrowHead}></div>
-          <ul>
-            <li>
+          <ul className="text-center">
+            <li className="border-b border-b-[#dddddd]">
               <Link href="/feed/tips">
                 <a className="font-bold">
-                  <span className="heavy-span inline-block border-b-[0.15rem] py-[1.9rem] border-dotted border-[#282828] cursor-pointer px-3">
+                  <span className="heavy-span inline-block border-b-[0.15rem] last:border-b-0 py-[1.9rem] border-dotted border-[#282828] cursor-pointer px-3">
                     <strong>
                       Read Tips &nbsp;
                       <FontAwesomeIcon

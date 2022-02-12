@@ -18,8 +18,8 @@ export function useConnectivityListener() {
 
     const offlineHandler = () => setOnline(false);
 
-    window.addEventListener("online", onlineHandler);
-    window.addEventListener("offline", offlineHandler);
+    // window.addEventListener("online", onlineHandler);
+    // window.addEventListener("offline", offlineHandler);
 
     window.navigator.connection.addEventListener("change", async () => {
       try {

@@ -46,10 +46,20 @@ export default function SideBar(props: ISideBar) {
     props.handleChangeWidth();
   }
 
-  const routes = [{ to: "/cms", label: "Modules", icon: faBox }];
-
-  let bottom_routes = [{ to: "/settings", label: "Settings", icon: faGear }];
-  //   bottom_routes = [];
+  const routes = [
+    {
+      to: "/cms",
+      label: "Modules",
+      icon: faBox,
+      childList: [
+        "First Module",
+        "Second Module",
+        "Third Module",
+        "Fourth Module",
+      ],
+    },
+    { to: "/settings", label: "Settings", icon: faGear },
+  ];
 
   return (
     <nav
@@ -140,6 +150,7 @@ export default function SideBar(props: ISideBar) {
                 title={item.label}
                 shouldHideNavText={shouldHideNavText}
                 key={item.label}
+                childList={item.childList}
               />
             );
           })}
@@ -147,18 +158,6 @@ export default function SideBar(props: ISideBar) {
 
         <div className="absolute w-[100%] bottom-5">
           <ul>
-            {bottom_routes.map((item) => {
-              return (
-                <SideBarLink
-                  to={item.to}
-                  icon={item.icon}
-                  title={item.label}
-                  shouldHideNavText={shouldHideNavText}
-                  key={item.label}
-                />
-              );
-            })}
-
             <li>
               <span
                 className="inline-block h-[42px] w-[100%] py-0.5 px-5 bg-transparent cursor-pointer text-[1.4rem]"

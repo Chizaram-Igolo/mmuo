@@ -7,7 +7,7 @@ const ActionButton2: React.FC = ({ children }) => {
       <div className={styles.content}>
         <div className={`${styles["btn"]}`}>
           <span
-            className={`${styles["left"]} ${styles["title"]} module-h3 text-white bg-emerald-500 shadow-[0px_4px_0px_rgb(0,144,108)]`}
+            className={`${styles["left"]} ${styles["title"]} module-h3 text-white bg-[#26a34a]  shadow-[0px_4px_0px_rgb(34,127,50)]`}
           >
             {children}
           </span>
