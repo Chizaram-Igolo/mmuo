@@ -79,13 +79,13 @@ function SideBarLink({
 
       {showSubList && childList && (
         <ul
-          className={`relative ml-8 pt-2 ${
+          className={`relative ml- pt-2 max-h-[300px] overflow-y-auto ${
             shouldHideNavText === true ? "hidden" : ""
           }`}
         >
           {childList.map((item) => (
             <li
-              className="py-2 border-b last:border-b-0 cursor-pointer"
+              className="py-2 px-8 border-b last:border-b-0 cursor-pointer odd:bg-gray-200"
               key={item}
             >
               {item}

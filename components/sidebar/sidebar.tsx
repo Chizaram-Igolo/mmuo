@@ -28,6 +28,7 @@ import {
 
 import styles from "./sidebar.module.css";
 import { useAuth } from "../../contexts/AuthContext";
+import useGetModuleList from "../../helpers/hooks/useGetModuleList";
 import Image from "next/image";
 
 interface ISideBar {
@@ -40,6 +41,10 @@ interface ISideBar {
 export default function SideBar(props: ISideBar) {
   const { user } = useAuth();
 
+  const { docs, error, loading, latestDoc } = useGetModuleList();
+
+  //   console.log(docs, error, loading, latestDoc);
+
   const { shouldHideNavText, expandIcon } = props;
 
   function handleChangeWidth() {
@@ -51,12 +56,7 @@ export default function SideBar(props: ISideBar) {
       to: "/cms",
       label: "Modules",
       icon: faBox,
-      childList: [
-        "First Module",
-        "Second Module",
-        "Third Module",
-        "Fourth Module",
-      ],
+      childList: docs,
     },
     { to: "/settings", label: "Settings", icon: faGear },
   ];

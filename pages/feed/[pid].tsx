@@ -48,40 +48,34 @@ import CRMLayout from "../../components/crmlayout";
 const modules = [
   {
     name: "Alphabet",
-    relatedToNext: false,
     bg: "bg-green-600",
     icon: faSortAlphaDown,
   },
   [
     {
       name: "Basics 1",
-      relatedToNext: false,
       bg: "bg-orange-500",
       icon: faCubes,
     },
     {
       name: "Basics 2",
-      relatedToNext: false,
       bg: "bg-orange-500",
       icon: faCubes,
     },
   ],
   {
     name: "Greetings 1",
-    relatedToNext: false,
     bg: "bg-rose-500",
     icon: faComments,
   },
   [
     {
       name: "Phrases 1",
-      relatedToNext: false,
       bg: "bg-fuchsia-700",
       icon: faQuoteLeft,
     },
     {
       name: "Phrases 2",
-      relatedToNext: false,
       bg: "bg-fuchsia-700",
       icon: faQuoteLeft,
     },
@@ -89,19 +83,16 @@ const modules = [
   [
     {
       name: "Numbers 1",
-      relatedToNext: false,
       bg: "bg-fuchsia-700",
       icon: fa1,
     },
     {
       name: "Numbers 2",
-      relatedToNext: false,
       bg: "bg-green-700",
       icon: fa2,
     },
     {
       name: "Numbers 3",
-      relatedToNext: false,
       bg: "bg-green-700",
       icon: fa3,
     },
@@ -109,31 +100,26 @@ const modules = [
   [
     {
       name: "Verb Roots",
-      relatedToNext: false,
       bg: "bg-emerald-600",
       icon: faSeedling,
     },
     {
       name: "Action",
-      relatedToNext: false,
       bg: "bg-violet-700",
       icon: faHammer,
     },
     {
       name: "Present",
-      relatedToNext: false,
       bg: "bg-gray-600",
       icon: faRunning,
     },
     {
       name: "Past",
-      relatedToNext: false,
       bg: "bg-green-700",
       icon: faHourglassEnd,
     },
     {
       name: "Future",
-      relatedToNext: false,
       bg: "bg-rose-600",
       icon: faHourglassStart,
     },
@@ -161,7 +147,6 @@ const modules = [
   [
     {
       name: "Family",
-      relatedToNext: false,
       bg: "bg-orange-500",
       icon: faBaby,
     },
@@ -211,13 +196,11 @@ const modules = [
   [
     {
       name: "Animals",
-      relatedToNext: false,
       bg: "bg-red-600",
       icon: faPaw,
     },
     {
       name: "Animals II",
-      relatedToNext: false,
       bg: "bg-rose-600",
       icon: faPaw,
     },
@@ -225,13 +208,11 @@ const modules = [
   [
     {
       name: "Idioms",
-      relatedToNext: false,
       bg: "bg-red-600",
       icon: faQuoteLeft,
     },
     {
       name: "Proverbs",
-      relatedToNext: false,
       bg: "bg-red-600",
       icon: faHeart,
     },
@@ -239,13 +220,11 @@ const modules = [
   [
     {
       name: "Shopping",
-      relatedToNext: false,
       bg: "bg-green-700",
       icon: faShop,
     },
     {
       name: "Shopping II",
-      relatedToNext: false,
       bg: "bg-green-700",
       icon: faShop,
     },
@@ -253,31 +232,26 @@ const modules = [
   [
     {
       name: "Travel",
-      relatedToNext: false,
       bg: "bg-green-700",
       icon: faPlaneDeparture,
     },
     {
       name: "Appliances",
-      relatedToNext: false,
       bg: "bg-green-700",
       icon: faChargingStation,
     },
     {
       name: "Nature",
-      relatedToNext: false,
       bg: "bg-green-700",
       icon: faTree,
     },
     {
       name: "Nature II",
-      relatedToNext: false,
       bg: "bg-green-700",
       icon: faTree,
     },
     {
       name: "Nature III",
-      relatedToNext: false,
       bg: "bg-green-700",
       icon: faTree,
     },
@@ -309,49 +283,41 @@ const modules = [
     },
     {
       name: "Work",
-      relatedToNext: false,
       bg: "bg-blue-700",
       icon: faBuilding,
     },
     {
       name: "Work II",
-      relatedToNext: false,
       bg: "bg-blue-800",
       icon: faBuilding,
     },
     {
       name: "School 1",
-      relatedToNext: false,
       bg: "bg-orange-600",
       icon: faSchool,
     },
     {
       name: "School 2",
-      relatedToNext: false,
       bg: "bg-amber-600",
       icon: faSchool,
     },
     {
       name: "Medical",
-      relatedToNext: false,
       bg: "bg-green-700",
       icon: faBriefcaseMedical,
     },
     {
       name: "Science",
-      relatedToNext: false,
       bg: "bg-fuchsia-600",
       icon: faAtom,
     },
     {
       name: "Technology",
-      relatedToNext: false,
       bg: "bg-fuchsia-600",
       icon: faRobot,
     },
     {
       name: "Nations",
-      relatedToNext: false,
       bg: "bg-green-700",
       icon: faFlagUsa,
     },

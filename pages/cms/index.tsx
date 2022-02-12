@@ -31,11 +31,17 @@ export default function Home() {
         appearance: "success",
         autoDismiss: true,
       });
+
+      setTitle("");
+      setIntro("");
     } catch (err: any) {
-      addToast(<Toast heading="We're sorry">Your post was uploaded.</Toast>, {
-        appearance: "error",
-        autoDismiss: true,
-      });
+      addToast(
+        <Toast heading="We're sorry">We couldn't upload your post.</Toast>,
+        {
+          appearance: "error",
+          autoDismiss: true,
+        }
+      );
     }
 
     setLoading(false);
@@ -84,10 +90,10 @@ export default function Home() {
           </label>
 
           <button
-            disabled={loading}
+            disabled={title === "" && intro === ""}
             className="absolute right-0 mt-4 bg-green-500 hover:bg-green-600 active:bg-green-900 disabled:bg-gray-400 text-white px-6 py-2 rounded-sm focus:outline-none active:outline-none"
           >
-            {loading ? "Submitting..." : "Submit"}
+            Submit
           </button>
         </form>
       </div>
