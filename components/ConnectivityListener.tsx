@@ -56,10 +56,12 @@ export function useConnectivityListener() {
     // the added toast id for use later
     const callback = isOnline
       ? () => {
+          // @ts-ignore
           removeToast(toastId.current);
           toastId.current = null;
         }
-      : (id) => {
+      : // @ts-ignore
+        (id) => {
           toastId.current = id;
         };
 
@@ -69,6 +71,8 @@ export function useConnectivityListener() {
       { appearance: isOnline ? "success" : "warning", autoDismiss: isOnline },
       callback
     );
+
+    // @ts-ignore
   }, [isOnline]);
 }
 
@@ -76,6 +80,8 @@ export function useConnectivityListener() {
  * A custom useEffect hook that only triggers on updates, not on initial mount
  * @param {Function} effect
  */
+
+// @ts-ignore
 function useUpdateEffect(effect, deps = []) {
   const initialMount = useRef(true);
 

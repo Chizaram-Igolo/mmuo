@@ -1,13 +1,14 @@
 import type { NextPage } from "next";
 import Link from "next/link";
 
-import React from "react";
+import React, { ReactElement } from "react";
 import GoBack from "../../components/backlink";
 import ActionButton from "../../components/buttons/actionbutton";
 
 import InfoTip from "../../components/infotip";
+import Layout from "../../components/layout";
 
-const Tips: NextPage = () => {
+export default function Tips() {
   return (
     <>
       <section className="py-4 pb-24 px-8 md:px-18 lg:px-20 xl:px-24 z-20 min-h-[28rem] bg-white">
@@ -90,6 +91,8 @@ const Tips: NextPage = () => {
       </section>
     </>
   );
-};
+}
 
-export default Tips;
+Tips.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};

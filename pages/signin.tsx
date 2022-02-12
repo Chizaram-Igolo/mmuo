@@ -1,9 +1,9 @@
-import type { NextPage } from "next";
-
 import { useAuth } from "../contexts/AuthContext";
 import SignInForm from "../components/signinform";
+import { ReactElement } from "react";
+import Layout from "../components/layout";
 
-const SignIn: NextPage = () => {
+export default function SignIn() {
   const { user } = useAuth();
 
   return (
@@ -19,6 +19,8 @@ const SignIn: NextPage = () => {
       </section>
     </>
   );
-};
+}
 
-export default SignIn;
+SignIn.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};

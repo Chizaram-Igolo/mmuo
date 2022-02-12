@@ -57,6 +57,25 @@ a {
   font-family: "WorkSans", "Helvetica", sans-serif;
 }
 
+.content-container-expanded {
+  /* min-width: 1500px; */
+  width: calc(80vw);
+  float: left;
+  margin-left: 200px;
+  padding-top: 10px;
+  -webkit-transition: margin-left 0.2s;
+  transition: margin-left 0.2s;
+}
+
+.content-container-collapsed {
+  width: calc(100vw - 280px);
+  float: left;
+  margin-left: 250px;
+  padding-top: 10px;
+  -webkit-transition: margin-left 0.2s;
+  transition: margin-left 0.2s;
+}
+
 .bold {
   font-family: "WorkSans_Bold", sans-serif;
 }

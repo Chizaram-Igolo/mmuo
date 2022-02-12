@@ -1,4 +1,3 @@
-import type { NextPage } from "next";
 import Image from "next/image";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,8 +5,10 @@ import { faMicrophone, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
 import { useAuth } from "../contexts/AuthContext";
 import SignInForm from "../components/signinform";
+import { ReactElement } from "react";
+import Layout from "../components/layout";
 
-const Home: NextPage = () => {
+export default function Home() {
   const { user } = useAuth();
 
   return (
@@ -252,6 +253,8 @@ const Home: NextPage = () => {
       </section>
     </>
   );
-};
+}
 
-export default Home;
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};

@@ -1,9 +1,9 @@
-import type { NextPage } from "next";
-
 import { useAuth } from "../../contexts/AuthContext";
 
 import { CircleFlag } from "react-circle-flags";
 import Link from "next/link";
+import { ReactElement } from "react";
+import Layout from "../../components/layout";
 
 const languages = [
   {
@@ -12,7 +12,7 @@ const languages = [
   },
 ];
 
-const Feed: NextPage = () => {
+export default function Feed() {
   const { user } = useAuth();
 
   return (
@@ -49,6 +49,8 @@ const Feed: NextPage = () => {
       </section>
     </>
   );
-};
+}
 
-export default Feed;
+Feed.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};

@@ -1,9 +1,9 @@
-import type { NextPage } from "next";
 import Link from "next/link";
 
-import React from "react";
+import React, { ReactElement } from "react";
 import GoBack from "../../components/backlink";
 import ActionButton from "../../components/buttons/actionbutton";
+import Layout from "../../components/layout";
 
 const alphabet = [
   { name: "Aa" },
@@ -44,7 +44,7 @@ const alphabet = [
   { name: "Zz" },
 ];
 
-const Alphabet: NextPage = () => {
+export default function Alphabet() {
   let remainderFlexBoxes = 0;
 
   if (alphabet.length % 7 !== 0) {
@@ -91,6 +91,8 @@ const Alphabet: NextPage = () => {
       </section>
     </>
   );
-};
+}
 
-export default Alphabet;
+Alphabet.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};

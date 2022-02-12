@@ -1,5 +1,3 @@
-import type { NextPage } from "next";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {
@@ -41,9 +39,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import Dropdown from "../../components/dropdown/dropdown";
-import React from "react";
+import React, { ReactElement } from "react";
 
 import { IModule } from "../../helpers/modules";
+import Layout from "../../components/layout";
+import CRMLayout from "../../components/crmlayout";
 
 const modules = [
   {
@@ -360,7 +360,7 @@ const modules = [
 
 const firstModule = modules[0] as IModule;
 
-const FeedPage: NextPage = () => {
+export default function FeedPage() {
   const chainLineSVG = (
     <div className="max-w-[4rem] ml-10">
       <svg height="44" width="500" className="block w-[6px] mt-2 mb-0">
@@ -584,6 +584,8 @@ const FeedPage: NextPage = () => {
       </section>
     </>
   );
-};
+}
 
-export default FeedPage;
+FeedPage.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};

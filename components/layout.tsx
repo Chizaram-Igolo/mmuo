@@ -11,6 +11,8 @@ import Navbar from "./navbar";
 import Footer from "./footer";
 import { useEffect, useState } from "react";
 
+import { AuthProvider } from "../contexts/AuthContext";
+
 TopBarProgress.config({
   barThickness: 4,
   barColors: {
@@ -42,23 +44,25 @@ const Layout: React.FC = ({ children }): JSX.Element => {
 
   return (
     <div className="">
-      <ToastProvider>
-        <ConnectivityListener />
-        {/* {router.pathname.indexOf("sign") === -1 &&
+      <AuthProvider>
+        <ToastProvider>
+          <ConnectivityListener />
+          {/* {router.pathname.indexOf("sign") === -1 &&
         router.pathname.indexOf("exercise") === -1 &&
         router.pathname.indexOf("feed") === -1 && <Banner />} */}
 
-        {loading && <TopBarProgress />}
-        <Head>
-          <title>Mmūō - Learn Languages the fun and easy way</title>
-        </Head>
+          {loading && <TopBarProgress />}
+          <Head>
+            <title>Mmūō - Learn Languages the fun and easy way</title>
+          </Head>
 
-        {router.pathname.indexOf("sidebar") === -1 && <Navbar />}
+          {router.pathname.indexOf("cms") === -1 && <Navbar />}
 
-        {children}
+          {children}
 
-        {router.pathname.indexOf("sidebar") === -1 && <Footer />}
-      </ToastProvider>
+          {router.pathname.indexOf("cms") === -1 && <Footer />}
+        </ToastProvider>
+      </AuthProvider>
     </div>
   );
 };

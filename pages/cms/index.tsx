@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { projectFirestore, timestamp } from "../../firebase/config";
+import CRMLayout from "../../components/crmlayout";
+import Layout from "../../components/layout";
 
-// import { useToasts } from "react-toast-notifications";
-// import Toast from "../../components/Toast";
+import { useToasts } from "react-toast-notifications";
+import Toast from "../../components/Toast";
 
 export default function Home() {
   const [title, setTitle] = useState("");
   const [intro, setIntro] = useState("");
   const [loading, setLoading] = useState(false);
 
-  //   const { addToast } = useToasts();
+  const { addToast } = useToasts();
 
   // Add a new document in collection "cities"
   async function makePost(e: React.FormEvent) {
@@ -25,15 +27,15 @@ export default function Home() {
         date: timestamp(),
       });
 
-      //   addToast(<Toast>Your post was uploaded.</Toast>, {
-      //     appearance: "success",
-      //     autoDismiss: true,
-      //   });
+      addToast(<Toast>Your post was uploaded.</Toast>, {
+        appearance: "success",
+        autoDismiss: true,
+      });
     } catch (err: any) {
-      //   addToast(<Toast heading="We're sorry">Your post was uploaded.</Toast>, {
-      //     appearance: "error",
-      //     autoDismiss: true,
-      //   });
+      addToast(<Toast heading="We're sorry">Your post was uploaded.</Toast>, {
+        appearance: "error",
+        autoDismiss: true,
+      });
     }
 
     setLoading(false);
@@ -92,3 +94,11 @@ export default function Home() {
     </section>
   );
 }
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <Layout>
+      <CRMLayout>{page}</CRMLayout>
+    </Layout>
+  );
+};
