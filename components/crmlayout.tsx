@@ -40,15 +40,15 @@ const CRMLayout: React.FC = ({ children }): JSX.Element => {
   const [expandIcon, setExpandIcon] = useState("right");
 
   function handleChangeWidth() {
-    if (navWidth === 250) {
+    if (navWidth === 312) {
       setNavWidth(80);
       setWidthOffset(140);
       setContentClassName("content-container-expanded");
       setShouldHideNavText(true);
       setExpandIcon("right");
     } else {
-      setNavWidth(250);
-      setWidthOffset(310);
+      setNavWidth(312);
+      setWidthOffset(372);
       setContentClassName("content-container-collapsed");
       setShouldHideNavText(false);
       setExpandIcon("left");

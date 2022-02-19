@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext, createContext } from "react";
-import firebase, {
+import {
   auth,
   appAuth,
   projectDatabase,

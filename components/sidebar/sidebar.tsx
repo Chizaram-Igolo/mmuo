@@ -11,22 +11,6 @@ import {
   faGear,
 } from "@fortawesome/free-solid-svg-icons";
 
-import {
-  BookmarkAltIcon,
-  ChartBarIcon,
-  CursorClickIcon,
-  BellIcon,
-  MenuIcon,
-  PhoneIcon,
-  PlayIcon,
-  RefreshIcon,
-  ShieldCheckIcon,
-  SupportIcon,
-  ViewGridIcon,
-  XIcon,
-} from "@heroicons/react/outline";
-
-import styles from "./sidebar.module.css";
 import { useAuth } from "../../contexts/AuthContext";
 import useGetModuleList from "../../helpers/hooks/useGetModuleList";
 import Image from "next/image";
@@ -63,7 +47,7 @@ export default function SideBar(props: ISideBar) {
 
   return (
     <nav
-      className={`${styles["sidebar"]} bg-white border-r-2 border-stone-200 z-50`}
+      className={`absolute min-w-[80px] w-[20%] min-h-[100vh]  bg-white border-r-2 border-stone-200 z-50`}
       id="navBar"
       style={{ width: props.width }}
     >
@@ -71,7 +55,7 @@ export default function SideBar(props: ISideBar) {
         {/* <div>
           <h2 className="h-[50px] p-1">
             <Link href="/cms">
-              <a className={`${styles["icon-link-item"]}`}>m</a>
+              <a>m</a>
             </Link>
           </h2>
         </div> */}

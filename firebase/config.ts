@@ -21,6 +21,8 @@ import {
 import { getStorage } from "firebase/storage";
 import { getFunctions } from "firebase/functions";
 
+import { enableIndexedDbPersistence } from "firebase/firestore";
+
 const { serverRuntimeConfig } = getConfig();
 
 // if (process.env.NODE_ENV !== "production") {
@@ -79,6 +81,20 @@ const projectStorage = getStorage(app);
 const projectFunctions = getFunctions(app);
 const timestamp = serverTimestamp;
 const dbTimestamp = dbServerTimestamp;
+
+if (process.browser) {
+  enableIndexedDbPersistence(projectFirestore).catch((err) => {
+    if (err.code == "failed-precondition") {
+      // Multiple tabs open, persistence can only be enabled
+      // in one tab at a a time.
+      // ...
+    } else if (err.code == "unimplemented") {
+      // The current browser does not support all of the
+      // features required to enable persistence
+      // ...
+    }
+  });
+}
 
 export default app;
 export {

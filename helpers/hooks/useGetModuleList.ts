@@ -9,7 +9,13 @@ import {
 import { useState, useEffect } from "react";
 import { projectFirestore } from "../../firebase/config";
 
-export default function useGetModuleList() {
+interface IModule {
+  name: string;
+  bg?: string;
+  icon?: string;
+}
+
+export default function useGetModuleList(extent?: string) {
   const [loading, setLoading] = useState(true);
   const [docs, setDocs] = useState([]);
   const [error, setError] = useState(null);
@@ -24,32 +30,29 @@ export default function useGetModuleList() {
     let unsubscribe = onSnapshot(
       q,
       (querySnapshot) => {
-        const foundDocs = [];
+        const foundDocs: IModule[] = [];
 
-        querySnapshot.forEach((doc) => {
-          foundDocs.push(doc.data().title);
-        });
+        if ((extent = "detailed")) {
+          querySnapshot.forEach((doc) => {
+            console.log(doc.data());
+            foundDocs.push({
+              name: doc.data().name,
+              bg: doc.data().bg,
+              icon: doc.data().icon,
+            });
+          });
+        } else {
+          querySnapshot.forEach((doc) => {
+            foundDocs.push(doc.data().name);
+          });
+        }
 
-        // .collection("modules")
-        // .orderBy("createdAt", "desc")
-        // .limit(5)
-        // .onSnapshot(
-        //   function (querySnapshot) {
-        //     var lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
-
-        //     setLatestDoc(lastVisible);
-
-        //     querySnapshot.forEach(function (doc) {
-        //       if (!foundModules.find((item) => item.id === doc.id)) {
-        //         foundModules.push({ ...doc.data(), id: doc.id });
-        //       }
-        //     });
-
+        // @ts-ignore
         setDocs(foundDocs);
         setLoading(false);
       },
       (err) => {
-        // Send email with error to developer
+        // @ts-ignore
         setError(err);
       }
     );

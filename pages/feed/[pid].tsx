@@ -43,9 +43,9 @@ import React, { ReactElement } from "react";
 
 import { IModule } from "../../helpers/modules";
 import Layout from "../../components/layout";
-import CRMLayout from "../../components/crmlayout";
+import useGetModuleList from "../../helpers/hooks/useGetModuleList";
 
-const modules = [
+const modules2 = [
   {
     name: "Alphabet",
     bg: "bg-green-600",
@@ -55,7 +55,7 @@ const modules = [
     {
       name: "Basics 1",
       bg: "bg-orange-500",
-      icon: faCubes,
+      icon: faCubes as IconDefinition,
     },
     {
       name: "Basics 2",
@@ -324,9 +324,13 @@ const modules = [
   ],
 ];
 
-const firstModule = modules[0] as IModule;
-
 export default function FeedPage() {
+  // const { docs, error, loading, latestDoc } = useGetModuleList("detailed");
+
+  const modules = modules2;
+  // console.log(docs);
+  const firstModule = modules[0] as IModule;
+
   const chainLineSVG = (
     <div className="max-w-[4rem] ml-10">
       <svg height="44" width="500" className="block w-[6px] mt-2 mb-0">
@@ -339,172 +343,65 @@ export default function FeedPage() {
     <>
       <section className="py-4 pb-24 px-8 md:px-18 lg:px-20 xl:px-24 z-20 min-h-[28rem] bg-white">
         <div className="py-6">
-          {/* <Dropdown classNames="mb-8" isAlpha={true}>
-            <div
-              className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-green-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 max-w-[3.8rem] z-20 h-[3.8rem] mb-[0.85rem] first:mt-0 ${firstModule.bg} rounded-full mx-auto md:ml-3`}
-            >
-              <span className="text-[1.8rem] leading-[3.8rem]">
-                <FontAwesomeIcon
-                  icon={faSortAlphaDown}
-                  className="text-white cursor-pointer"
-                />
-              </span>
-            </div>
-            <h3 className="w-max module-h3 mt-3 text-center mb-[0.8rem] last:mb-0 mx-auto">
-              {firstModule.name}
-            </h3>
-          </Dropdown> */}
-
-          <Dropdown classNames="md:w-fit" isAlpha={true} isGroup={false}>
-            <div className="flex flex-row md:w-[18rem] gap-x-6 mb-0 bg-[#f3fdd2] pt-6 pb-4 pl-4 md:rounded-r-full">
-              <div>
-                <div
-                  className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-green-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 min-w-[3.8rem] max-w-[3.8rem] z-20 h-[3.8rem] mb-[0.85rem] first:mt-0 ${firstModule.bg} rounded-full mx-auto md:ml-3`}
-                >
-                  <span className="text-[1.8rem] leading-[3.8rem]">
-                    <FontAwesomeIcon
-                      icon={faSortAlphaDown}
-                      className="text-white cursor-pointer"
-                    />
-                  </span>
-                </div>
-              </div>
-              <div className="">
-                <h3 className="w-max module-h3 text-center last:mb-0">
-                  {firstModule.name}
-                </h3>
-                <div className="flex mt-1 gap-x-1">
-                  <span className="inline-block text-yellow-400 text-[1.2rem]">
-                    <FontAwesomeIcon icon={faCrown} className="" />
-                  </span>
-                  <span className="inline-block text-yellow-400 text-[1.2rem]">
-                    <FontAwesomeIcon icon={faCrown} className="" />
-                  </span>
-                  <span className="inline-block text-yellow-400 text-[1.2rem]">
-                    <FontAwesomeIcon icon={faCrown} className="" />
-                  </span>
-                  <span className="inline-block text-gray-300 text-[1.2rem]">
-                    <FontAwesomeIcon icon={faCrown} className="" />
-                  </span>
-                  <span className="inline-block text-gray-300 text-[1.2rem]">
-                    <FontAwesomeIcon icon={faCrown} className="" />
-                  </span>
-                </div>
-              </div>
-            </div>
-          </Dropdown>
-          <div className="md:block">
-            {modules.indexOf(firstModule) < modules.length - 1 && chainLineSVG}
-          </div>
-
-          {modules.slice(1).map((module) => {
-            if (!Array.isArray(module)) {
-              return (
-                <React.Fragment key={module.name}>
-                  <Dropdown
-                    classNames="md:w-fit"
-                    isAlpha={false}
-                    isGroup={false}
-                  >
-                    <div className="flex w-[18rem] gap-x-6 mb-4 bg-gray-100 pt-6 pb-4 pl-4 md:rounded-r-full">
-                      <div>
-                        <div
-                          className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-purple-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 min-w-[3.8rem] max-w-[3.8rem] z-20 h-[3.8rem] mb-[0.85rem] first:mt-0 ${module.bg} rounded-full mx-auto md:ml-3`}
-                        >
-                          <span className="text-[1.8rem] leading-[3.8rem]">
-                            <FontAwesomeIcon
-                              icon={module.icon}
-                              className="text-white cursor-pointer"
-                            />
-                          </span>
-                        </div>
-                      </div>
-                      <div className="">
-                        <h3 className="w-max module-h3 text-center last:mb-0">
-                          {module.name}
-                        </h3>
-                        <div className="flex mt-1 gap-x-1">
-                          <span className="inline-block text-gray-300 text-[1.2rem]">
-                            <FontAwesomeIcon icon={faCrown} className="" />
-                          </span>
-                          <span className="inline-block text-gray-300 text-[1.2rem]">
-                            <FontAwesomeIcon icon={faCrown} className="" />
-                          </span>
-                          <span className="inline-block text-gray-300 text-[1.2rem]">
-                            <FontAwesomeIcon icon={faCrown} className="" />
-                          </span>
-                          <span className="inline-block text-gray-300 text-[1.2rem]">
-                            <FontAwesomeIcon icon={faCrown} className="" />
-                          </span>
-                          <span className="inline-block text-gray-300 text-[1.2rem]">
-                            <FontAwesomeIcon icon={faCrown} className="" />
-                          </span>
-                        </div>
-                      </div>
+          {modules && modules.length > 0 && (
+            <>
+              <Dropdown classNames="md:w-fit" isAlpha={true} isGroup={false}>
+                <div className="flex flex-row md:w-[18rem] gap-x-6 mb-0 bg-[#f3fdd2] pt-6 pb-4 pl-4 md:rounded-r-full">
+                  <div>
+                    <div
+                      className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-green-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 min-w-[3.8rem] max-w-[3.8rem] z-20 h-[3.8rem] mb-[0.85rem] first:mt-0 ${firstModule.bg} rounded-full mx-auto md:ml-3`}
+                    >
+                      <span className="text-[1.8rem] leading-[3.8rem]">
+                        <FontAwesomeIcon
+                          icon={faSortAlphaDown}
+                          className="text-white cursor-pointer"
+                        />
+                      </span>
                     </div>
-                  </Dropdown>
-
-                  <div className="md:block">
-                    {modules.indexOf(module) < modules.length - 1 &&
-                      chainLineSVG}
                   </div>
-                  <div className="mb-0 md:hidden"></div>
-                </React.Fragment>
-              );
-            } else {
-              return (
-                <React.Fragment key={module[0].name + modules.indexOf(module)}>
-                  <div className="flex flex-row gap-x-12 gap-y-12 md:max-w-[70%] flex-wrap bg-gray-100 pt-6 pb-4 pl-4 md:rounded-r-full">
-                    {module.map((item) => (
-                      // <Dropdown
-                      //   key={item.name}
-                      //   classNames="mb-0"
-                      //   isAlpha={false}
-                      // >
-                      //   <div className="w-[6rem]">
-                      //     <div
-                      //       className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-purple-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 max-w-[3.8rem] z-20 h-[3.8rem] first:mt-0 ${item.bg} rounded-full mx-auto md:ml-3`}
-                      //     >
-                      //       <span className="text-[1.8rem] leading-[3.8rem]">
-                      //         <FontAwesomeIcon
-                      //           icon={item.icon}
-                      //           className="text-white cursor-pointer"
-                      //         />
-                      //       </span>
-                      //     </div>
-                      //     <h3 className="w-max module-h3 mt-3 text-center last:mb-0 mx-auto md:ml-2">
-                      //       {item.name}
-                      //     </h3>
-                      //   </div>
-                      // </Dropdown>
+                  <div className="">
+                    <h3 className="w-max module-h3 text-center last:mb-0">
+                      {firstModule.name}
+                    </h3>
+                    <div className="flex mt-1 gap-x-1">
+                      {Array(5)
+                        .fill("")
+                        .map((item, idx) => (
+                          <span
+                            className={`inline-block ${
+                              idx < 3 ? "text-yellow-400" : "text-gray-300"
+                            } text-[1.2rem]`}
+                            key={idx}
+                          >
+                            <FontAwesomeIcon icon={faCrown} className="" />
+                          </span>
+                        ))}
+                    </div>
+                  </div>
+                </div>
+              </Dropdown>
+              <div className="md:block">
+                {modules.indexOf(firstModule) < modules.length - 1 &&
+                  chainLineSVG}
+              </div>
 
-                      // <div className="flex items-center">
-                      //   <span className="text-[1.8rem] leading-[3.8rem]">
-                      //     <FontAwesomeIcon
-                      //       icon={item.icon}
-                      //       className="text-white cursor-pointer"
-                      //     />
-                      //   </span>
-                      //   <div>
-                      //     <strong>Andrew Alfred</strong>
-                      //     <span>Technical advisor</span>
-                      //   </div>
-                      // </div>
-
+              {modules.slice(1).map((module) => {
+                if (!Array.isArray(module)) {
+                  return (
+                    <React.Fragment key={module.name}>
                       <Dropdown
-                        classNames=""
+                        classNames="md:w-fit"
                         isAlpha={false}
-                        isGroup={true}
-                        key={item.name}
+                        isGroup={false}
                       >
-                        <div className="flex w-[18rem] gap-x-6 mb-0">
+                        <div className="flex w-[18rem] gap-x-6 mb-4 bg-gray-100 pt-6 pb-4 pl-4 md:rounded-r-full">
                           <div>
                             <div
-                              className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-purple-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 min-w-[3.8rem] max-w-[3.8rem] z-20 h-[3.8rem] mb-[0.85rem] first:mt-0 ${item.bg} rounded-full mx-auto md:ml-3`}
+                              className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-purple-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 min-w-[3.8rem] max-w-[3.8rem] z-20 h-[3.8rem] mb-[0.85rem] first:mt-0 ${module.bg} rounded-full mx-auto md:ml-3`}
                             >
                               <span className="text-[1.8rem] leading-[3.8rem]">
                                 <FontAwesomeIcon
-                                  icon={item.icon}
+                                  icon={module.icon}
                                   className="text-white cursor-pointer"
                                 />
                               </span>
@@ -512,40 +409,96 @@ export default function FeedPage() {
                           </div>
                           <div className="">
                             <h3 className="w-max module-h3 text-center last:mb-0">
-                              {item.name}
+                              {module?.name}
                             </h3>
                             <div className="flex mt-1 gap-x-1">
-                              <span className="inline-block text-gray-300 text-[1.2rem]">
-                                <FontAwesomeIcon icon={faCrown} className="" />
-                              </span>
-                              <span className="inline-block text-gray-300 text-[1.2rem]">
-                                <FontAwesomeIcon icon={faCrown} className="" />
-                              </span>
-                              <span className="inline-block text-gray-300 text-[1.2rem]">
-                                <FontAwesomeIcon icon={faCrown} className="" />
-                              </span>
-                              <span className="inline-block text-gray-300 text-[1.2rem]">
-                                <FontAwesomeIcon icon={faCrown} className="" />
-                              </span>
-                              <span className="inline-block text-gray-300 text-[1.2rem]">
-                                <FontAwesomeIcon icon={faCrown} className="" />
-                              </span>
+                              {Array(5)
+                                .fill("")
+                                .map((idx) => (
+                                  <span
+                                    className="inline-block text-gray-300 text-[1.2rem]"
+                                    key={idx}
+                                  >
+                                    <FontAwesomeIcon
+                                      icon={faCrown}
+                                      className=""
+                                    />
+                                  </span>
+                                ))}
                             </div>
                           </div>
                         </div>
                       </Dropdown>
-                    ))}
-                  </div>
 
-                  <div className="md:block">
-                    {modules.indexOf(module) < modules.length - 1 &&
-                      chainLineSVG}
-                  </div>
-                  <div className="mb-0 md:hidden"></div>
-                </React.Fragment>
-              );
-            }
-          })}
+                      <div className="md:block">
+                        {modules.indexOf(module) < modules.length - 1 &&
+                          chainLineSVG}
+                      </div>
+                      <div className="mb-0 md:hidden"></div>
+                    </React.Fragment>
+                  );
+                } else {
+                  return (
+                    <React.Fragment
+                      key={module[0].name + modules.indexOf(module)}
+                    >
+                      <div className="flex flex-row gap-x-12 gap-y-12 md:max-w-[70%] flex-wrap bg-gray-100 pt-6 pb-4 pl-4 md:rounded-r-full">
+                        {module.map((item) => (
+                          <Dropdown
+                            classNames=""
+                            isAlpha={false}
+                            isGroup={true}
+                            key={item.name}
+                          >
+                            <div className="flex w-[18rem] gap-x-6 mb-0">
+                              <div>
+                                <div
+                                  className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-purple-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 min-w-[3.8rem] max-w-[3.8rem] z-20 h-[3.8rem] mb-[0.85rem] first:mt-0 ${item.bg} rounded-full mx-auto md:ml-3`}
+                                >
+                                  <span className="text-[1.8rem] leading-[3.8rem]">
+                                    <FontAwesomeIcon
+                                      icon={item.icon}
+                                      className="text-white cursor-pointer"
+                                    />
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="">
+                                <h3 className="w-max module-h3 text-center last:mb-0">
+                                  {item.name}
+                                </h3>
+                                <div className="flex mt-1 gap-x-1">
+                                  {Array(5)
+                                    .fill("")
+                                    .map((idx) => (
+                                      <span
+                                        className="inline-block text-gray-300 text-[1.2rem]"
+                                        key={idx}
+                                      >
+                                        <FontAwesomeIcon
+                                          icon={faCrown}
+                                          className=""
+                                        />
+                                      </span>
+                                    ))}
+                                </div>
+                              </div>
+                            </div>
+                          </Dropdown>
+                        ))}
+                      </div>
+
+                      <div className="md:block">
+                        {modules.indexOf(module) < modules.length - 1 &&
+                          chainLineSVG}
+                      </div>
+                      <div className="mb-0 md:hidden"></div>
+                    </React.Fragment>
+                  );
+                }
+              })}
+            </>
+          )}
         </div>
       </section>
     </>

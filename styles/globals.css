@@ -58,19 +58,18 @@ a {
 }
 
 .content-container-expanded {
-  /* min-width: 1500px; */
-  width: calc(80vw);
+  width: calc(100vw - 150px);
   float: left;
-  margin-left: 200px;
+  margin-left: 140px;
   padding-top: 10px;
   -webkit-transition: margin-left 0.2s;
   transition: margin-left 0.2s;
 }
 
 .content-container-collapsed {
-  width: calc(100vw - 280px);
+  width: calc(100vw - 330px);
   float: left;
-  margin-left: 250px;
+  margin-left: 320px;
   padding-top: 10px;
   -webkit-transition: margin-left 0.2s;
   transition: margin-left 0.2s;
