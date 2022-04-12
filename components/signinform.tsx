@@ -178,14 +178,14 @@ export default function SignInForm() {
         </p>
         <div className="css-1skska7 e7kuofc3 flex flex-col gap-2 lg:gap-0 xl:gap-4 sm:flex-row md:flex-col xl:flex-row justify-between">
           <a
-            href="https://cloud.digitalocean.com/registrations/google"
+            href="#"
             className="flex w-full sm:w-[80%] md:w-full xl:w-[100%] items-center justify-center self-center bg-white mb-2 border border-[#c0c2d3] rounded-lg shadow-[0_4px_0_rgb(222,225,231)] hover:shadow-[0_2px_0_rgb(222,225,231)] box-border text-[#000824] font-medium py-2 px-6 transition-all duration-200"
           >
             <Image src={googleLogo} alt="Google Icon" />
             &nbsp; Google
           </a>
           <a
-            href="https://cloud.digitalocean.com/registrations/github"
+            href="#"
             className="flex w-full sm:w-[80%] md:w-full xl:w-[100%] items-center justify-center self-center bg-white mb-2 border border-[#c0c2d3] rounded-lg shadow-[0_4px_0_rgb(222,225,231)] hover:shadow-[0_2px_0_rgb(222,225,231)] box-border text-[#000824] font-medium py-2 px-6 transition-all duration-200"
           >
             <Image src={githubLogo} alt="GitHub Icon" />

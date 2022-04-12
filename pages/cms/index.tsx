@@ -38,7 +38,9 @@ export default function Home() {
       setIntro("");
     } catch (err: any) {
       addToast(
-        <Toast heading="We're sorry">We couldn't upload your post.</Toast>,
+        <Toast heading="We&lsquo;re sorry">
+          We couldn&lsquo;t upload your post.
+        </Toast>,
         {
           appearance: "error",
           autoDismiss: true,

@@ -18,7 +18,7 @@ export default function Footer() {
           <ul className="css-mk78 flex space-x-5">
             <li>
               <a
-                href="https://www.linkedin.com/company/digitalocean/"
+                href="#"
                 rel="nofollow"
                 className="css-kgdro inline-block h-full transition-all duration-100"
               >
@@ -32,7 +32,7 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="https://dev.to/digitalocean"
+                href="#"
                 rel="nofollow"
                 className="css-kgdro inline-block h-full transition-all duration-100"
               >
@@ -46,7 +46,7 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="https://www.glassdoor.com/Overview/Working-at-DigitalOcean-EI_IE823482.11,23.htm"
+                href="#"
                 rel="nofollow"
                 className="css-kgdro inline-block h-full transition-all duration-100"
               >

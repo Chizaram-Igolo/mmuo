@@ -6,7 +6,6 @@ const TopBarProgress = require("react-topbar-progress-indicator");
 import { ToastProvider } from "react-toast-notifications";
 import ConnectivityListener from "./ConnectivityListener";
 
-import Banner from "./banner";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import { useEffect, useState } from "react";
@@ -56,11 +55,12 @@ const Layout: React.FC = ({ children }): JSX.Element => {
             <title>Mmūō - Learn Languages the fun and easy way</title>
           </Head>
 
-          {router.pathname.indexOf("cms") === -1 && <Navbar />}
+          {/* {router.pathname.indexOf("cms") === -1 && <Navbar />} */}
+          <Navbar />
 
           {children}
 
-          {router.pathname.indexOf("cms") === -1 && <Footer />}
+          {/* {router.pathname.indexOf("cms") === -1 && <Footer />} */}
         </ToastProvider>
       </AuthProvider>
     </div>

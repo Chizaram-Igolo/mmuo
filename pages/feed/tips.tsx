@@ -1,4 +1,3 @@
-import type { NextPage } from "next";
 import Link from "next/link";
 
 import React, { ReactElement } from "react";
@@ -71,7 +70,7 @@ export default function Tips() {
           </InfoTip>
 
           <p className="mb-12">
-            Now let's started learning the alphabets of the Igbo language!
+            Now let&apos;s started learning the alphabets of the Igbo language!
           </p>
 
           <div className="flex flex-row">
@@ -93,6 +92,6 @@ export default function Tips() {
   );
 }
 
-Tips.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
-};
+// Tips.getLayout = function getLayout(page: ReactElement) {
+//   return <Layout>{page}</Layout>;
+// };

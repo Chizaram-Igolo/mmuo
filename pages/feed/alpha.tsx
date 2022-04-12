@@ -61,7 +61,7 @@ export default function Alphabet() {
 
           <div className="flex flex-row mb-12 flex-wrap gap-x-2 gap-y-4">
             {alphabet.map((letter) => (
-              <div className="flex-1 basis-4 md:basis-8">
+              <div className="flex-1 basis-4 md:basis-8" key={letter.name}>
                 <Link href="/exercise/1">
                   <a>
                     <ActionButton classNames="min-w-[5rem]">

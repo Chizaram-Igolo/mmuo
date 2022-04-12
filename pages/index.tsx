@@ -193,9 +193,8 @@ export default function Home() {
             </h3>
             <p className="mt-8 z-20">
               <a
-                href="https://www.digitalocean.com/community"
+                href="#"
                 className="button-link w-fit my-0 mx-auto flex items-center justify-center bg-[#0069ff] border border-[#0069ff] hover:bg-[#1179ff] text-white rounded-lg cursor-pointer font-['WorkSans_SemiBold'] text-base py-3 px-6 transition-all duration-200"
-                // url="https://www.digitalocean.com/community"
               >
                 Explore the community
               </a>
@@ -242,7 +241,7 @@ export default function Home() {
             </div>
             <div className="css-1i98aic e119w9pv2 z-20">
               <a
-                href="https://cloud.digitalocean.com/registrations/new"
+                href="#"
                 className="button-link w-fit my-0 mx-auto flex items-center justify-center bg-[#0069ff] border border-[#0069ff] hover:bg-[#1179ff] text-white rounded-lg cursor-pointer font-['WorkSans_SemiBold'] text-base py-3 px-6 transition-all duration-200"
               >
                 Create your account

@@ -1,25 +1,40 @@
+import React, { ReactElement } from "react";
+
 import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { NextPage } from "next";
 import { useState } from "react";
+
+import { useRouter } from "next/router";
 
 import ActiveButton from "../../components/buttons/answerbutton";
 import MultipleChoice from "../../components/multiplechoice";
 import Result from "../../components/result";
 
-const alphabet = [{ name: "ā" }, { name: "á" }, { name: "ǎ" }, { name: "à" }];
+import Layout from "../../components/layout";
 
-const Exercise: NextPage = () => {
+const questions = [
+  [{ name: "ā" }, { name: "á" }, { name: "ǎ" }, { name: "à" }],
+  [{ name: "bā" }, { name: "bá" }, { name: "bǎ" }, { name: "à" }],
+  [{ name: "chā" }, { name: "chá" }, { name: "chǎ" }, { name: "chà" }],
+  [{ name: "chā" }, { name: "chá" }, { name: "chǎ" }, { name: "chà" }],
+  [{ name: "chā" }, { name: "chá" }, { name: "chǎ" }, { name: "chà" }],
+  [{ name: "chā" }, { name: "chá" }, { name: "chǎ" }, { name: "chà" }],
+  [{ name: "chā" }, { name: "chá" }, { name: "chǎ" }, { name: "chà" }],
+  [{ name: "chā" }, { name: "chá" }, { name: "chǎ" }, { name: "chà" }],
+  [{ name: "chā" }, { name: "chá" }, { name: "chǎ" }, { name: "chà" }],
+  [{ name: "chā" }, { name: "chá" }, { name: "chǎ" }, { name: "chà" }],
+  [{ name: "chā" }, { name: "chá" }, { name: "chǎ" }, { name: "chà" }],
+];
+
+export default function Exercise() {
   const [showResult, setShowResult] = useState(false);
+
+  const router = useRouter();
+  const { exerciseId } = router.query;
+  const questionId = parseInt(exerciseId as string);
 
   function changeShowResult() {
     setShowResult((val) => !val);
-  }
-
-  let remainderFlexBoxes = 0;
-
-  if (alphabet.length % 7 !== 0) {
-    remainderFlexBoxes = 7 - (alphabet.length % 7);
   }
 
   return (
@@ -35,18 +50,10 @@ const Exercise: NextPage = () => {
           </span>
 
           <div className="flex flex-row mb-12 flex-wrap gap-x-2 gap-y-4">
-            <MultipleChoice options={alphabet} />
+            {exerciseId && (
+              <MultipleChoice options={questions[questionId - 1]} />
+            )}
           </div>
-
-          {/* <div className="flex flex-row mb-12 flex-wrap gap-x-2 gap-y-4">
-            {alphabet.map((letter) => (
-              <div className="flex-1 basis-[40%]" key={letter.name}>
-                <ActionButton classNames="min-w-[100%] h-[6rem] max-w-[40%] text-2xl sm:text-xl">
-                  {letter.name}
-                </ActionButton>
-              </div>
-            ))}
-          </div> */}
 
           <div className="flex flex-row">
             <ActiveButton
@@ -62,6 +69,8 @@ const Exercise: NextPage = () => {
       </section>
     </>
   );
-};
+}
 
-export default Exercise;
+Exercise.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};
