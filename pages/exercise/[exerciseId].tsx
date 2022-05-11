@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useEffect } from "react";
 
 import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,20 +11,7 @@ import MultipleChoice from "../../components/multiplechoice";
 import Result from "../../components/result";
 
 import Layout from "../../components/layout";
-
-const questions = [
-  [{ name: "ā" }, { name: "á" }, { name: "ǎ" }, { name: "à" }],
-  [{ name: "bā" }, { name: "bá" }, { name: "bǎ" }, { name: "à" }],
-  [{ name: "chā" }, { name: "chá" }, { name: "chǎ" }, { name: "chà" }],
-  [{ name: "chā" }, { name: "chá" }, { name: "chǎ" }, { name: "chà" }],
-  [{ name: "chā" }, { name: "chá" }, { name: "chǎ" }, { name: "chà" }],
-  [{ name: "chā" }, { name: "chá" }, { name: "chǎ" }, { name: "chà" }],
-  [{ name: "chā" }, { name: "chá" }, { name: "chǎ" }, { name: "chà" }],
-  [{ name: "chā" }, { name: "chá" }, { name: "chǎ" }, { name: "chà" }],
-  [{ name: "chā" }, { name: "chá" }, { name: "chǎ" }, { name: "chà" }],
-  [{ name: "chā" }, { name: "chá" }, { name: "chǎ" }, { name: "chà" }],
-  [{ name: "chā" }, { name: "chá" }, { name: "chǎ" }, { name: "chà" }],
-];
+import { questions } from "../../components/questions/alpha";
 
 export default function Exercise() {
   const [showResult, setShowResult] = useState(false);
@@ -35,6 +22,11 @@ export default function Exercise() {
 
   function changeShowResult() {
     setShowResult((val) => !val);
+  }
+
+  function hideResult() {
+    console.log("dadf");
+    setShowResult(false);
   }
 
   return (
@@ -65,7 +57,13 @@ export default function Exercise() {
           </div>
         </div>
 
-        {showResult && <Result />}
+        {showResult && (
+          <Result
+            hideResult={hideResult}
+            currentExerciseId={questionId}
+            totalNoExercise={questions.length}
+          />
+        )}
       </section>
     </>
   );

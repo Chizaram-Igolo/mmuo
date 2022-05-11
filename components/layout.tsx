@@ -1,16 +1,15 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
 
+import { useEffect, useState } from "react";
 const TopBarProgress = require("react-topbar-progress-indicator");
 
 import { ToastProvider } from "react-toast-notifications";
 import ConnectivityListener from "./ConnectivityListener";
 
 import Navbar from "./navbar";
-import Footer from "./footer";
-import { useEffect, useState } from "react";
-
 import { AuthProvider } from "../contexts/AuthContext";
+import Footer from "./footer";
 
 TopBarProgress.config({
   barThickness: 4,
@@ -32,7 +31,6 @@ const Layout: React.FC = ({ children }): JSX.Element => {
     const hideTopbar = () => setLoading(false);
 
     router.events.on("routeChangeStart", showTopbar);
-
     router.events.on("routeChangeComplete", hideTopbar);
 
     return () => {
@@ -46,21 +44,15 @@ const Layout: React.FC = ({ children }): JSX.Element => {
       <AuthProvider>
         <ToastProvider>
           <ConnectivityListener />
-          {/* {router.pathname.indexOf("sign") === -1 &&
-        router.pathname.indexOf("exercise") === -1 &&
-        router.pathname.indexOf("feed") === -1 && <Banner />} */}
 
           {loading && <TopBarProgress />}
           <Head>
             <title>Mmūō - Learn Languages the fun and easy way</title>
           </Head>
 
-          {/* {router.pathname.indexOf("cms") === -1 && <Navbar />} */}
           <Navbar />
-
           {children}
-
-          {/* {router.pathname.indexOf("cms") === -1 && <Footer />} */}
+          <Footer />
         </ToastProvider>
       </AuthProvider>
     </div>

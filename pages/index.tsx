@@ -31,7 +31,7 @@ export default function Home() {
       <section className="py-4 px-8 md:px-18 lg:px-20 xl:px-24 z-20">
         <div className="flex flex-col md:flex-row mb-8">
           <div className="md:flex-1 lg:flex-[1.4] xl:flex-[1.6] mt-8 mb-8 md:mr-12 lg:mr-16 z-20">
-            <div className="mb-24">
+            <div className="mb-24 border-2">
               <h1>
                 Language learning made easy and fun. <br />
               </h1>

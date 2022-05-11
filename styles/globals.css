@@ -8,43 +8,21 @@
 
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css";
 
+:root {
+  --main-bg-color: #f9fafe;
+  --ul-txt-color: #333333;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-size: 100%;
-  font-family: "WorkSans", "Helvetica", sans-serif;
-  background-color: #f9fafe;
-}
-
-html {
-  /* scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: #888888 #eeeeee;
-  overflow-x: hidden; */
-}
-
-/* width */
-::-webkit-scrollbar {
-  /* width: 16px; */
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  /* background-color: #eeeeee;
-  border-radius: 12px !important; */
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  /* background: #888;
-  border-radius: 12px !important;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3); */
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  /* background: #666; */
+  background-color: var(--main-bg-color);
 }
 
 a {
@@ -52,9 +30,28 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
-  font-family: "WorkSans", "Helvetica", sans-serif;
+.header {
+  padding: 40px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+}
+
+.navbar {
+  display: flex;
+  background-color: #333;
+}
+
+.navbar a {
+  color: white;
+  padding: 14px 20px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
 }
 
 .content-container-expanded {
@@ -82,7 +79,7 @@ a {
 @layer base {
   p,
   ul {
-    color: #333333;
+    color: var(--ul-txt-color);
   }
 
   p {

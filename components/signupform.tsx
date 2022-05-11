@@ -17,6 +17,7 @@ import {
 
 import googleLogo from "../public/google-logo.svg";
 import githubLogo from "../public/github-logo.svg";
+import { TextInput } from "./inputs";
 
 export default function SignUpForm() {
   const [username, setUsername] = useState("");
@@ -26,13 +27,10 @@ export default function SignUpForm() {
   const { signup } = useAuth();
 
   const [error, setError] = useState("");
-  const [confirmPassError, setConfirmPassError] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  function clearMessages() {
-    // setError("");
-  }
+  function clearMessages() {}
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -107,38 +105,34 @@ export default function SignUpForm() {
         )}
 
         <div className="inputFormWrapper relative inline-flex flex-col mt-4 w-full">
-          <input
-            aria-label="username"
+          <TextInput
             type="text"
-            minLength={2}
+            minLength={4}
             name="username"
             placeholder="Username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-            className="relative bg-white border border-[#c0c2d3] rounded-lg focus:outline-none active:outline-none shadow-[0px_4px_0px_rgba(91,105,135,0.2)] hover:shadow-[0px_2px_0px_rgba(91,105,135,0.2)] text-[#031b4e] cursor-text text-base mb-4 py-[0.55rem] px-[1rem] w-full transition-all duration-2008"
+            onChangeFunc={setUsername}
+            required={true}
           />
-          <input
-            aria-label="email"
+
+          <TextInput
             type="email"
-            minLength={2}
+            minLength={12}
             name="email"
             placeholder="Email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="relative bg-white border border-[#c0c2d3] rounded-lg focus:outline-none active:outline-none shadow-[0px_4px_0px_rgba(91,105,135,0.2)] hover:shadow-[0px_2px_0px_rgba(91,105,135,0.2)] text-[#031b4e] cursor-text text-base mb-4 py-[0.55rem] px-[1rem] w-full transition-all duration-2008"
+            onChangeFunc={setEmail}
+            required={true}
           />
-          <input
-            aria-label="password"
+
+          <TextInput
             type="password"
             minLength={8}
             name="password"
             placeholder="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="relative bg-white border border-[#c0c2d3] rounded-lg focus:outline-none active:outline-none shadow-[0px_4px_0px_rgba(91,105,135,0.2)] hover:shadow-[0px_2px_0px_rgba(91,105,135,0.2)] text-[#031b4e] cursor-text text-base mb-4 py-[0.55rem] px-[1rem] w-full transition-all duration-200"
+            onChangeFunc={setPassword}
+            required={true}
           />
         </div>
       </span>

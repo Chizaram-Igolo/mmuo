@@ -10,7 +10,6 @@ interface IActionButton {
 export default function AnswerButton(props: IActionButton) {
   return (
     <a
-      href="#"
       className={`${styles["button-3d"]} ${props.classNames}`}
       onClick={props.onClick}
     >

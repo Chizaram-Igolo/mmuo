@@ -92,6 +92,6 @@ export default function Tips() {
   );
 }
 
-// Tips.getLayout = function getLayout(page: ReactElement) {
-//   return <Layout>{page}</Layout>;
-// };
+Tips.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};
