@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import { useRouter } from "next/router";
 
-import ActiveButton from "../../components/buttons/answerbutton";
+import ActiveButton from "../../components/Buttons/answerbutton";
 import MultipleChoice from "../../components/multiplechoice";
 import Result from "../../components/result";
 

@@ -10,7 +10,7 @@ import { useRef } from "react";
 import styles from "./Dropdown.module.css";
 
 /**
- * Vendor-defined UI components.
+ * Vendor-defined UI components/utilites/etc.
  */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLightbulb } from "@fortawesome/free-regular-svg-icons";
@@ -19,7 +19,7 @@ import { faLightbulb } from "@fortawesome/free-regular-svg-icons";
  * Developer-defined UI components/hooks/constants.
  */
 import { useDetectOutsideClick } from "@helpers/hooks/useDetectOutsideClick";
-import ActionButton2 from ".@buttons/actionbutton2";
+import ActionButton2 from "@Buttons/actionbutton2";
 
 /*
  * Read the blog post here:
@@ -28,28 +28,19 @@ import ActionButton2 from ".@buttons/actionbutton2";
 export default function Dropdown({ children, classNames, isAlpha, isGroup }) {
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
+
   const onClick = () => {
     setIsActive(!isActive);
   };
 
-  let cNs = "";
-  let positionObj = {};
-  let actionText = "Get Started";
-
-  if (classNames) {
-    cNs = classNames;
-  }
-
-  if (isAlpha) {
-    actionText = "Go to Alphabet";
-  }
-
-  if (isGroup) {
-    positionObj = { marginTop: "-1.6rem", marginLeft: "-1rem" };
-  }
+  let classNamesStr = classNames ? classNames : "";
+  let actionText = isAlpha ? "Go to Alphabet" : "Get Started";
+  let positionObj = isGroup
+    ? { marginTop: "-1.6rem", marginLeft: "-1rem" }
+    : {};
 
   return (
-    <div className={`${styles.container} md:w-fit ${cNs}`}>
+    <div className={`${styles.container} md:w-fit ${classNamesStr}`}>
       <div className={`${styles["menu-container"]}`} ref={dropdownRef}>
         <div onClick={onClick} className={`${styles["menu-trigger"]}`}>
           {children}

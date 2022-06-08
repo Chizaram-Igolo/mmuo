@@ -15,13 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AlertMessage({
-  message,
-  severity,
-  isOpen,
-  clearMessages,
-  keepOpen,
-}) {
+export default function AlertBox({ message, severity, isOpen, keepOpen }) {
   const classes = useStyles();
   const [open, setOpen] = useState(isOpen);
 
@@ -36,7 +30,6 @@ export default function AlertMessage({
 
     return () => {
       clearTimeout(timeOut);
-      //   clearMessages();
     };
   }, [keepOpen]);
 
@@ -44,14 +37,12 @@ export default function AlertMessage({
     let timeOut = null;
 
     if (!open) {
-      timeOut = setTimeout(() => {
-        clearMessages();
-      }, 2000);
+      timeOut = setTimeout(() => {}, 2000);
     }
     return () => {
       clearTimeout(timeOut);
     };
-  }, [open, clearMessages]);
+  }, [open]);
 
   return (
     <Collapse in={open}>

@@ -1,46 +1,42 @@
+/**
+ * React imports.
+ */
 import Link from "next/link";
-import { useRouter } from "next/router";
 import Image from "next/image";
-
+import { useRouter } from "next/router";
 import { useState } from "react";
 
-import { useAuth } from "../contexts/AuthContext";
+/**
+ * Context provider containing application-wide state.
+ */
+import { useAuth } from "@contexts/AuthContext";
 
+/**
+ * Developer-defined UI components/hooks/constants.
+ */
+import { isEmail, registerErrorMessage } from "@helpers/functions";
 import {
-  ref,
-  query,
-  orderByChild,
-  equalTo,
-  limitToFirst,
-  get,
-} from "firebase/database";
-import { projectDatabase } from "../firebase/config";
-import AlertMessage from "./alertmessage";
+  getUserObject,
+  getUserSnapshot,
+} from "@helpers/firebase_functions/register";
+import AlertBox from "@Alerts/AlertBox";
 
-import googleLogo from "../public/google-logo.svg";
-import githubLogo from "../public/github-logo.svg";
-
-interface IValues {
-  email: string;
-  password: string;
-}
+/**
+ * Image assets.
+ */
+import googleLogo from "@public/google-logo.svg";
+import githubLogo from "@public/github-logo.svg";
+import { FirebaseError } from "firebase/app";
 
 export default function SignInForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   const { signin } = useAuth();
+  const router = useRouter();
+
+  const [emailOrUsername, setEmailOrUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const router = useRouter();
-
-  function clearMessages() {}
-
-  function isEmail(email: string) {
-    return /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email);
-  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -49,55 +45,28 @@ export default function SignInForm() {
       setError("");
       setLoading(true);
 
-      if (isEmail(email)) {
-        await signin(email, password);
+      if (isEmail(emailOrUsername)) {
+        await signin(emailOrUsername, password);
       } else {
-        const snapshot = await get(
-          query(
-            ref(projectDatabase, "users"),
-            orderByChild("username"),
-            equalTo(email),
-            limitToFirst(1)
-          )
-        );
+        /**
+         * Attempt to sign the user using their username instead.
+         */
+        const snapshot = await getUserSnapshot(emailOrUsername);
 
         if (snapshot.exists()) {
-          const snapshotObj = snapshot.val();
-          let userObj;
-
-          for (var propName in snapshotObj) {
-            if (snapshotObj.hasOwnProperty(propName)) {
-              userObj = snapshotObj[propName];
-            }
-          }
-
-          await signin(userObj.email, password);
+          await signin(getUserObject(snapshot).email, password);
         } else {
           throw new Error("No account exists with this username.");
         }
       }
 
-      setEmail("");
+      setEmailOrUsername("");
       setPassword("");
+
       router.push("/feed");
-    } catch (err: any) {
-      if (err.code === "auth/wrong-password") {
-        setError(
-          "The password is invalid or the user does not have a password."
-        );
-      } else if (err.code === "auth/network-request-failed") {
-        setError(
-          "It seems your internet connection isn't very good right now."
-        );
-      } else if (err.code === "auth/too-many-requests") {
-        setError(
-          "Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later."
-        );
-      } else if (err.message.indexOf("offline") !== -1) {
-        setError("You don't have an internet connection.");
-      } else {
-        setError(err.message);
-      }
+    } catch (err) {
+      if (err instanceof FirebaseError) registerErrorMessage(err, setError);
+      else setError("Sorry, something went wrong");
     }
 
     setLoading(false);
@@ -109,21 +78,18 @@ export default function SignInForm() {
       id="heroHomeFormVariant"
       onSubmit={handleSubmit}
     >
-      <span className="formWrapperParent">
-        <p className="css-oztn6x e7kuofc0 text-[#535772] text-base font-semibold tracking-[-0.01875rem] leading-6 m-0 text-center">
+      <span>
+        <p className="font-WorkSans_SemiBold text-[#535772] text-base tracking-[-0.01875rem] leading-6 m-0 text-center">
           Sign in to get started!
         </p>
 
         {error && (
-          <>
-            <AlertMessage
-              message={error}
-              severity="error"
-              isOpen={error.length > 0}
-              clearMessages={clearMessages}
-              keepOpen={true}
-            />
-          </>
+          <AlertBox
+            message={error}
+            severity="error"
+            isOpen={error.length > 0}
+            keepOpen={true}
+          />
         )}
 
         <div className="inputFormWrapper relative inline-flex flex-col mt-4 w-full">
@@ -131,10 +97,10 @@ export default function SignInForm() {
             aria-label="email"
             type="text"
             minLength={2}
-            name="email"
+            name="emailOrUsername"
             placeholder="Email or Username"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={emailOrUsername}
+            onChange={(e) => setEmailOrUsername(e.target.value)}
             required
             className="relative bg-white border border-[#c0c2d3] rounded-lg focus:outline-none active:outline-none shadow-[0px_4px_0px_rgba(91,105,135,0.2)] hover:shadow-[0px_2px_0px_rgba(91,105,135,0.2)] text-[#031b4e] cursor-text text-base mb-4 py-[0.55rem] px-[1rem] w-full transition-all duration-2008"
           />

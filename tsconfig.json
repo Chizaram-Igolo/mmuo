@@ -22,11 +22,14 @@
       "@Layouts/*": ["components/Layouts/*"],
       "@Navigation/*": ["components/Navigation/*"],
       "@Dropdowns/*": ["components/Dropdowns/*"],
+      "@Alerts/*": ["components/Alerts/*"],
       "@Footer": ["components/Layouts/Footer"],
       "@Toasts/*": ["components/Toasts/*"],
       "@ConnectivityListener/*": ["components/ConnectivityListener/*"],
       "@Registration/*": ["components/Registration/*"],
+      "@public/*": ["public/*"],
       "@contexts/*": ["contexts/*"],
+      "@firebase/*": ["firebase/*"],
       "@helpers/*": ["helpers/*"],
       "@utils/*": ["utils/*"]
     }

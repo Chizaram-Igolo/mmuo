@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import React, { ReactElement } from "react";
 import GoBack from "../../components/backlink";
-import ActionButton from "../../components/buttons/actionbutton";
+import ActionButton from "../../components/Buttons/actionbutton";
 
 import InfoTip from "../../components/infotip";
 import Layout from "../../components/Layouts/layout";

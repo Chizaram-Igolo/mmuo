@@ -1,23 +1,34 @@
+/**
+ * React imports.
+ */
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { useState } from "react";
 
-import React, { useState } from "react";
+/**
+ * Context provider containing application-wide state.
+ */
+import { useAuth } from "@contexts/AuthContext";
 
-import AlertMessage from "../components/alertmessage";
-import { useAuth } from "../contexts/AuthContext";
+/**
+ * Image assets
+ */
+import googleLogo from "@public/google-logo.svg";
+import githubLogo from "@public/github-logo.svg";
 
+/**
+ * Developer-defined UI components/hooks/constants.
+ */
 import {
   dbTimestamp,
   projectDatabase,
   ref,
   set,
   appAuth,
-} from "../firebase/config";
-
-import googleLogo from "../public/google-logo.svg";
-import githubLogo from "../public/github-logo.svg";
-import { TextInput } from "./Inputs";
+} from "@firebase/config";
+import AlertBox from "@Alerts/AlertBox";
+import TextInput from "@Inputs/TextInput";
 
 export default function SignUpForm() {
   const [username, setUsername] = useState("");
@@ -88,17 +99,16 @@ export default function SignUpForm() {
       onSubmit={handleSubmit}
     >
       <span className="formWrapperParent">
-        <p className="css-oztn6x e7kuofc0 text-[#535772] text-base font-semibold tracking-[-0.01875rem] leading-6 m-0 text-center">
+        <p className="e7kuofc0 text-[#535772] text-base tracking-[-0.01875rem] leading-6 m-0 text-center">
           Sign up to get started!
         </p>
 
         {error && (
           <>
-            <AlertMessage
+            <AlertBox
               message={error}
               severity="error"
               isOpen={error.length > 0}
-              clearMessages={clearMessages}
               keepOpen={true}
             />
           </>

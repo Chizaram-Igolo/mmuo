@@ -1,6 +1,15 @@
-/* This example requires Tailwind CSS v2.0+ */
+/**
+ * React imports.
+ */
+import Link from "next/link";
+import { useRouter } from "next/router";
+import Image from "next/image";
 import { Fragment, useState } from "react";
-import { Popover, Transition, Disclosure, Menu } from "@headlessui/react";
+
+/**
+ * Vendor-defined UI components/hooks/utilities/etc.
+ */
+import { Popover, Transition, Menu } from "@headlessui/react";
 import {
   BookmarkAltIcon,
   ChartBarIcon,
@@ -9,17 +18,16 @@ import {
   MenuIcon,
   PhoneIcon,
   PlayIcon,
-  RefreshIcon,
   ShieldCheckIcon,
   SupportIcon,
-  ViewGridIcon,
   XIcon,
 } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
-import Link from "next/link";
-import { useAuth } from "../../contexts/AuthContext";
-import { useRouter } from "next/router";
-import Image from "next/image";
+
+/**
+ * Context provider containing application-wide state.
+ */
+import { useAuth } from "@contexts/AuthContext";
 
 const solutions = [
   {

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import ActionButton2 from "./buttons/actionbutton2";
+import ActionButton2 from "./Buttons/actionbutton2";
 
 interface IResult {
   currentExerciseId: number;

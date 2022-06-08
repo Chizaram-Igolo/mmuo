@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { IOption } from "../helpers/interfaces";
-import OptionButton from "./buttons/optionbutton";
+import OptionButton from "./Buttons/optionbutton";
 
 interface IMultipleChoice {
   options: IOption[];

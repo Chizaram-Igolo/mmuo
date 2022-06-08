@@ -1,7 +1,14 @@
-import SignInForm from "../components/signinform";
+/**
+ * React imports.
+ */
 import { ReactElement } from "react";
-import Layout from "../components/Layouts/layout";
-import AuthLayout from "../components/Layouts/AuthLayout";
+
+/**
+ * Developer-defined UI components/hooks/constants.
+ */
+import Layout from "@components/Layouts/layout";
+import AuthLayout from "@components/Layouts/AuthLayout";
+import SignInForm from "@components/Registration/SigninForm";
 
 export default function SignIn() {
   return <SignInForm />;

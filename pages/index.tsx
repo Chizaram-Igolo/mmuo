@@ -3,10 +3,10 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMicrophone, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
-import { useAuth } from "../contexts/AuthContext";
-import SignInForm from "../components/signinform";
+import { useAuth } from "@contexts/AuthContext";
+import SignInForm from "@components/Registration/SigninForm";
 import { ReactElement } from "react";
-import Layout from "../components/Layouts/layout";
+import Layout from "@components/Layouts/layout";
 
 export default function Home() {
   const { user } = useAuth();

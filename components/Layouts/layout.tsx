@@ -6,15 +6,12 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 
 /**
- * This tracks page load progress and shows a progress bar at the
+ * Vendor-defined UI components/hooks/utilities/etc.
+ * `TopBarProgress` tracks page load progress and shows a progress bar at the
  * the top of the page when navigating to a new route.
  */
-const TopBarProgress = require("react-topbar-progress-indicator");
-
-/**
- * Vendor-defined UI components.
- */
 import { ToastProvider } from "react-toast-notifications";
+const TopBarProgress = require("react-topbar-progress-indicator");
 
 /**
  * This checks on user internet connectivity and lets them know when
@@ -31,7 +28,7 @@ import { AuthProvider } from "@contexts/AuthContext";
  * Developer-defined UI components/hooks/constants.
  */
 import { TopBarProgressConfig } from "@utils/constants";
-import Navbar from "@Navigation/navbar";
+import Navbar from "@components/Navigation/Navbar";
 import Footer from "@Footer";
 
 TopBarProgress.config(TopBarProgressConfig);

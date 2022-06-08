@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import Layout from "../components/Layouts/layout";
 
 export default function Settings() {
