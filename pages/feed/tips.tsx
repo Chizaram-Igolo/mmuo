@@ -5,7 +5,7 @@ import GoBack from "../../components/backlink";
 import ActionButton from "../../components/buttons/actionbutton";
 
 import InfoTip from "../../components/infotip";
-import Layout from "../../components/layout";
+import Layout from "../../components/Layouts/layout";
 
 export default function Tips() {
   return (

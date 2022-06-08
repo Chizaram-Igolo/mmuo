@@ -2,10 +2,10 @@ import React, { ReactElement, useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { projectFirestore, timestamp } from "../../firebase/config";
 import CRMLayout from "../../components/crmlayout";
-import Layout from "../../components/layout";
+import Layout from "../../components/Layouts/layout";
 
 import { useToasts } from "react-toast-notifications";
-import Toast from "../../components/Toast";
+import Toast from "../../components/Toasts/Toast";
 import SelectMenu from "../../components/selectmenu";
 
 export default function Home() {

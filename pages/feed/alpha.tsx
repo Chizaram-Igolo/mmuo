@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { ReactElement } from "react";
 import GoBack from "../../components/backlink";
 import ActionButton from "../../components/buttons/actionbutton";
-import Layout from "../../components/layout";
+import Layout from "../../components/Layouts/layout";
 
 const alphabet = [
   { name: "Aa" },

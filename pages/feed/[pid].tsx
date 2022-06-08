@@ -38,11 +38,11 @@ import {
   faCrown,
 } from "@fortawesome/free-solid-svg-icons";
 
-import Dropdown from "../../components/dropdown/dropdown";
+import Dropdown from "../../components/Dropdowns/Dropdown";
 import React, { ReactElement } from "react";
 
 import { IModule } from "../../helpers/modules";
-import Layout from "../../components/layout";
+import Layout from "../../components/Layouts/layout";
 import useGetModuleList from "../../helpers/hooks/useGetModuleList";
 
 const modules2 = [

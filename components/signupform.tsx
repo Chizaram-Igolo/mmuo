@@ -17,7 +17,7 @@ import {
 
 import googleLogo from "../public/google-logo.svg";
 import githubLogo from "../public/github-logo.svg";
-import { TextInput } from "./inputs";
+import { TextInput } from "./Inputs";
 
 export default function SignUpForm() {
   const [username, setUsername] = useState("");

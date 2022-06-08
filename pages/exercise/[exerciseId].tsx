@@ -10,7 +10,7 @@ import ActiveButton from "../../components/buttons/answerbutton";
 import MultipleChoice from "../../components/multiplechoice";
 import Result from "../../components/result";
 
-import Layout from "../../components/layout";
+import Layout from "../../components/Layouts/layout";
 import { questions } from "../../components/questions/alpha";
 
 export default function Exercise() {

@@ -1,6 +1,6 @@
 module.exports = {
-  purge: ["./components/**/*.tsx", "./pages/**/*.tsx", "./public/**/*.html"], //add this line
-  darkMode: false, // or 'media' or 'class'
+  content: ["./components/**/*.tsx", "./pages/**/*.tsx", "./public/**/*.html"], //add this line
+  darkMode: "media",
   theme: {
     extend: {},
   },

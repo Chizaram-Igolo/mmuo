@@ -1,7 +1,7 @@
 import SignInForm from "../components/signinform";
 import { ReactElement } from "react";
-import Layout from "../components/layout";
-import AuthLayout from "../components/authlayout";
+import Layout from "../components/Layouts/layout";
+import AuthLayout from "../components/Layouts/AuthLayout";
 
 export default function SignIn() {
   return <SignInForm />;

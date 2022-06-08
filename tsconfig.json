@@ -13,14 +13,30 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@Buttons/*": ["components/Buttons/*"],
+      "@Inputs/*": ["components/Inputs/*"],
+      "@Layouts/*": ["components/Layouts/*"],
+      "@Navigation/*": ["components/Navigation/*"],
+      "@Dropdowns/*": ["components/Dropdowns/*"],
+      "@Footer": ["components/Layouts/Footer"],
+      "@Toasts/*": ["components/Toasts/*"],
+      "@ConnectivityListener/*": ["components/ConnectivityListener/*"],
+      "@Registration/*": ["components/Registration/*"],
+      "@contexts/*": ["contexts/*"],
+      "@helpers/*": ["helpers/*"],
+      "@utils/*": ["utils/*"]
+    }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "helpers/hooks/useDetectOutsideClick.js",
-    "components/dropdown/dropdown.jsx",
+    "components/Dropdowns/dropdown.jsx",
     "components/infotip.tsx"
   ],
   "exclude": ["node_modules"]

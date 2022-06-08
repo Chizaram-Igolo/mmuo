@@ -1,11 +1,25 @@
+/**
+ * React imports.
+ */
 import Link from "next/link";
 import { useRef } from "react";
 
-import styles from "./dropdown.module.css";
-import { useDetectOutsideClick } from "../../helpers/hooks/useDetectOutsideClick";
+/**
+ * This component's styles.
+ */
+import styles from "./Dropdown.module.css";
+
+/**
+ * Vendor-defined UI components.
+ */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLightbulb } from "@fortawesome/free-regular-svg-icons";
-import ActionButton2 from "../buttons/actionbutton2";
+
+/**
+ * Developer-defined UI components/hooks/constants.
+ */
+import { useDetectOutsideClick } from "@helpers/hooks/useDetectOutsideClick";
+import ActionButton2 from ".@buttons/actionbutton2";
 
 /*
  * Read the blog post here:
