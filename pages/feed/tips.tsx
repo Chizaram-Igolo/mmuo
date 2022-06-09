@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import React, { ReactElement } from "react";
-import GoBack from "../../components/backlink";
+import GoBack from "../../components/Buttons/GoBack";
 import ActionButton from "../../components/Buttons/actionbutton";
 
 import InfoTip from "../../components/infotip";

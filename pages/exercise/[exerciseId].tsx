@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect } from "react";
+import { ReactElement } from "react";
 
 import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,12 +6,12 @@ import { useState } from "react";
 
 import { useRouter } from "next/router";
 
-import ActiveButton from "../../components/Buttons/answerbutton";
-import MultipleChoice from "../../components/multiplechoice";
+import ActiveButton from "@components/Buttons/answerbutton";
+import MultipleChoice from "@components/MultipleChoice";
 import Result from "../../components/result";
 
-import Layout from "../../components/Layouts/layout";
-import { questions } from "../../components/questions/alpha";
+import Layout from "@components/Layouts/layout";
+import { questions } from "@components/questions/alpha";
 
 export default function Exercise() {
   const [showResult, setShowResult] = useState(false);
@@ -25,7 +25,6 @@ export default function Exercise() {
   }
 
   function hideResult() {
-    console.log("dadf");
     setShowResult(false);
   }
 

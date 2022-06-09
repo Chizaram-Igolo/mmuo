@@ -108,7 +108,10 @@ export default function SignInForm() {
 
       <AuthButton loading={loading} />
 
-      <FormFooter authRoute="/signup" authText="New here? Sign up for Mmuo." />
+      <FormFooter
+        authRoute="/auth/signup"
+        authText="New here? Sign up for Mmuo."
+      />
     </form>
   );
 }

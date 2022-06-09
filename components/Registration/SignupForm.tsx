@@ -23,7 +23,6 @@ import { authErrorMessage, isEmail } from "@helpers/auth";
 import { updateDBRecord } from "@helpers/user";
 import TextInput from "@Inputs/TextInput";
 import AuthButton from "@Buttons/AuthButton";
-import SocialAuthButton from "@Buttons/SocialAuthButton";
 import FormHeader from "./FormHeader";
 import FormFooter from "./FormFooter";
 
@@ -122,7 +121,7 @@ export default function SignUpForm() {
       <AuthButton loading={loading} />
 
       <FormFooter
-        authRoute="/signin"
+        authRoute="/auth/signin"
         authText="Already have an account? Sign in."
         termsText="By signing up you agree to the Terms of Service."
         termsRoute="/legal/terms-of-service-agreement/"

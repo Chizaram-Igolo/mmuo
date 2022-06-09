@@ -1,4 +1,8 @@
+/**
+ * React imports
+ */
 import { useState } from "react";
+
 import Loader from "./loader";
 
 interface IOptionButton {

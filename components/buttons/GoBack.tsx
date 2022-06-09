@@ -1,3 +1,6 @@
+/**
+ * React imports.
+ */
 import { useRouter } from "next/router";
 
 export default function GoBack() {
@@ -9,7 +12,8 @@ export default function GoBack() {
 
   return (
     <span
-      className="underline decoration-dotted underline-offset-4 text-[#333333] cursor-pointer"
+      className="underline decoration-dotted underline-offset-4 
+               text-[#333333] cursor-pointer"
       onClick={goBack}
     >
       Go back

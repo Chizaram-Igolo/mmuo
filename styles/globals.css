@@ -10,7 +10,6 @@
 @import "tailwindcss/utilities";
 
 @import "animated-background.css";
-@import "animated-dashed-line.css";
 
 :root {
   --main-bg-color: #f9fafe;
@@ -156,14 +155,6 @@ a {
   font-family: WorkSans_SemiBold;
 }
 
-.css-85iaxa {
-  /* box-sizing: border-box;
-  margin: 0 auto;
-  max-width: 1440px;
-  padding: 0 94px;
-  width: 100%; */
-}
-
 .columns.is-gapless:last-child {
   margin-bottom: 0;
 }
@@ -249,12 +240,6 @@ a {
 .css-pz3cfz > p {
   color: #545372;
   margin: 0;
-}
-
-.css-yspytq {
-  /* margin: 0 auto;
-  max-width: 670px;
-  text-align: center; */
 }
 
 /* .subtitle:not(:last-child),
@@ -397,42 +382,11 @@ a {
   margin-top: 0 !important;
 }
 
-.css-dx1ooz {
-  box-sizing: border-box;
-  padding: 120px 0;
-  background-color: #f9fafe;
-  padding: 0;
-}
-
 .css-1k87evg {
   margin: 0 auto;
   max-width: 1440px;
   padding: 0 64px;
   width: 100%;
-}
-
-.css-go06gt {
-  /* background: #6a76ff
-    url(/static/new-cta-band-bg-image-4075c4087cf077bd979dc9af11d0fa1f.jpg)
-    no-repeat right center;
-  background-size: cover;
-  border-radius: 5px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 100px 64px; */
-}
-
-.css-18p4bom {
-  /* display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 50%; */
 }
 
 @media print,
@@ -448,19 +402,6 @@ a {
   flex-grow: 1;
   flex-shrink: 1;
   padding: 0.75rem;
-}
-
-.css-1et6x5d {
-  text-align: center;
-  background-color: #f9fafe;
-  color: #080b2d;
-  padding: 3rem 1.5rem;
-  position: relative;
-  left: 0;
-  bottom: 0;
-  min-height: 595px;
-  overflow: hidden;
-  z-index: 1000;
 }
 
 .css-1et6x5d {
