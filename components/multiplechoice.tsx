@@ -1,6 +1,13 @@
-import React, { useState } from "react";
-import { IOption } from "../helpers/interfaces";
-import OptionButton from "./Buttons/optionbutton";
+/**
+ * React imports.
+ */
+import React, { useEffect, useState } from "react";
+
+/**
+ * Developer-defined UI components/hooks/constants.
+ */
+import { IOption } from "@helpers/interfaces";
+import OptionButton from "@Buttons/optionbutton";
 
 interface IMultipleChoice {
   options: IOption[];
@@ -14,8 +21,6 @@ const MultipleChoice: React.FC<IMultipleChoice> = ({ options }) => {
 
     selState[id] = true;
     setSelected(selState);
-
-    console.log(id, selected);
   }
 
   return (
@@ -27,11 +32,13 @@ const MultipleChoice: React.FC<IMultipleChoice> = ({ options }) => {
           key={option.name + id}
         >
           <OptionButton
-            classNames={`min-w-[100%] h-[6rem] max-w-[40%] text-2xl sm:text-xl transition-all duration-[20ms] ${
-              selected[id]
-                ? "bg-blue-100 border-blue-500 text-blue-800 shadow-[0px_1px_0px_rgb(0,54,153)]"
-                : ""
-            }`}
+            classNames={`min-w-[100%] h-[6rem] max-w-[40%] text-2xl 
+                         sm:text-xl transition-all duration-[20ms] ${
+                           selected[id]
+                             ? "bg-blue-100 border-blue-500 text-blue-800 " +
+                               "shadow-[0px_1px_0px_rgb(0,54,153)]"
+                             : ""
+                         }`}
           >
             {option.name}
           </OptionButton>

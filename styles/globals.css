@@ -1,39 +1,16 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 
-@font-face {
-  font-family: "WorkSans";
-  src: url("/fonts/WorkSans/WorkSans-Medium.ttf");
-}
-
-@font-face {
-  font-family: "WorkSans_Medium";
-  src: url("/fonts/WorkSans/WorkSans-Medium.ttf");
-}
-
-@font-face {
-  font-family: "WorkSans_SemiBold";
-  src: url("/fonts/WorkSans/WorkSans-SemiBold.ttf");
-}
-
-@font-face {
-  font-family: "WorkSans_Bold";
-  src: local("WorkSans_Bold"),
-    url("/fonts/WorkSans/WorkSans-Bold.ttf") format("ttf");
-}
-
-@font-face {
-  font-family: "WorkSans_ExtraBold";
-  src: url("/fonts/WorkSans/WorkSans-Bold.ttf");
-}
+/**
+* Custom fonts are imported here so as not to overwrite TailwindCSS's 
+* utilities.
+*/
+@import "fonts.css";
 
 @import "tailwindcss/utilities";
 
 @import "animated-background.css";
 @import "animated-dashed-line.css";
-@import "fonts.css";
-
-@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css";
 
 :root {
   --main-bg-color: #f9fafe;
@@ -177,58 +154,6 @@ a {
 
 .css-oztn6x {
   font-family: WorkSans_SemiBold;
-}
-
-.css-9wrdnx {
-  /* color: #535772;
-  font-size: 14px;
-  line-height: 24px;
-  margin: 24px 0;
-  position: relative;
-  text-align: center; */
-}
-
-@media only screen and (max-width: 1400px) {
-  .css-1skska7 > a:first-of-type {
-    /* margin-right: 0; */
-  }
-}
-
-@media only screen and (max-width: 1400px) {
-  .css-1skska7 {
-    /* -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column; */
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .css-1skska7 {
-    /* -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row; */
-  }
-}
-
-.css-9wrdnx::before {
-  background-color: #c0c2d3;
-  content: "";
-  display: block;
-  height: 1px;
-  position: absolute;
-  top: 50%;
-  width: 25%;
-}
-
-.css-9wrdnx::after {
-  background-color: #c0c2d3;
-  content: "";
-  display: block;
-  height: 1px;
-  position: absolute;
-  top: 50%;
-  right: 0%;
-  width: 25%;
 }
 
 .css-85iaxa {
@@ -570,60 +495,4 @@ a {
   font-weight: 200;
   -webkit-text-decoration: none;
   text-decoration: none;
-}
-
-.lds-ellipsis {
-  display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 24px;
-}
-.lds-ellipsis div {
-  position: absolute;
-  top: 6px;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  @apply bg-blue-800;
-  animation-timing-function: cubic-bezier(0, 1, 1, 0);
-}
-.lds-ellipsis div:nth-child(1) {
-  left: 8px;
-  animation: lds-ellipsis1 0.6s infinite;
-}
-.lds-ellipsis div:nth-child(2) {
-  left: 8px;
-  animation: lds-ellipsis2 0.6s infinite;
-}
-.lds-ellipsis div:nth-child(3) {
-  left: 32px;
-  animation: lds-ellipsis2 0.6s infinite;
-}
-.lds-ellipsis div:nth-child(4) {
-  left: 56px;
-  animation: lds-ellipsis3 0.6s infinite;
-}
-@keyframes lds-ellipsis1 {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-@keyframes lds-ellipsis3 {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0);
-  }
-}
-@keyframes lds-ellipsis2 {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(24px, 0);
-  }
 }

@@ -23,6 +23,7 @@
     "firebase-admin": "^7.0.0",
     "firebase-functions": "^2.3.1",
     "formik": "^2.2.9",
+    "img-loader": "^4.0.0",
     "jquery": "^3.6.0",
     "material-icons": "^1.10.6",
     "next": "^12.1.6",
@@ -34,7 +35,9 @@
     "react-dom": "^18.1.0",
     "react-toast-notifications": "^2.5.1",
     "react-topbar-progress-indicator": "^4.1.0",
+    "svg-sprite-loader": "^6.0.11",
     "tailwindcss": "^3.0.15",
+    "webp-loader": "^0.6.0",
     "yarn": "^1.22.17",
     "yup": "^0.32.11"
   },
