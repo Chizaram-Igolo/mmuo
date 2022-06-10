@@ -64,14 +64,11 @@ export const AuthProvider = ({ children }) => {
     // Get the user's full profile details.
 
     if (user != null) {
-      const unsubscribe = ref(projectDatabase, `users/${user.uid}`);
-      onValue(unsubscribe, (snap) => {
+      return onValue(ref(projectDatabase, `users/${user.uid}`), (snap) => {
         if (snap) {
           setUserProfile(snap.val());
         }
       });
-
-      return unsubscribe;
     }
   }, [user]);
 
