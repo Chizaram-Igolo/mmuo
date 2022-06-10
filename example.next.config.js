@@ -8,7 +8,7 @@ const nextConfig = {
   devIndicators: {
     buildActivity: false,
   },
-  serverRuntimeConfig: {
+  env: {
     apiUrl:
       process.env.NODE_ENV === "development"
         ? "YOUR_VALUE" // development api

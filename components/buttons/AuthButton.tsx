@@ -5,7 +5,6 @@ interface IAuthButton {
 }
 
 const AuthButton: React.FC<IAuthButton> = ({ loading }) => {
-  console.log(loading);
   return (
     <button
       disabled={loading}
