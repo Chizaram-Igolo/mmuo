@@ -19,7 +19,7 @@ import { faLightbulb } from "@fortawesome/free-regular-svg-icons";
  * Developer-defined UI components/hooks/constants.
  */
 import { useDetectOutsideClick } from "@helpers/hooks/useDetectOutsideClick";
-import ActionButton2 from "@Buttons/actionbutton2";
+import ActionButtonA from "@Buttons/ActionButtonA";
 
 /*
  * Read the blog post here:
@@ -72,7 +72,7 @@ export default function Dropdown({ children, classNames, isAlpha, isGroup }) {
               <Link href="/feed/alpha">
                 <a>
                   {/* <ActionButton>{actionText}</ActionButton> */}
-                  <ActionButton2>{actionText}</ActionButton2>
+                  <ActionButtonA>{actionText}</ActionButtonA>
                 </a>
               </Link>
             </li>

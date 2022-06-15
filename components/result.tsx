@@ -1,6 +1,12 @@
+/**
+ * React imports.
+ */
 import Link from "next/link";
-import React from "react";
-import ActionButton2 from "./Buttons/actionbutton2";
+
+/**
+ * Developer-defined UI components/hooks/constants.
+ */
+import ActionButtonA from "@Buttons/ActionbuttonA";
 
 interface IResult {
   currentExerciseId: number;
@@ -20,7 +26,7 @@ const Result: React.FC<IResult> = ({
       <div className="absolute right-8 sm:right-6 md:right-24">
         <Link href={`${"/exercise/"}${currentExerciseId + 1}`}>
           <a onClick={hideResult}>
-            <ActionButton2>Continue</ActionButton2>
+            <ActionButtonA>Continue</ActionButtonA>
           </a>
         </Link>
       </div>

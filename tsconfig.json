@@ -23,6 +23,7 @@
       "@Navigation/*": ["components/Navigation/*"],
       "@Dropdowns/*": ["components/Dropdowns/*"],
       "@Alerts/*": ["components/Alerts/*"],
+      "@Loaders/*": ["components/Loaders/*"],
       "@Footer": ["components/Layouts/Footer"],
       "@Toasts/*": ["components/Toasts/*"],
       "@ConnectivityListener/*": ["components/ConnectivityListener/*"],

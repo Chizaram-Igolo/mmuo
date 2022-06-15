@@ -1,11 +1,17 @@
+/**
+ * React imports.
+ */
 import Link from "next/link";
 
-import React, { ReactElement } from "react";
-import GoBack from "../../components/Buttons/GoBack";
-import ActionButton from "../../components/Buttons/actionbutton";
+import { ReactElement } from "react";
 
-import InfoTip from "../../components/infotip";
-import Layout from "../../components/Layouts/layout";
+/**
+ * Developer-defined UI components/hooks/constants.
+ */
+import InfoTip from "@components/infotip";
+import Layout from "@Layouts/layout";
+import GoBack from "@Buttons/GoBack";
+import ActionButtonB from "@Buttons/ActionButtonB";
 
 export default function Tips() {
   return (
@@ -73,7 +79,7 @@ export default function Tips() {
             Now let&apos;s started learning the alphabets of the Igbo language!
           </p>
 
-          <div className="flex flex-row">
+          <div className="flex">
             <div className="flex-1 pt-4">
               <GoBack />
             </div>
@@ -81,7 +87,7 @@ export default function Tips() {
             <div>
               <Link href="alpha">
                 <a>
-                  <ActionButton>Go to Alphabets</ActionButton>
+                  <ActionButtonB>Go to Alphabets</ActionButtonB>
                 </a>
               </Link>
             </div>

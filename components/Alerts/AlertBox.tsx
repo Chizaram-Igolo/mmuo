@@ -1,6 +1,13 @@
+/**
+ * React imports.
+ */
 import { useState, useEffect } from "react";
+
+/**
+ * Vendor-defined UI components/hooks/utilities/etc.
+ */
 import { makeStyles } from "@material-ui/core/styles";
-import Alert from "@material-ui/lab/Alert";
+import Alert, { Color } from "@material-ui/lab/Alert";
 import IconButton from "@material-ui/core/IconButton";
 import Collapse from "@material-ui/core/Collapse";
 import CloseIcon from "@material-ui/icons/Close";
@@ -15,12 +22,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AlertBox({ message, severity, isOpen, keepOpen }) {
+interface IAlertBox {
+  message: string;
+  severity: Color;
+  isOpen: boolean;
+  keepOpen: boolean;
+}
+
+const AlertBox: React.FC<IAlertBox> = ({
+  message,
+  severity,
+  isOpen,
+  keepOpen,
+}) => {
   const classes = useStyles();
   const [open, setOpen] = useState(isOpen);
 
   useEffect(() => {
-    let timeOut;
+    let timeOut: ReturnType<typeof setTimeout> = setTimeout(() => {});
 
     if (!keepOpen) {
       setTimeout(() => {
@@ -32,17 +51,6 @@ export default function AlertBox({ message, severity, isOpen, keepOpen }) {
       clearTimeout(timeOut);
     };
   }, [keepOpen]);
-
-  useEffect(() => {
-    let timeOut = null;
-
-    if (!open) {
-      timeOut = setTimeout(() => {}, 2000);
-    }
-    return () => {
-      clearTimeout(timeOut);
-    };
-  }, [open]);
 
   return (
     <Collapse in={open}>
@@ -70,4 +78,6 @@ export default function AlertBox({ message, severity, isOpen, keepOpen }) {
       </div>
     </Collapse>
   );
-}
+};
+
+export default AlertBox;

@@ -1,9 +1,9 @@
 import Link from "next/link";
 
-import React, { ReactElement } from "react";
-import GoBack from "../../components/Buttons/GoBack";
-import ActionButton from "../../components/Buttons/actionbutton";
-import Layout from "../../components/Layouts/layout";
+import { ReactElement } from "react";
+import GoBack from "@Buttons/GoBack";
+import ActionButtonB from "@Buttons/ActionButtonB";
+import Layout from "@Layouts/layout";
 
 const alphabet = [
   { name: "Aa" },
@@ -64,9 +64,9 @@ export default function Alphabet() {
               <div className="flex-1 basis-4 md:basis-8" key={letter.name}>
                 <Link href="/exercise/1">
                   <a>
-                    <ActionButton classNames="min-w-[5rem]">
+                    <ActionButtonB classNames="min-w-[5rem]">
                       {letter.name}
-                    </ActionButton>
+                    </ActionButtonB>
                   </a>
                 </Link>
                 <div className="mt-2 h-2 w-[98%] mx-auto bg-purple-200 rounded"></div>

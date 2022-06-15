@@ -6,9 +6,9 @@ import { useState } from "react";
 
 import { useRouter } from "next/router";
 
-import ActiveButton from "@components/Buttons/answerbutton";
+import AnswerButton from "@Buttons/AnswerButton";
 import MultipleChoice from "@components/MultipleChoice";
-import Result from "../../components/result";
+import Result from "@components/result";
 
 import Layout from "@components/Layouts/layout";
 import { questions } from "@components/questions/alpha";
@@ -47,12 +47,12 @@ export default function Exercise() {
           </div>
 
           <div className="flex flex-row">
-            <ActiveButton
+            <AnswerButton
               classNames="w-[100%] md:w-[100%] mx-auto text-[1.1rem]"
               onClick={changeShowResult}
             >
               Check Answer
-            </ActiveButton>
+            </AnswerButton>
           </div>
         </div>
 

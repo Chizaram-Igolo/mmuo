@@ -1,19 +1,15 @@
-import { ReactNode } from "react";
-import styles from "./answerbutton.module.css";
+/**
+ * Developer-defined UI components/hooks/constants.
+ */
+import ActionButtonC from "./ActionButtonC";
 
-interface IActionButton {
+interface IAnswerButton {
   classNames: string;
-  children: ReactNode;
   onClick?: () => void;
 }
 
-export default function AnswerButton(props: IActionButton) {
-  return (
-    <a
-      className={`${styles["button-3d"]} ${props.classNames}`}
-      onClick={props.onClick}
-    >
-      {props.children}
-    </a>
-  );
-}
+const AnswerButton: React.FC<IAnswerButton> = ({ children, ...rest }) => {
+  return <ActionButtonC {...rest}>{children}</ActionButtonC>;
+};
+
+export default AnswerButton;
