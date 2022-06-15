@@ -1,9 +1,15 @@
+/**
+ * React imports.
+ */
 import Link from "next/link";
-
 import { ReactElement } from "react";
-import GoBack from "@Buttons/GoBack";
-import ActionButtonB from "@Buttons/ActionButtonB";
+
+/**
+ * Developer-defined UI components/hooks/constants.
+ */
 import Layout from "@Layouts/layout";
+import ActionButtonB from "@Buttons/ActionButtonB";
+import GoBackButton from "@Buttons/GoBackButton";
 
 const alphabet = [
   { name: "Aa" },
@@ -84,7 +90,7 @@ export default function Alphabet() {
 
           <div className="flex flex-row">
             <div className="flex-1 pt-4">
-              <GoBack />
+              <GoBackButton />
             </div>
           </div>
         </div>

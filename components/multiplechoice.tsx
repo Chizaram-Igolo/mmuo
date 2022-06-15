@@ -1,13 +1,13 @@
 /**
  * React imports.
  */
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 
 /**
  * Developer-defined UI components/hooks/constants.
  */
 import { IOption } from "@helpers/interfaces";
-import OptionButton from "@Buttons/optionbutton";
+import OptionButton from "@Buttons/OptionButton";
 
 interface IMultipleChoice {
   options: IOption[];

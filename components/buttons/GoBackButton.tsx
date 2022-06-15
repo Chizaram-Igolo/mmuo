@@ -3,7 +3,7 @@
  */
 import { useRouter } from "next/router";
 
-export default function GoBack() {
+export default function GoBackButton() {
   const router = useRouter();
 
   function goBack() {

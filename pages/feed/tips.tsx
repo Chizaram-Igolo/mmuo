@@ -2,15 +2,14 @@
  * React imports.
  */
 import Link from "next/link";
-
 import { ReactElement } from "react";
 
 /**
  * Developer-defined UI components/hooks/constants.
  */
-import InfoTip from "@components/infotip";
 import Layout from "@Layouts/layout";
-import GoBack from "@Buttons/GoBack";
+import InfoTip from "@components/infotip";
+import GoBackButton from "@Buttons/GoBackButton";
 import ActionButtonB from "@Buttons/ActionButtonB";
 
 export default function Tips() {
@@ -81,7 +80,7 @@ export default function Tips() {
 
           <div className="flex">
             <div className="flex-1 pt-4">
-              <GoBack />
+              <GoBackButton />
             </div>
 
             <div>
