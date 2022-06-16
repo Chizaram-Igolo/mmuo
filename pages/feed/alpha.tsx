@@ -57,7 +57,7 @@ export default function Alphabet() {
     remainderFlexBoxes = 7 - (alphabet.length % 7);
   }
 
-  console.log(remainderFlexBoxes);
+  // console.log(remainderFlexBoxes);
   return (
     <>
       <section className="py-4 pb-24 px-8 md:px-18 lg:px-20 xl:px-24 z-20 min-h-[28rem] bg-white">

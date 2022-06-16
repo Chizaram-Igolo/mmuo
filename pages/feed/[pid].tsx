@@ -1,4 +1,25 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+
+import * as Icons from "@fortawesome/free-solid-svg-icons";
+import {
+  IconDefinition,
+  IconPrefix,
+  IconPack,
+} from "@fortawesome/free-solid-svg-icons";
+
+// Type that `library.add()` expects.
+type IconDefinitionOrPack = IconDefinition | IconPack;
+
+interface ImportedIcons {
+  [key: string]: IconPrefix | IconDefinitionOrPack;
+}
+
+const iconList = Object.keys(Icons)
+  .filter((key) => key != "fas" && key !== "prefix")
+  .map((icon) => (Icons as ImportedIcons)[icon]);
+
+library.add(...(iconList as IconDefinitionOrPack[]));
 
 import {
   faSortAlphaDown,
@@ -34,16 +55,15 @@ import {
   faCubes,
   faQuoteLeft,
   faHeart,
-  IconDefinition,
   faCrown,
 } from "@fortawesome/free-solid-svg-icons";
 
-import Dropdown from "../../components/Dropdowns/Dropdown";
+import Dropdown from "@Dropdowns/Dropdown";
 import React, { ReactElement } from "react";
 
-import { IModule } from "../../helpers/modules";
-import Layout from "../../components/Layouts/layout";
-import useGetModuleList from "../../helpers/hooks/useGetModuleList";
+import { IModule } from "@helpers/modules";
+import Layout from "@components/Layouts/layout";
+// import useGetModuleList from "@hooks/useGetModuleList";
 
 const modules2 = [
   {
@@ -373,7 +393,8 @@ export default function FeedPage() {
                             } text-[1.2rem]`}
                             key={idx}
                           >
-                            <FontAwesomeIcon icon={faCrown} className="" />
+                            {/* <FontAwesomeIcon icon={faCrown} className="" />  */}
+                            <FontAwesomeIcon icon="check" />
                           </span>
                         ))}
                     </div>
@@ -419,10 +440,11 @@ export default function FeedPage() {
                                     className="inline-block text-gray-300 text-[1.2rem]"
                                     key={idx}
                                   >
-                                    <FontAwesomeIcon
+                                    {/* <FontAwesomeIcon
                                       icon={faCrown}
                                       className=""
-                                    />
+                                    /> */}
+                                    <FontAwesomeIcon icon="check" />
                                   </span>
                                 ))}
                             </div>
@@ -475,10 +497,11 @@ export default function FeedPage() {
                                         className="inline-block text-gray-300 text-[1.2rem]"
                                         key={idx}
                                       >
-                                        <FontAwesomeIcon
+                                        {/* <FontAwesomeIcon
                                           icon={faCrown}
                                           className=""
-                                        />
+                                        />  */}
+                                        <FontAwesomeIcon icon="check" />
                                       </span>
                                     ))}
                                 </div>

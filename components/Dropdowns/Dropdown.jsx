@@ -72,7 +72,7 @@ export default function Dropdown({ children, classNames, isAlpha, isGroup }) {
               <Link href="/feed/alpha">
                 <a>
                   {/* <ActionButton>{actionText}</ActionButton> */}
-                  <ActionButtonA>{actionText}</ActionButtonA>
+                  <ActionButtonA size="lg">{actionText}</ActionButtonA>
                 </a>
               </Link>
             </li>

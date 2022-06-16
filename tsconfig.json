@@ -32,7 +32,8 @@
       "@contexts/*": ["contexts/*"],
       "@firebase/*": ["firebase/*"],
       "@helpers/*": ["helpers/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@hooks/*": ["helpers/hooks*"]
     }
   },
   "include": [
