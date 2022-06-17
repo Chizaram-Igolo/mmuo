@@ -6,7 +6,7 @@ import Link from "next/link";
 /**
  * Developer-defined UI components/hooks/constants.
  */
-import SocialAuthButton from "@components/Buttons/SocialAuthButton";
+import SocialAuthButton from "@Buttons/SocialAuthButton";
 
 interface IFormFooter {
   authText: string;

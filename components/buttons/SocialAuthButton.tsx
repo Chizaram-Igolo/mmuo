@@ -23,7 +23,7 @@ const SocialAuthButton: React.FC<ISocialAuthButton> = ({ type, label }) => {
                        mb-2 border border-[#c0c2d3] rounded-lg 
                        shadow-[0_4px_0_rgb(222,225,231)] 
                        hover:shadow-[0_2px_0_rgb(222,225,231)] box-border 
-                       text-[#000824] font-medium py-2 px-6 transition-all 
+                       text-[#000824] font-medium py-2 px-2 transition-all 
                        duration-200"
     >
       {type.toLowerCase() === "google" && (

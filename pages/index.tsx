@@ -33,9 +33,8 @@ export default function Home() {
                 Language learning made easy and fun. <br />
               </h1>
               <p className="leading-text">
-                The cloud computing services you need, with the predictable
-                pricing, developer-friendly features, and scalability you’ll
-                love.
+                Learn any language you want at your own pace in a fun and
+                interactive way.
               </p>
             </div>
 

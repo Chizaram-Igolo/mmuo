@@ -19,11 +19,6 @@ export default function NavAuthSection() {
           </ActionButtonA>
         </a>
       </Link>
-      <Link href="/auth/signin">
-        <a className="mt-2 mr-2">
-          <ActionButtonB>Sign in</ActionButtonB>
-        </a>
-      </Link>
       <Link href="/auth/signup">
         <a className="mt-2">
           <ActionButtonA size="sm">Sign up</ActionButtonA>

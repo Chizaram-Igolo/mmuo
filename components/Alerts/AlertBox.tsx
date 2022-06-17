@@ -73,7 +73,7 @@ const AlertBox: React.FC<IAlertBox> = ({
             </IconButton>
           }
         >
-          {message}
+          <div className="font-['WorkSans']">{message}</div>
         </Alert>
       </div>
     </Collapse>

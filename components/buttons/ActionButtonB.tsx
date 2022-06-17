@@ -28,7 +28,7 @@ const ActionButtonB: React.FC<IActionButton> = ({
           ? "cursor-default shadow-[0px_4px_0px_rgb(120,124,183)]"
           : "cursor-pointer shadow-[0px_4px_0px_rgb(0,54,153)] " +
             "active:shadow-[0px_1px_0px_rgb(0,54,153)]"
-      } cursor-pointer text-base font-semibold justify-center 
+      } cursor-pointer text-base justify-center 
         py-[0.55rem] px-[1.5rem] ${
           softTransition ? " transition-all duration-[100ms]" : ""
         }`}

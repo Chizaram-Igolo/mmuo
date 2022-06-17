@@ -75,8 +75,8 @@ export default function Nav() {
 
   return (
     <Popover
-      className="sticky top-0 bg-white border-b-2 border-gray-100 
-                 z-50 h-[60px]"
+      className="sticky top-0 border-b border-slate-900/10 
+                 z-50 h-[60px] backdrop-blur bg-white/70 supports-backdrop-blur:bg-white/60"
     >
       <div className="mx-auto px-8 md:px-8 lg:px-20 xl:px-24">
         <div
@@ -92,12 +92,14 @@ export default function Nav() {
             className="hidden md:flex items-center justify-end 
                        md:flex-1 lg:w-0"
           >
-            <Popover.Group
-              as="nav"
-              className="hidden md:flex space-x-10 mt-2 mr-8"
-            >
-              <NavMenu />
-            </Popover.Group>
+            <div className="relative">
+              <Popover.Group
+                as="nav"
+                className="relative hidden md:flex mt-2 mr-8"
+              >
+                <NavMenu />
+              </Popover.Group>
+            </div>
             {!user && <NavAuthSection />}
 
             {user && (

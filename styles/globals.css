@@ -26,6 +26,7 @@ body {
   margin: 0;
   font-size: 100%;
   background-color: var(--main-bg-color);
+  font-family: "WorkSans", san-serif;
 }
 
 a {
@@ -99,7 +100,7 @@ a {
   }
 
   h1 {
-    @apply text-6xl;
+    @apply text-5xl;
     @apply leading-tight;
     @apply tracking-tighter;
     font-family: "WorkSans_Bold", sans-serif;
@@ -111,7 +112,6 @@ a {
     @apply text-3xl;
     /* @apply text-stone-800; */
     font-family: "WorkSans_Bold", sans-serif;
-    @apply font-extrabold;
   }
 
   h3 {
@@ -137,11 +137,10 @@ a {
 
   .leading-text {
     @apply pt-5;
-    @apply text-2xl;
-    @apply leading-tight;
+    @apply text-xl;
+    @apply leading-snug;
     @apply text-zinc-600;
-    font-family: "WorkSans_Medium", sans-serif;
-    @apply font-medium;
+    font-family: "WorkSans", sans-serif;
   }
 }
 
