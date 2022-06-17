@@ -6,7 +6,7 @@ import Link from "next/link";
 /**
  * Developer-defined UI components/hooks/constants.
  */
-import ActionButtonA from "@Buttons/ActionbuttonA";
+import ActionButtonA from "@Buttons/ActionButtonA";
 
 interface IResult {
   currentExerciseId: number;

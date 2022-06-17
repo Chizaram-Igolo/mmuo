@@ -108,7 +108,7 @@ a {
   }
 
   h2 {
-    @apply text-4xl;
+    @apply text-3xl;
     /* @apply text-stone-800; */
     font-family: "WorkSans_Bold", sans-serif;
     @apply font-extrabold;

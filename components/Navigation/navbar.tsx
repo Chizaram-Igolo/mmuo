@@ -28,7 +28,7 @@ import { useAuth } from "@contexts/AuthContext";
 import NavTitle from "./NavTitle";
 import NavMenu from "./NavMenu";
 import HamburgerButton from "./HamburgerButton";
-import ActionButtonA from "@Buttons/ActionbuttonA";
+import NavAuthSection from "./NavAuthSection";
 
 const solutions = [
   {
@@ -76,11 +76,11 @@ export default function Nav() {
   return (
     <Popover
       className="sticky top-0 bg-white border-b-2 border-gray-100 
-                 z-50"
+                 z-50 h-[60px]"
     >
       <div className="mx-auto px-8 md:px-8 lg:px-20 xl:px-24">
         <div
-          className="flex justify-between items-center py-2 
+          className="flex justify-between items-center h-full 
                      md:justify-start md:space-x-10"
         >
           <NavTitle />
@@ -88,50 +88,20 @@ export default function Nav() {
           {/* Mobile Hamburger Button */}
           <HamburgerButton />
 
-          <Popover.Group as="nav" className="hidden md:flex space-x-10">
-            <NavMenu />
-          </Popover.Group>
-
           <div
             className="hidden md:flex items-center justify-end 
                        md:flex-1 lg:w-0"
           >
-            {!user && (
-              <>
-                {/* <Link href="/signin">
-                  <a
-                    href="#"
-                    className="whitespace-nowrap text-base font-medium 
-                               px-4 py-2 border border-slate-200 rounded-md 
-                             text-gray-500 hover:text-gray-900"
-                  >
-                    Sign in
-                  </a>
-                </Link> */}
-                {/* <a
-                  className="ml-4 whitespace-nowrap inline-flex 
-                               items-center justify-center px-4 py-2 border 
-                               border-transparent rounded-md shadow-sm 
-                               text-base font-medium text-white 
-                               bg-green-600 hover:bg-green-700"
-                >
-                  Sign up
-                </a> */}
-                <Link href="/auth/signin">
-                  <a>
-                    <ActionButtonA>Sign in</ActionButtonA>
-                  </a>
-                </Link>
-                <Link href="/auth/signup" className="ml-8">
-                  <a>
-                    <ActionButtonA>Sign up</ActionButtonA>
-                  </a>
-                </Link>
-              </>
-            )}
+            <Popover.Group
+              as="nav"
+              className="hidden md:flex space-x-10 mt-2 mr-8"
+            >
+              <NavMenu />
+            </Popover.Group>
+            {!user && <NavAuthSection />}
 
             {user && (
-              <div className="hidden md:block">
+              <div className="hidden md:block py-2">
                 <div className="ml-4 flex items-center md:ml-0">
                   <button
                     type="button"
