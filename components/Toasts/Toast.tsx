@@ -1,5 +1,11 @@
+/**
+ * React imports.
+ */
+import { ReactNode } from "react";
+
 interface IToast {
   heading?: string;
+  children: ReactNode;
 }
 
 const Toast: React.FC<IToast> = ({ heading, children }) => {

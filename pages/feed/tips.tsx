@@ -15,7 +15,10 @@ import ActionButtonB from "@Buttons/ActionButtonB";
 export default function Tips() {
   return (
     <>
-      <section className="py-4 pb-24 px-8 md:px-18 lg:px-20 xl:px-24 z-20 min-h-[28rem] bg-white">
+      <section
+        className="py-4 pb-24 px-8 md:px-18 lg:px-20 xl:px-24 
+                   z-20 min-h-[28rem] bg-white"
+      >
         <div className="py-6 w-[100%] lg:w-[60%]">
           <h2 className="text-[#333333] mb-4">Welcome</h2>
           <p className="mb-4">

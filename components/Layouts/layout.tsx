@@ -3,7 +3,7 @@
  */
 import { useRouter } from "next/router";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 /**
  * Vendor-defined UI components/hooks/utilities/etc.
@@ -30,10 +30,15 @@ import { AuthProvider } from "@contexts/AuthContext";
 import { TopBarProgressConfig } from "@utils/constants";
 import Navbar from "@components/Navigation/Navbar";
 import Footer from "@Footer";
+import RouteGuard from "@components/RouteGuard";
 
 TopBarProgress.config(TopBarProgressConfig);
 
-const Layout: React.FC = ({ children }): JSX.Element => {
+interface ILayout {
+  children: ReactNode;
+}
+
+const Layout: React.FC<ILayout> = ({ children }): JSX.Element => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -58,6 +63,7 @@ const Layout: React.FC = ({ children }): JSX.Element => {
     <AuthProvider>
       <ToastProvider>
         <ConnectivityListener />
+        {/* <RouteGuard> */}
         {loading && <TopBarProgress />}
 
         <Head>
@@ -67,6 +73,7 @@ const Layout: React.FC = ({ children }): JSX.Element => {
         <Navbar />
         {children}
         <Footer />
+        {/* </RouteGuard> */}
       </ToastProvider>
     </AuthProvider>
   );

@@ -1,6 +1,12 @@
+/**
+ * React imports.
+ */
+import { ReactNode } from "react";
+
 interface IActionButton {
   classNames: string;
   onClick?: () => void;
+  children: ReactNode;
 }
 
 const ActionButtonC: React.FC<IActionButton> = ({

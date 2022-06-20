@@ -1,4 +1,13 @@
-const AuthLayout: React.FC = ({ children }) => {
+/**
+ * React imports.
+ */
+import { ReactNode } from "react";
+
+interface IAuthLayout {
+  children: ReactNode;
+}
+
+const AuthLayout: React.FC<IAuthLayout> = ({ children }) => {
   return (
     <section className="p-8 md:px-18 lg:px-20 xl:px-24 z-20 bg-blue-900">
       <div className="flex flex-col md:flex-row mb-8">

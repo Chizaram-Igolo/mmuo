@@ -11,50 +11,37 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [userProfile, setUserProfile] = useState(null);
 
-  // Create new user.
-  function signup(email, password) {
-    return appAuth.createUserWithEmailAndPassword(auth, email, password);
-  }
+  const signup = (email, password) =>
+    appAuth.createUserWithEmailAndPassword(auth, email, password);
 
-  function signin(email, password) {
-    return appAuth.signInWithEmailAndPassword(auth, email, password);
-  }
+  const signin = (email, password) =>
+    appAuth.signInWithEmailAndPassword(auth, email, password);
 
-  function signout() {
-    return appAuth.signOut(auth);
-  }
+  const signout = () => appAuth.signOut(auth).then(() => setLoading(true));
 
-  function resetPassword(email) {
-    return appAuth.sendPasswordResetEmail(auth, email);
-  }
+  const resetPassword = (email) => appAuth.sendPasswordResetEmail(auth, email);
 
-  function updateEmail(email) {
-    return appAuth.updateEmail(user, email);
-  }
+  const updateEmail = (email) => appAuth.updateEmail(user, email);
 
-  function updatePassword(password) {
-    return appAuth.updatePassword(user, password);
-  }
+  const updatePassword = (password) => appAuth.updatePassword(user, password);
 
-  function updateProfile(details) {
-    return appAuth.updateProfile(user, details);
-  }
+  const updateProfile = (details) => appAuth.updateProfile(user, details);
 
-  function reauthenticateUser(email, password) {
+  const reauthenticateUser = (email, password) => {
     const credential = appAuth.EmailAuthProvider.credential(email, password);
     return user.reauthenticateWithCredential(credential);
-  }
+  };
 
-  function deleteAccount() {
-    return appAuth.deleteUser(user);
-  }
+  const deleteAccount = () => appAuth.deleteUser(user);
 
   useEffect(() => {
     // Get the currently signed-in user.
     const unsubscribe = auth.onAuthStateChanged((u) => {
       setUser(u);
+      setLoading(false);
     });
 
     return unsubscribe;
@@ -74,6 +61,7 @@ export const AuthProvider = ({ children }) => {
 
   const value = {
     user,
+    loading,
     userProfile,
     signup,
     signin,

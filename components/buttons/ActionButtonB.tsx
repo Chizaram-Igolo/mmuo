@@ -1,4 +1,9 @@
 /**
+ * React imports.
+ */
+import { ReactNode } from "react";
+
+/**
  * Developer-defined UI components/hooks/constants.
  */
 import ButtonLoader from "@Loaders/ButtonLoader";
@@ -7,6 +12,7 @@ interface IActionButton {
   loading?: boolean;
   classNames?: string;
   softTransition?: boolean;
+  children: ReactNode;
 }
 
 const ActionButtonB: React.FC<IActionButton> = ({

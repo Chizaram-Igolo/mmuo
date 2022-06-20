@@ -7,7 +7,6 @@ import Link from "next/link";
  * Developer-defined UI components/hooks/constants.
  */
 import ActionButtonA from "@Buttons/ActionButtonA";
-import ActionButtonB from "@Buttons/ActionButtonB";
 
 export default function NavAuthSection() {
   return (

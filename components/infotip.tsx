@@ -1,9 +1,11 @@
 import { faLightbulb } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { ReactNode } from "react";
 
 interface IInfoTip {
   severity: string;
   className: string;
+  children: ReactNode;
 }
 
 const InfoTip: React.FC<IInfoTip> = ({ children, severity, className }) => {

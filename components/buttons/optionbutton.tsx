@@ -1,5 +1,11 @@
+/**
+ * React imports.
+ */
+import { ReactNode } from "react";
+
 interface IOptionButton {
   classNames?: string;
+  children: ReactNode;
 }
 
 const OptionButton: React.FC<IOptionButton> = ({ children, classNames }) => {
