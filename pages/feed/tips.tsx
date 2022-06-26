@@ -2,7 +2,8 @@
  * React imports.
  */
 import Link from "next/link";
-import { ReactElement } from "react";
+import type { ReactElement } from "react";
+import { useState, useEffect } from "react";
 
 /**
  * Developer-defined UI components/hooks/constants.
@@ -12,7 +13,28 @@ import InfoTip from "@components/infotip";
 import GoBackButton from "@Buttons/GoBackButton";
 import ActionButtonB from "@Buttons/ActionButtonB";
 
+import { collection, getDocs, query, where, limit } from "firebase/firestore";
+import { projectFirestore } from "@firebase/config";
+
 export default function Tips() {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    async function fetchLessonIntro() {
+      const q = query(
+        collection(projectFirestore, `lessons`),
+        where("language", "==", "Igbo")
+      );
+
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, " is ", doc.data());
+      });
+    }
+
+    fetchLessonIntro();
+  }, []);
+
   return (
     <>
       <section

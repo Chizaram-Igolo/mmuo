@@ -2,7 +2,8 @@
  * React imports.
  */
 import Link from "next/link";
-import { ReactElement } from "react";
+import { useState, useEffect } from "react";
+import type { ReactElement } from "react";
 
 /**
  * Vendor-defined UI components/hooks/utilities/etc.
@@ -15,7 +16,28 @@ import { CircleFlag } from "react-circle-flags";
 import Layout from "@Layouts/layout";
 import { languages } from "@helpers/languages";
 
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { projectFirestore } from "@firebase/config";
+
 export default function Feed() {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    async function fetchLessonIntro() {
+      const q = query(
+        collection(projectFirestore, `lessons`),
+        where("language", "==", "Igbo")
+      );
+
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, " is ", doc.data());
+      });
+    }
+
+    fetchLessonIntro();
+  }, []);
+
   return (
     <>
       <section

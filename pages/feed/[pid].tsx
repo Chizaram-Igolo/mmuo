@@ -1,3 +1,8 @@
+/**
+ * React imports.
+ */
+import { useState, useEffect } from "react";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
@@ -64,6 +69,12 @@ import React, { ReactElement } from "react";
 import { IModule } from "@helpers/modules";
 import Layout from "@components/Layouts/layout";
 // import useGetModuleList from "@hooks/useGetModuleList";
+
+/**
+ * Developer-defined UI components/hooks/constants.
+ */
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { projectFirestore } from "@firebase/config";
 
 const modules2 = [
   {
@@ -346,6 +357,22 @@ const modules2 = [
 
 export default function FeedPage() {
   // const { docs, error, loading, latestDoc } = useGetModuleList("detailed");
+
+  useEffect(() => {
+    async function fetchLessonIntro() {
+      const q = query(
+        collection(projectFirestore, `lessons`),
+        where("language", "==", "Igbo")
+      );
+
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, " is ", doc.data());
+      });
+    }
+
+    fetchLessonIntro();
+  }, []);
 
   const modules = modules2;
   // console.log(docs);

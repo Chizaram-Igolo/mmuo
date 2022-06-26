@@ -88,6 +88,8 @@ export function authErrorMessage(
         "failed login attempts. You can immediately restore it by resetting " +
         "your password or you can try again later."
     );
+  } else if (err.code === "auth/user-not-found") {
+    setError("No user with this account exists.");
   } else if (err.message.indexOf("offline") !== -1) {
     /**
      * Generic
