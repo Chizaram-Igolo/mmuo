@@ -50,7 +50,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Nav() {
+export default function Navbar() {
   const [error, setError] = useState("");
   const { user, signout } = useAuth();
 
