@@ -50,7 +50,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-const Navbar: React.FC = () => {
+export default function Nav() {
   const [error, setError] = useState("");
   const { user, signout } = useAuth();
 
@@ -345,6 +345,4 @@ const Navbar: React.FC = () => {
       </Transition>
     </Popover>
   );
-};
-
-export default Navbar;
+}
