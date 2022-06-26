@@ -28,7 +28,7 @@ import { AuthProvider } from "@contexts/AuthContext";
  * Developer-defined UI components/hooks/constants.
  */
 import { TopBarProgressConfig } from "@utils/constants";
-import Navbar from "../../components/Navigation/Navbar";
+import Navbar from "@Navigation/Navbar";
 import Footer from "@Footer";
 import RouteGuard from "@components/RouteGuard";
 
