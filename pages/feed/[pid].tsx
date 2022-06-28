@@ -51,24 +51,17 @@ import {
   faBirthdayCake,
   faAtom,
   faFlagUsa,
-  fa1,
-  fa2,
-  fa3,
   faRobot,
   faBreadSlice,
   faShop,
-  faCubes,
   faQuoteLeft,
   faHeart,
-  faCrown,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Dropdown from "@Dropdowns/Dropdown";
 import React, { ReactElement } from "react";
 
-import { IModule } from "@helpers/modules";
 import Layout from "@components/Layouts/layout";
-// import useGetModuleList from "@hooks/useGetModuleList";
 
 /**
  * Developer-defined UI components/hooks/constants.
@@ -77,57 +70,6 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { projectFirestore } from "@firebase/config";
 
 const modules2 = [
-  {
-    name: "Alphabet",
-    bg: "bg-green-600",
-    icon: faSortAlphaDown,
-  },
-  [
-    {
-      name: "Basics 1",
-      bg: "bg-orange-500",
-      icon: faCubes as IconDefinition,
-    },
-    {
-      name: "Basics 2",
-      bg: "bg-orange-500",
-      icon: faCubes,
-    },
-  ],
-  {
-    name: "Greetings 1",
-    bg: "bg-rose-500",
-    icon: faComments,
-  },
-  [
-    {
-      name: "Phrases 1",
-      bg: "bg-fuchsia-700",
-      icon: faQuoteLeft,
-    },
-    {
-      name: "Phrases 2",
-      bg: "bg-fuchsia-700",
-      icon: faQuoteLeft,
-    },
-  ],
-  [
-    {
-      name: "Numbers 1",
-      bg: "bg-fuchsia-700",
-      icon: fa1,
-    },
-    {
-      name: "Numbers 2",
-      bg: "bg-green-700",
-      icon: fa2,
-    },
-    {
-      name: "Numbers 3",
-      bg: "bg-green-700",
-      icon: fa3,
-    },
-  ],
   [
     {
       name: "Verb Roots",
@@ -153,20 +95,6 @@ const modules2 = [
       name: "Future",
       bg: "bg-rose-600",
       icon: faHourglassStart,
-    },
-  ],
-  [
-    {
-      name: "Greetings 2",
-      countryCode: "ng",
-      bg: "bg-lime-600",
-      icon: faComments,
-    },
-    {
-      name: "Greetings 3",
-      countryCode: "ng",
-      bg: "bg-green-700",
-      icon: faComments,
     },
   ],
   {
@@ -355,10 +283,26 @@ const modules2 = [
   ],
 ];
 
+const iconObjTemp = {
+  cubes: "cubes",
+};
+
+interface ILesson {
+  id: string;
+  topic: string;
+  language: string;
+  intro: string;
+  iconName: string;
+  bgColor: string;
+  group: string;
+}
+
 export default function FeedPage() {
-  // const { docs, error, loading, latestDoc } = useGetModuleList("detailed");
+  const [docs, setDocs] = useState<ILesson[][]>([]);
 
   useEffect(() => {
+    const fetchedDocs: ILesson[] = [];
+
     async function fetchLessonIntro() {
       const q = query(
         collection(projectFirestore, `lessons`),
@@ -367,8 +311,33 @@ export default function FeedPage() {
 
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
-        console.log(doc.id, " is ", doc.data());
+        const { topic, language, intro, iconName, bgColor, group } = doc.data();
+
+        fetchedDocs.push({
+          id: doc.id,
+          topic,
+          language,
+          intro,
+          iconName,
+          bgColor,
+          group,
+        });
       });
+      console.log("dd", fetchedDocs);
+
+      let grouped: ILesson[][] = Object.values(
+        fetchedDocs.reduce((r, o) => {
+          // @ts-ignore
+          (r[o.group] = r[o.group] || []).push(o);
+          return r;
+        }, {})
+      );
+
+      console.log("grouped", grouped);
+
+      grouped.forEach((arr) => arr.reverse());
+
+      setDocs(grouped.reverse());
     }
 
     fetchLessonIntro();
@@ -376,7 +345,7 @@ export default function FeedPage() {
 
   const modules = modules2;
   // console.log(docs);
-  const firstModule = modules[0] as IModule;
+  // const firstModule = modules[0] as IModule;
 
   const chainLineSVG = (
     <div className="max-w-[4rem] ml-10">
@@ -388,15 +357,27 @@ export default function FeedPage() {
 
   return (
     <>
-      <section className="py-4 pb-24 px-8 md:px-18 lg:px-20 xl:px-24 z-20 min-h-[28rem] bg-white">
+      <section
+        className="py-4 pb-24 px-8 md:px-18 lg:px-20 xl:px-24 z-20 
+                   min-h-[28rem] bg-white"
+      >
         <div className="py-6">
           {modules && modules.length > 0 && (
             <>
               <Dropdown classNames="md:w-fit" isAlpha={true} isGroup={false}>
-                <div className="flex flex-row md:w-[18rem] gap-x-6 mb-0 bg-[#f3fdd2] pt-6 pb-4 pl-4 md:rounded-r-full">
+                <div
+                  className="flex flex-row md:w-[18rem] gap-x-6 mb-0 
+                             bg-[#f3fdd2] pt-6 pb-4 pl-4 md:rounded-r-full"
+                >
                   <div>
                     <div
-                      className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-green-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 min-w-[3.8rem] max-w-[3.8rem] z-20 h-[3.8rem] mb-[0.85rem] first:mt-0 ${firstModule.bg} rounded-full mx-auto md:ml-3`}
+                      className={`block cursor-pointer text-center py-0 px-0 
+                                  ring-[9px] ring-green-200 ring-offset-2 
+                                  active:outline-none active:ring-[12px] 
+                                  active:ring-offset-4 min-w-[3.8rem] 
+                                  max-w-[3.8rem] z-20 h-[3.8rem] mb-[0.85rem] 
+                                  first:mt-0 rounded-full 
+                                  mx-auto md:ml-3`}
                     >
                       <span className="text-[1.8rem] leading-[3.8rem]">
                         <FontAwesomeIcon
@@ -408,7 +389,7 @@ export default function FeedPage() {
                   </div>
                   <div className="">
                     <h3 className="w-max module-h3 text-center last:mb-0">
-                      {firstModule.name}
+                      {/* {firstModule.name} */}
                     </h3>
                     <div className="flex mt-1 gap-x-1">
                       {Array(5)
@@ -420,7 +401,6 @@ export default function FeedPage() {
                             } text-[1.2rem]`}
                             key={idx}
                           >
-                            {/* <FontAwesomeIcon icon={faCrown} className="" />  */}
                             <FontAwesomeIcon icon="check" />
                           </span>
                         ))}
@@ -429,11 +409,65 @@ export default function FeedPage() {
                 </div>
               </Dropdown>
               <div className="md:block">
-                {modules.indexOf(firstModule) < modules.length - 1 &&
-                  chainLineSVG}
+                {/* {modules.indexOf(firstModule) < modules.length - 1 &&
+                  chainLineSVG} */}
               </div>
 
-              {modules.slice(1).map((module) => {
+              {docs.map((group) => (
+                <React.Fragment key={group[0].group + docs.indexOf(group)}>
+                  <div className="flex flex-row gap-x-12 gap-y-12 md:max-w-[70%] flex-wrap bg-gray-100 pt-6 pb-4 pl-4 md:rounded-r-full">
+                    {group.map((lesson) => (
+                      <Dropdown
+                        classNames=""
+                        isAlpha={false}
+                        isGroup={true}
+                        key={lesson.id}
+                      >
+                        <div className="flex w-[18rem] gap-x-6 mb-0">
+                          <div>
+                            <div
+                              className={`block cursor-pointer text-center py-0 px-0 ring-[9px] ring-purple-200 ring-offset-2 active:outline-none active:ring-[12px] active:ring-offset-4 min-w-[3.8rem] max-w-[3.8rem] z-20 h-[3.8rem] mb-[0.85rem] first:mt-0 ${lesson.bgColor} rounded-full mx-auto md:ml-3`}
+                            >
+                              <span className="text-[1.8rem] leading-[3.8rem]">
+                                <FontAwesomeIcon
+                                  icon={
+                                    lesson.iconName as keyof typeof iconObjTemp
+                                  }
+                                  color="#ffffff"
+                                />
+                              </span>
+                            </div>
+                          </div>
+                          <div className="">
+                            <h3 className="w-max module-h3 text-center last:mb-0">
+                              {lesson.topic}
+                            </h3>
+                            <div className="flex mt-1 gap-x-1">
+                              {Array(5)
+                                .fill("")
+                                .map((idx) => (
+                                  <span
+                                    className="inline-block text-gray-300 text-[1.2rem]"
+                                    key={idx}
+                                  >
+                                    <FontAwesomeIcon icon="check" />
+                                  </span>
+                                ))}
+                            </div>
+                          </div>
+                        </div>
+                      </Dropdown>
+                    ))}
+                  </div>
+
+                  <div className="md:block">
+                    {docs.indexOf(group) < docs.length && chainLineSVG}
+                  </div>
+                  <div className="mb-0 md:hidden"></div>
+                </React.Fragment>
+              ))}
+
+              {modules.map((module) => {
                 if (!Array.isArray(module)) {
                   return (
                     <React.Fragment key={module.name}>
@@ -524,10 +558,6 @@ export default function FeedPage() {
                                         className="inline-block text-gray-300 text-[1.2rem]"
                                         key={idx}
                                       >
-                                        {/* <FontAwesomeIcon
-                                          icon={faCrown}
-                                          className=""
-                                        />  */}
                                         <FontAwesomeIcon icon="check" />
                                       </span>
                                     ))}

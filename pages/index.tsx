@@ -30,8 +30,7 @@ export default function Home() {
           >
             <div className="mb-24">
               <h1>
-                Language learning made easy and fun. [Preview]
-                [process.env.NODE_ENV] <br />
+                Language learning made easy and fun. <br />
               </h1>
               <p className="leading-text">
                 Learn any language you want at your own pace in a fun and
