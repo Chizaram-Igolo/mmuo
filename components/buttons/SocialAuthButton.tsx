@@ -6,8 +6,8 @@ import Image from "next/image";
 /**
  * Image assets.
  */
-import googleLogo from "@public/google-logo.svg";
-import githubLogo from "@public/github-logo.svg";
+import googleLogo from "@public/images/google-logo.svg";
+import githubLogo from "@public/images/github-logo.svg";
 
 interface ISocialAuthButton {
   type: string;
@@ -28,14 +28,24 @@ const SocialAuthButton: React.FC<ISocialAuthButton> = ({ type, label }) => {
     >
       {type.toLowerCase() === "google" && (
         <>
-          <Image src={googleLogo} alt="Google Logo" />
+          <Image
+            src={"/" + googleLogo.src}
+            alt="Google Logo"
+            width={24}
+            height={24}
+          />
           &nbsp; {label}
         </>
       )}
 
       {type.toLowerCase() === "facebook" && (
         <>
-          <Image src={githubLogo} alt="Facebook Logo" />
+          <Image
+            src={"/" + githubLogo.src}
+            alt="Facebook Logo"
+            width={24}
+            height={24}
+          />
           &nbsp; {label}
         </>
       )}

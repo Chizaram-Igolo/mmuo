@@ -17,6 +17,8 @@ import Layout from "@components/Layouts/layout";
 import SignInForm from "@Registration/SigninForm";
 import AnimatedBackground from "@components/AnimatedBackground";
 
+// import googleLogo from "../public/images/country_flags/ng.svg";
+
 export default function Home() {
   return (
     <>
@@ -37,7 +39,7 @@ export default function Home() {
                 interactive way.
               </p>
             </div>
-
+            {/* <Image src={googleLogo} alt="Google Logo" width={36} height={36} /> */}
             <div>
               <h2>
                 <span className="border-b-[0.30rem] border-dotted border-[#282828] tracking-wider cursor-pointer">

@@ -4,6 +4,7 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { ReactNode, useEffect, useState } from "react";
+import { QueryClient, QueryClientProvider, useQuery } from "react-query";
 
 /**
  * Vendor-defined UI components/hooks/utilities/etc.
@@ -38,6 +39,8 @@ interface ILayout {
   children: ReactNode;
 }
 
+const queryClient = new QueryClient();
+
 const Layout: React.FC<ILayout> = ({ children }): JSX.Element => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -62,18 +65,18 @@ const Layout: React.FC<ILayout> = ({ children }): JSX.Element => {
   return (
     <AuthProvider>
       <ToastProvider>
-        <ConnectivityListener />
-        {/* <RouteGuard> */}
-        {loading && <TopBarProgress />}
-
-        <Head>
-          <title>Mmūō - Learn Languages the fun and easy way</title>
-        </Head>
-
-        <Navbar />
-        {children}
-        <Footer />
-        {/* </RouteGuard> */}
+        <QueryClientProvider client={queryClient}>
+          <ConnectivityListener />
+          {/* <RouteGuard> */}
+          {loading && <TopBarProgress />}
+          <Head>
+            <title>Mmūō - Learn Languages the fun and easy way</title>
+          </Head>
+          <Navbar />
+          {children}
+          <Footer />
+          {/* </RouteGuard> */}{" "}
+        </QueryClientProvider>
       </ToastProvider>
     </AuthProvider>
   );

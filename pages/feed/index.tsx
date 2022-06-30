@@ -4,6 +4,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import type { ReactElement } from "react";
+import Image from "next/image";
 
 /**
  * Vendor-defined UI components/hooks/utilities/etc.
@@ -19,6 +20,11 @@ import { languages } from "@helpers/languages";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { projectFirestore } from "@firebase/config";
 
+/**
+ * Image assets.
+ */
+import ng from "@public/images/country_flags/ng.svg";
+
 export default function Feed() {
   const [loading, setLoading] = useState(false);
 
@@ -31,7 +37,7 @@ export default function Feed() {
 
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
-        console.log(doc.id, " is ", doc.data());
+        // console.log(doc.id, " is ", doc.data());
       });
     }
 
@@ -60,15 +66,22 @@ export default function Feed() {
                         className="flex py-0 first:pt-0 last:pb-0 mx-0 
                                      w-full"
                       >
-                        <CircleFlag
+                        {/* <CircleFlag
                           countryCode={language.countryCode}
                           height={36}
                           width={36}
+                        /> */}
+
+                        <Image
+                          src={"/" + ng.src}
+                          alt="Google Logo"
+                          width={48}
+                          height={48}
                         />
 
                         <div className="ml-5 overflow-hidden">
                           <p
-                            className="text-2xl bold leading-10 mt-0 
+                            className="text-2xl bold leading-10 mt-1 
                                       text-slate-800"
                           >
                             {language.name}

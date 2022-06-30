@@ -53,7 +53,7 @@ const projectFunctions = getFunctions(app);
 const timestamp = serverTimestamp;
 const dbTimestamp = dbServerTimestamp;
 
-if (process.browser) {
+if (typeof window !== "undefined") {
   enableIndexedDbPersistence(projectFirestore).catch((err) => {
     if (err.code == "failed-precondition") {
       // Multiple tabs open, persistence can only be enabled
