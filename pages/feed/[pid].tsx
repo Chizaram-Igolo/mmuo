@@ -36,6 +36,7 @@ import Layout from "@components/Layouts/layout";
  */
 import { collection, getDocs, query, where, orderBy } from "firebase/firestore";
 import { projectFirestore } from "@firebase/config";
+import LoadingScreen from "@Loaders/LoadingScreen";
 
 const iconObjTemp = {
   cubes: "cubes",
@@ -63,8 +64,8 @@ export default function FeedPage() {
 
     const q = query(
       collection(projectFirestore, `lessons`),
-      where("language", "==", "Igbo"),
-      orderBy("timestamp")
+      where("language", "==", "Igbo")
+      // orderBy("timestamp", "asc")
     );
 
     const querySnapshot = await getDocs(q);
@@ -108,16 +109,21 @@ export default function FeedPage() {
   return (
     <section
       className="py-4 pb-24 px-8 md:px-18 lg:px-20 xl:px-24 z-20 
-                      min-h-[28rem] bg-white"
+                      min-h-[28rem]"
+      style={{ height: data ? "" : `calc(100vh - (90px + 60px))` }}
     >
-      <div className="py-6">
+      <div className="py-6 h-full">
+        {!data && <LoadingScreen />}
         {data &&
-          data.map((group) => (
+          data.map((group, groupIdx) => (
             <React.Fragment key={group[0].group + group[0].id}>
               <div
-                className="flex flex-row gap-x-12 gap-y-12 
-                                  md:max-w-[70%] flex-wrap bg-gray-100 
-                                  pt-6 pb-4 pl-4 md:rounded-r-full"
+                className={`flex flex-row gap-x-12 gap-y-12 
+                            md:max-w-[70%] flex-wrap ${
+                              groupIdx === 0 ? "bg-[#f3fdd2]" : "bg-gray-100"
+                            } pt-6 pb-4 pl-4 md:rounded-r-full ${
+                  group.length === 1 ? "md:w-[18rem]" : ""
+                }`}
               >
                 {group.map((lesson) => (
                   <Dropdown
@@ -153,11 +159,14 @@ export default function FeedPage() {
                         <div className="flex mt-1 gap-x-1">
                           {Array(5)
                             .fill("")
-                            .map((item, idx) => (
+                            .map((item, spanIdx) => (
                               <span
-                                className="inline-block text-gray-300 
-                                                  text-[1.2rem]"
-                                key={idx}
+                                className={`inline-block ${
+                                  groupIdx === 0 && spanIdx < 3
+                                    ? "text-yellow-400"
+                                    : "text-gray-300"
+                                } text-[1.2rem]`}
+                                key={spanIdx}
                               >
                                 <FontAwesomeIcon icon="check" />
                               </span>

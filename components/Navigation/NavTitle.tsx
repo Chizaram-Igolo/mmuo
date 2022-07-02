@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function NavTitle() {
   return (
-    <div className="flex justify-start lg:w-0 lg:flex-1">
+    <div className="flex justify-start items-center h-full lg:w-0 lg:flex-1">
       <Link href="/">
         <a>
           <span className="sr-only">Mmuo</span>

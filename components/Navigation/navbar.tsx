@@ -30,22 +30,6 @@ import NavMenu from "./NavMenu";
 import HamburgerButton from "./HamburgerButton";
 import NavAuthSection from "./NavAuthSection";
 
-const solutions = [
-  {
-    name: "Analytics",
-    description:
-      "Get a better understanding of where your traffic is coming from.",
-    href: "#",
-    icon: ChartBarIcon,
-  },
-  {
-    name: "Engagement",
-    description: "Speak directly to your customers in a more meaningful way.",
-    href: "#",
-    icon: CursorClickIcon,
-  },
-];
-
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
@@ -78,7 +62,7 @@ export default function Nav() {
       className="sticky top-0 border-b border-slate-900/10 
                  z-50 h-[60px] backdrop-blur bg-white/70 supports-backdrop-blur:bg-white/60"
     >
-      <div className="mx-auto px-8 md:px-8 lg:px-20 xl:px-24">
+      <div className="h-full mx-auto px-8 md:px-8 lg:px-20 xl:px-24">
         <div
           className="flex justify-between items-center h-full 
                      md:justify-start md:space-x-10"
@@ -148,7 +132,7 @@ export default function Nav() {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Items className="origin-top-right absolute right-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none overflow-hidden">
                         {userNavigation.map((item) => (
                           <Menu.Item key={item.name}>
                             {({ active }) => (
@@ -156,7 +140,7 @@ export default function Nav() {
                                 <a
                                   className={classNames(
                                     active ? "bg-gray-100" : "",
-                                    "block px-4 py-2 text-base text-gray-700"
+                                    "block px-6 py-3 text-base text-gray-700 hover:bg-gray-50"
                                   )}
                                 >
                                   {item.name}
@@ -168,7 +152,7 @@ export default function Nav() {
                         <Menu.Item>
                           <span
                             className={classNames(
-                              "block px-4 py-2 text-base text-gray-700 cursor-pointer"
+                              "block px-6 py-3 text-base text-gray-700 cursor-pointer bg-gray-50 hover:bg-gray-100"
                             )}
                             onClick={handleSignout}
                           >
@@ -215,46 +199,12 @@ export default function Nav() {
                   </Popover.Button>
                 </div>
               </div>
-              <div className="mt-6">
-                <nav className="grid gap-y-8">
-                  {solutions.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
-                    >
-                      <item.icon
-                        className="flex-shrink-0 h-6 w-6 text-green-600"
-                        aria-hidden="true"
-                      />
-                      <span className="ml-3 text-base font-medium text-gray-900">
-                        {item.name}
-                      </span>
-                    </a>
-                  ))}
-                </nav>
-              </div>
             </div>
             <div className="py-6 px-5 space-y-6">
-              <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                <a
-                  href="#"
-                  className="text-base font-medium text-gray-900 hover:text-gray-700"
-                >
-                  Pricing
-                </a>
-
-                <a
-                  href="#"
-                  className="text-base font-medium text-gray-900 hover:text-gray-700"
-                >
-                  Docs
-                </a>
-              </div>
               <div>
                 {!user && (
                   <>
-                    <Link href="/signup">
+                    <Link href="/auth/signup">
                       <a
                         href="#"
                         className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-600 hover:bg-green-700"
@@ -263,9 +213,9 @@ export default function Nav() {
                       </a>
                     </Link>
 
-                    <Link href="/signin" passHref>
+                    <Link href="/auth/signin" passHref>
                       <p className="mt-6 text-center text-base font-medium text-gray-500">
-                        Existing customer?{" "}
+                        Already have an account?{" "}
                         <a
                           href="#"
                           className="text-indigo-600 hover:text-indigo-500"
@@ -279,8 +229,8 @@ export default function Nav() {
 
                 {user && (
                   <>
-                    <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3"></div>
-                    <div className="pt-4 pb-3 border-t-[2px] border-gray-400">
+                    {/* <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3"></div> */}
+                    <div className="pt-0 pb-3 border-gray-400">
                       <div className="flex items-center px-5">
                         <div className="flex-shrink-0">
                           {user.photoURL && (
