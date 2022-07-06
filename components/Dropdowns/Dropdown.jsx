@@ -31,6 +31,7 @@ export default function Dropdown({
   classNames,
   isAlpha,
   isGroup,
+  langCode,
   docId,
 }) {
   const router = useRouter();
@@ -43,11 +44,12 @@ export default function Dropdown({
   };
 
   const navigateToIntro = () => {
-    router.replace({ pathname: "/feed/tips", query: { docId } });
+    router.push({ pathname: `/feed/${langCode}/tips`, query: { docId } });
   };
 
   const navigateToQuest = () => {
-    router.replace({ pathname: "/feed/quest", query: { docId } });
+    if (isAlpha) router.push({ pathname: `/feed/${langCode}/alpha` });
+    else router.push({ pathname: `/feed/${langCode}/quest`, query: { docId } });
   };
 
   let classNamesStr = classNames ? classNames : "";

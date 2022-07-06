@@ -16,7 +16,7 @@ const ActionButtonA: React.FC<IActionButtonA> = ({
 }) => {
   return (
     <div
-      className={`box-border relative inline-block w-full 
+      className={`box-border relative inline-block w-full text-center 
                   ${size === "lg" ? "h-16" : size === "md" ? "h-14" : "h-12"} 
                   rounded-md text-base leading-[30px] 
                   active:h-[50px]"`}

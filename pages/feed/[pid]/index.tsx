@@ -1,6 +1,7 @@
 /**
  * React imports.
  */
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useQuery } from "react-query";
 
@@ -50,9 +51,12 @@ interface ILesson {
   iconName: string;
   bgColor: string;
   group: string;
+  isAlpha?: boolean;
 }
 
 export default function FeedPage() {
+  const router = useRouter();
+
   const [docs, setDocs] = useState<ILesson[][]>([]);
 
   const { isLoading, error, data } = useQuery("lessonDocs", () => {
@@ -70,7 +74,8 @@ export default function FeedPage() {
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      const { topic, language, intro, iconName, bgColor, group } = doc.data();
+      const { topic, language, intro, iconName, bgColor, group, isAlpha } =
+        doc.data();
 
       fetchedDocs.push({
         id: doc.id,
@@ -80,6 +85,7 @@ export default function FeedPage() {
         iconName,
         bgColor,
         group,
+        isAlpha,
       });
     });
 
@@ -107,7 +113,7 @@ export default function FeedPage() {
   return (
     <section
       className="py-4 pb-24 px-8 md:px-18 lg:px-20 xl:px-24 z-20 
-                      min-h-[28rem]"
+                       min-h-[28rem]"
       style={{ height: data ? "" : `calc(100vh - (90px + 60px))` }}
     >
       <div className="py-6 h-full">
@@ -117,34 +123,35 @@ export default function FeedPage() {
             <React.Fragment key={group[0].group + group[0].id}>
               <div
                 className={`flex flex-row gap-x-12 gap-y-12 
-                            md:max-w-[70%] flex-wrap ${
-                              groupIdx === 0 ? "bg-[#f3fdd2]" : "bg-gray-100"
-                            } pt-6 pb-4 pl-4 md:rounded-r-full ${
+                             md:max-w-[70%] flex-wrap ${
+                               groupIdx === 0 ? "bg-[#f3fdd2]" : "bg-gray-100"
+                             } pt-6 pb-4 pl-4 md:rounded-r-full ${
                   group.length === 1 ? "md:w-[18rem]" : ""
                 }`}
               >
                 {group.map((lesson) => (
                   <Dropdown
                     classNames=""
-                    isAlpha={false}
+                    isAlpha={lesson.isAlpha}
                     isGroup={true}
                     key={lesson.id}
+                    langCode={router.query.pid}
                     docId={lesson.id}
                   >
                     <div className="flex w-[18rem] gap-x-6 mb-0">
                       <div>
                         <div
                           className={`block cursor-pointer text-center 
-                                             py-0 px-0 ring-[9px] ${
-                                               groupIdx === 0
-                                                 ? "ring-green-200"
-                                                 : "ring-purple-200"
-                                             } 
-                                             ring-offset-2 active:outline-none 
-                                             active:ring-[12px] active:ring-offset-4 
-                                             min-w-[3.8rem] max-w-[3.8rem] z-20 
-                                             h-[3.8rem] mb-[0.85rem] first:mt-0 
-                                             rounded-full mx-auto md:ml-3`}
+                                              py-0 px-0 ring-[9px] ${
+                                                groupIdx === 0
+                                                  ? "ring-green-200"
+                                                  : "ring-purple-200"
+                                              } 
+                                              ring-offset-2 active:outline-none 
+                                              active:ring-[12px] active:ring-offset-4 
+                                              min-w-[3.8rem] max-w-[3.8rem] z-20 
+                                              h-[3.8rem] mb-[0.85rem] first:mt-0 
+                                              rounded-full mx-auto md:ml-3`}
                           style={{ backgroundColor: lesson.bgColor }}
                         >
                           <span className="text-[1.8rem] leading-[3.8rem]">

@@ -30,7 +30,10 @@ export default function Exercise() {
 
   return (
     <>
-      <section className="h-[80vh] md:h-[90vh] py-4 pb-24 px-8 md:px-18 lg:px-20 xl:px-24 z-20 min-h-[28rem] bg-white">
+      <section
+        className="h-[80vh] md:h-[90vh] py-4 pb-24 px-8 md:px-18 lg:px-20 
+                   xl:px-24 z-20 min-h-[28rem] bg-white"
+      >
         <div className="py-6 w-[100%] lg:w-[60%]">
           <h3 className="module-h3 text-[#333333] mb-5 text-2xl font-bolder">
             Select the correct sound.
