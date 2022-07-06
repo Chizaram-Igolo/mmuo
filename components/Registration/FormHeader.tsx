@@ -11,9 +11,9 @@ interface IFormHeader {
 const FormHeader: React.FC<IFormHeader> = ({ text, error }) => {
   return (
     <>
-      <p className="font-WorkSans_SemiBold text-[#535772] text-base tracking-[-0.01875rem] leading-6 m-0 text-center">
+      {/* <p className="font-WorkSans_SemiBold text-[#535772] text-base tracking-[-0.01875rem] leading-6 m-0 text-center">
         {text}
-      </p>
+      </p> */}
 
       {error && (
         <AlertBox

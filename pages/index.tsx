@@ -1,7 +1,6 @@
 /**
  * React imports.
  */
-import Image from "next/image";
 import { ReactElement } from "react";
 
 /**
@@ -10,6 +9,7 @@ import { ReactElement } from "react";
 import Layout from "@components/Layouts/layout";
 import SignInForm from "@Registration/SigninForm";
 import AnimatedBackground from "@components/AnimatedBackground";
+import Script from "next/script";
 
 export default function Home() {
   return (
@@ -22,7 +22,7 @@ export default function Home() {
             className="md:flex-1 lg:flex-[1.4] xl:flex-[1.6] mt-8 mb-8 
                        md:mr-12 lg:mr-16 z-20"
           >
-            <div className="mb-24">
+            <div className="mb-2">
               <h1>
                 Language learning made easy and fun. <br />
               </h1>
@@ -34,9 +34,8 @@ export default function Home() {
           </div>
           <div className="flex-1 z-20">
             <div
-              className="relative bg-white rounded-lg text-[#080b2d] 
-                         py-[3.5rem] px-12 
-                         shadow-[0_5px_5px_-2px_rgba(0,8,36,0.2)]"
+              className="relative rounded-lg text-[#080b2d] 
+                         py-5 px-12 "
             >
               <SignInForm />
             </div>

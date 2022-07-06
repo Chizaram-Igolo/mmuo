@@ -1,8 +1,8 @@
 /**
  * React imports.
  */
-import { useState, useEffect } from "react";
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import { useState } from "react";
+import { useQuery } from "react-query";
 
 import * as Icons from "@fortawesome/free-solid-svg-icons";
 import {
@@ -34,7 +34,7 @@ import Layout from "@components/Layouts/layout";
 /**
  * Developer-defined UI components/hooks/constants.
  */
-import { collection, getDocs, query, where, orderBy } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { projectFirestore } from "@firebase/config";
 import LoadingScreen from "@Loaders/LoadingScreen";
 
@@ -96,8 +96,6 @@ export default function FeedPage() {
     return grouped.reverse();
   }
 
-  useEffect(() => {}, []);
-
   const chainLineSVG = (
     <div className="max-w-[4rem] ml-10">
       <svg height="44" width="500" className="block w-[6px] mt-2 mb-0">
@@ -131,12 +129,17 @@ export default function FeedPage() {
                     isAlpha={false}
                     isGroup={true}
                     key={lesson.id}
+                    docId={lesson.id}
                   >
                     <div className="flex w-[18rem] gap-x-6 mb-0">
                       <div>
                         <div
                           className={`block cursor-pointer text-center 
-                                             py-0 px-0 ring-[9px] ring-purple-200 
+                                             py-0 px-0 ring-[9px] ${
+                                               groupIdx === 0
+                                                 ? "ring-green-200"
+                                                 : "ring-purple-200"
+                                             } 
                                              ring-offset-2 active:outline-none 
                                              active:ring-[12px] active:ring-offset-4 
                                              min-w-[3.8rem] max-w-[3.8rem] z-20 

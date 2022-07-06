@@ -117,7 +117,9 @@ export default function SignUpForm() {
         </div>
       </div>
 
-      <AuthButton loading={loading}>Sign up with email</AuthButton>
+      <AuthButton loading={loading}>
+        <span className="font-WorkSans_Bold">Sign up</span>
+      </AuthButton>
 
       <FormFooter
         authRoute="/auth/signin"

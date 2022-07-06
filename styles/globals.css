@@ -10,6 +10,7 @@
 @import "tailwindcss/utilities";
 
 @import "animated-background.css";
+@import "loading-screen-1.css";
 
 :root {
   --main-bg-color: #f9fafe;

@@ -32,6 +32,7 @@ import { TopBarProgressConfig } from "@utils/constants";
 import Navbar from "@Navigation/Navbar";
 import Footer from "@Footer";
 import RouteGuard from "@components/RouteGuard";
+import Script from "next/script";
 
 TopBarProgress.config(TopBarProgressConfig);
 
@@ -71,6 +72,7 @@ const Layout: React.FC<ILayout> = ({ children }): JSX.Element => {
           {loading && <TopBarProgress />}
           <Head>
             <title>Mmūō - Learn Languages the fun and easy way</title>
+            <Script src="/a.js" strategy="lazyOnload" />
           </Head>
           <Navbar />
           {children}

@@ -59,8 +59,12 @@ export default function Nav() {
 
   return (
     <Popover
-      className="sticky top-0 border-b border-slate-900/10 
-                 z-50 h-[60px] backdrop-blur bg-white/70 supports-backdrop-blur:bg-white/60"
+      className={`sticky top-0 ${
+        router.pathname === "/"
+          ? ""
+          : "border-b shadow-[0px_2px_0px_rgba(180,184,183,0.1)]"
+      } border-slate-900/10 z-50 h-[60px] backdrop-blur bg-white/70 
+        supports-backdrop-blur:bg-white/60`}
     >
       <div className="h-full mx-auto px-8 md:px-8 lg:px-20 xl:px-24">
         <div

@@ -2,6 +2,7 @@
  * React imports.
  */
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useRef } from "react";
 
 /**
@@ -25,12 +26,24 @@ import ActionButtonA from "@Buttons/ActionButtonA";
  * Read the blog post here:
  * https://letsbuildui.dev/articles/building-a-dropdown-menu-component-with-react-hooks
  */
-export default function Dropdown({ children, classNames, isAlpha, isGroup }) {
+export default function Dropdown({
+  children,
+  classNames,
+  isAlpha,
+  isGroup,
+  docId,
+}) {
+  const router = useRouter();
+
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
 
   const onClick = () => {
     setIsActive(!isActive);
+  };
+
+  const doNavigate = () => {
+    router.push({ pathname: "/feed/tips", query: { docId } });
   };
 
   let classNamesStr = classNames ? classNames : "";
@@ -54,19 +67,17 @@ export default function Dropdown({ children, classNames, isAlpha, isGroup }) {
           <div className={styles.arrowHead}></div>
           <ul className="text-center">
             <li className="border-b border-b-[#dddddd]">
-              <Link href="/feed/tips">
-                <a className="font-bold">
-                  <span className="heavy-span inline-block border-b-[0.15rem] last:border-b-0 py-[1.9rem] border-dotted border-[#282828] cursor-pointer px-3">
-                    <strong>
-                      Read Tips &nbsp;
-                      <FontAwesomeIcon
-                        icon={faLightbulb}
-                        className="cursor-pointer text-[#222222]"
-                      />
-                    </strong>
-                  </span>
-                </a>
-              </Link>
+              <a className="font-bold" onClick={doNavigate}>
+                <span className="heavy-span inline-block border-b-[0.15rem] last:border-b-0 py-[1.9rem] border-dotted border-[#282828] cursor-pointer px-3">
+                  <strong>
+                    Read Tips &nbsp;
+                    <FontAwesomeIcon
+                      icon={faLightbulb}
+                      className="cursor-pointer text-[#222222]"
+                    />
+                  </strong>
+                </span>
+              </a>
             </li>
             <li>
               <Link href="/feed/alpha">
