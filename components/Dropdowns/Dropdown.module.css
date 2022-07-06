@@ -86,7 +86,7 @@
   width: 20px;
   height: 20px;
   position: absolute;
-  bottom: calc(95% - 6px);
+  bottom: calc(95% - 3px);
   left: 8%;
   /* margin-top: 50px; */
   margin-left: -5px;

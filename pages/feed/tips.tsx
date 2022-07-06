@@ -31,15 +31,14 @@ export default function Tips() {
       );
 
       const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc) => {
-        console.log(doc.id, " is ", doc.data().intro);
-      });
 
-      setIntro(querySnapshot.docs[0].data().intro);
+      if (!querySnapshot.empty) {
+        setIntro(querySnapshot.docs[0].data().intro);
+      }
     }
 
     fetchLessonIntro();
-  }, []);
+  }, [router.query.docId]);
 
   return (
     <>

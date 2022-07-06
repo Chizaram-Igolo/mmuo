@@ -111,7 +111,7 @@ export default function FeedPage() {
       style={{ height: data ? "" : `calc(100vh - (90px + 60px))` }}
     >
       <div className="py-6 h-full">
-        {!data && <LoadingScreen />}
+        {(!data || data.length === 0) && <LoadingScreen />}
         {data &&
           data.map((group, groupIdx) => (
             <React.Fragment key={group[0].group + group[0].id}>

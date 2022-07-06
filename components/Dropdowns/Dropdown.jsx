@@ -42,8 +42,12 @@ export default function Dropdown({
     setIsActive(!isActive);
   };
 
-  const doNavigate = () => {
-    router.push({ pathname: "/feed/tips", query: { docId } });
+  const navigateToIntro = () => {
+    router.replace({ pathname: "/feed/tips", query: { docId } });
+  };
+
+  const navigateToQuest = () => {
+    router.replace({ pathname: "/feed/quest", query: { docId } });
   };
 
   let classNamesStr = classNames ? classNames : "";
@@ -67,7 +71,7 @@ export default function Dropdown({
           <div className={styles.arrowHead}></div>
           <ul className="text-center">
             <li className="border-b border-b-[#dddddd]">
-              <a className="font-bold" onClick={doNavigate}>
+              <a className="font-bold" onClick={navigateToIntro}>
                 <span className="heavy-span inline-block border-b-[0.15rem] last:border-b-0 py-[1.9rem] border-dotted border-[#282828] cursor-pointer px-3">
                   <strong>
                     Read Tips &nbsp;
@@ -80,12 +84,10 @@ export default function Dropdown({
               </a>
             </li>
             <li>
-              <Link href="/feed/alpha">
-                <a>
-                  {/* <ActionButton>{actionText}</ActionButton> */}
-                  <ActionButtonA size="lg">{actionText}</ActionButtonA>
-                </a>
-              </Link>
+              <a className="cursor-pointer" onClick={navigateToQuest}>
+                {/* <ActionButton>{actionText}</ActionButton> */}
+                <ActionButtonA size="lg">{actionText}</ActionButtonA>
+              </a>
             </li>
           </ul>
         </nav>
