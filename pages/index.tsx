@@ -2,6 +2,7 @@
  * React imports.
  */
 import { ReactElement } from "react";
+import Image from "next/image";
 
 /**
  * Developer-defined UI components/hooks/constants.
@@ -9,7 +10,14 @@ import { ReactElement } from "react";
 import Layout from "@components/Layouts/layout";
 import SignInForm from "@Registration/SigninForm";
 import AnimatedBackground from "@components/AnimatedBackground";
-import Script from "next/script";
+
+/**
+ * Image assets.
+ */
+import ear from "@public/images/ear.svg";
+import lips from "@public/images/lips.svg";
+import select from "@public/images/select.svg";
+import text from "@public/images/text.svg";
 
 export default function Home() {
   return (
@@ -26,12 +34,31 @@ export default function Home() {
               <h1>
                 Language learning made easy and fun. <br />
               </h1>
-              <p className="leading-text mt-8">
+              <p className="leading-text mt-6">
                 Learn any language you want at your own pace in a fun and
                 interactive way.
               </p>
+
+              <div className="flex pt-8 space-x-28">
+                <div>
+                  <Image src={ear} width={72} height={72} />
+                </div>
+                <div>
+                  <Image src={lips} width={72} height={72} />
+                </div>
+                <div>
+                  <Image src={select} width={72} height={72} />
+                </div>
+              </div>
+
+              <div className="flex pt-6 space-x-28">
+                <div>
+                  <Image src={text} width={72} height={72} />
+                </div>
+              </div>
             </div>
           </div>
+
           <div className="flex-1 z-20">
             <div
               className="relative rounded-lg text-[#080b2d] 

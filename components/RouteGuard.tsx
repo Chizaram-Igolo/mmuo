@@ -1,6 +1,7 @@
-import { useAuth } from "@contexts/AuthContext";
 import { useRouter } from "next/router";
 import { ReactNode, useEffect } from "react";
+
+import { useAuth } from "@contexts/AuthContext";
 
 interface IRouteGuard {
   children: ReactNode;
@@ -11,11 +12,26 @@ const RouteGuard: React.FC<IRouteGuard> = ({ children }) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (!loading && !user) {
+    /**
+     * Authentication check is done, user is not signed in, and
+     * user is trying to access page other than home page.
+     */
+    if (!loading && !user && router.pathname !== "/") {
       router.push("/auth/signin");
     }
-  }, [user, loading, router]);
 
+    /**
+     * Authentication check is done, user is signed in, and
+     * user is trying to access the home page.
+     */
+    if (!loading && user && router.pathname === "/") {
+      router.push("/feed/ig");
+    }
+  }, [user, loading, router.pathname]);
+
+  /**
+   * Present loading screen while checking to see if user is signed in.
+   */
   return <>{children}</>;
 };
 

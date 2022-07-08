@@ -36,7 +36,7 @@ function classNames(...classes: string[]) {
 
 export default function Nav() {
   const [error, setError] = useState("");
-  const { user, signout } = useAuth();
+  const { user, signout, loading } = useAuth();
 
   const router = useRouter();
 
@@ -71,7 +71,7 @@ export default function Nav() {
           className="flex justify-between items-center h-full 
                      md:justify-start md:space-x-10"
         >
-          <NavTitle />
+          <NavTitle loading={loading} user={user} />
 
           {/* Mobile Hamburger Button */}
           <HamburgerButton />

@@ -1,0 +1,30 @@
+<svg version="1.1" id="Uploaded to svgrepo.com" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="32px" height="32px" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+<style type="text/css">
+	.pictogram_twee{fill:#F8AD89;}
+	.pictogram_drie{fill:#F27261;}
+	.pictogram_vier{fill:#E54D2E;}
+	.pictogram_vijf{fill:#01A59C;}
+	.pictogram_zes{fill:#0C6667;}
+	.st0{fill:#F4D6B0;}
+	.st1{fill:none;}
+	.st2{fill:#F8AD89;}
+	.st3{clip-path:url(#SVGID_2_);fill:#01A59C;}
+	.st4{clip-path:url(#SVGID_2_);fill:none;}
+	.st5{clip-path:url(#SVGID_2_);fill:#0C6667;}
+	.st6{fill:#0C6667;}
+</style>
+<g>
+	<circle class="pictogram_zes" cx="16" cy="16" r="16"/>
+	<path class="pictogram_drie" d="M21,24H11c-1.657,0-3-1.343-3-3V11c0-1.657,1.343-3,3-3h10c1.657,0,3,1.343,3,3v10
+		C24,22.657,22.657,24,21,24z"/>
+	<path class="pictogram_twee" d="M19.878,12.149C19.95,12.404,20,12.668,20,12.945v6c0,1.65-1.35,3-3,3h-2c-1.65,0-3-1.35-3-3v-6
+		c0-0.277,0.051-0.541,0.122-0.796C10.9,12.533,10,13.68,10,15.042v15.753C11.85,31.568,13.875,32,16,32s4.15-0.432,6-1.205V15.042
+		C22,13.68,21.1,12.533,19.878,12.149z"/>
+	<path class="pictogram_vier" d="M12,18.945c0,1.65,1.35,3,3,3h2c1.65,0,3-1.35,3-3v-6c0-0.284-0.053-0.554-0.127-0.815
+		C19.513,10.876,18.366,9.945,17,9.945h-2c-1.366,0-2.513,0.931-2.872,2.185C12.053,12.391,12,12.661,12,12.945V18.945z"/>
+	<path class="pictogram_vijf" d="M32,16c0,2.918-0.794,5.645-2.158,8H29c-1.65,0-3-1.35-3-3V11c0-1.65,1.35-3,3-3h0.842
+		C31.206,10.355,32,13.082,32,16z M0,16c0,2.918,0.794,5.645,2.158,8H3c1.65,0,3-1.35,3-3V11c0-1.65-1.35-3-3-3H2.158
+		C0.794,10.355,0,13.082,0,16z"/>
+</g>
+</svg>

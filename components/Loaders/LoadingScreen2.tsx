@@ -1,4 +1,4 @@
-export default function LoadingScreen() {
+export default function LoadingScreen2() {
   return (
     <div
       className="w-1/2 relative top-1/2 -translate-y-1/2 mx-auto 

@@ -10,15 +10,14 @@ import { useState, useEffect } from "react";
  * Developer-defined UI components/hooks/constants.
  */
 import Layout from "@Layouts/layout";
-import InfoTip from "@components/infotip";
-import GoBackButton from "@Buttons/GoBackButton";
-import ActionButtonB from "@Buttons/ActionButtonB";
 
 import { collection, getDocs, query, where, limit } from "firebase/firestore";
 import { projectFirestore } from "@firebase/config";
-import LoadingScreen from "@Loaders/LoadingScreen";
 import AnswerButton from "@components/Buttons/AnswerButton";
 import ActionButtonA from "@components/Buttons/ActionButtonA";
+import { useAuth } from "@contexts/AuthContext";
+import LessonLoader from "@Loaders/LessonLoader";
+import FeedLoader from "@Loaders/FeedLoader";
 
 interface IQuestion {
   id: string;
@@ -28,7 +27,9 @@ interface IQuestion {
   answer: string;
 }
 
-export default function Tips() {
+export default function Quest() {
+  const { user, loading } = useAuth();
+
   const router = useRouter();
 
   const [showResult, setShowResult] = useState(false);
@@ -37,6 +38,11 @@ export default function Tips() {
 
   function changeShowResult() {
     setShowResult((val) => !val);
+  }
+
+  function moveToNext() {
+    const questionsClone = [...questions.slice(1)];
+    setQuestions(questionsClone);
   }
 
   useEffect(() => {
@@ -66,6 +72,8 @@ export default function Tips() {
       questionsSnapshot.forEach((doc) => {
         const { question, options, type, answer } = doc.data();
 
+        // console.log(doc.data());
+
         docs.push({
           id: doc.id,
           question,
@@ -89,7 +97,7 @@ export default function Tips() {
                     z-20 min-h-[28rem] bg-white"
       >
         <div className="mx-auto py-6 w-[100%] lg:w-[60%]">
-          {!questions && <LoadingScreen />}
+          {(!questions || questions.length === 0) && <LessonLoader />}
 
           {questions.length > 0 && (
             <>
@@ -109,16 +117,11 @@ export default function Tips() {
                 ))}
 
               <div className="flex flex-column mt-64">
-                <AnswerButton
-                  classNames="w-[100%] md:w-[100%] mx-auto text-[1.1rem]"
-                  onClick={changeShowResult}
-                >
-                  Check Answer
-                </AnswerButton>
-
-                {/* <a className="cursor-pointer w-full">
-                  <ActionButtonA size="lg">Check Answer</ActionButtonA>
-                </a> */}
+                <a className="cursor-pointer w-full">
+                  <ActionButtonA size="lg" onClick={moveToNext}>
+                    Check Answer
+                  </ActionButtonA>
+                </a>
               </div>
             </>
           )}
@@ -128,6 +131,6 @@ export default function Tips() {
   );
 }
 
-Tips.getLayout = function getLayout(page: ReactElement) {
+Quest.getLayout = function getLayout(page: ReactElement) {
   return <Layout>{page}</Layout>;
 };

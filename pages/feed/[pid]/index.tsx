@@ -37,7 +37,8 @@ import Layout from "@components/Layouts/layout";
  */
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { projectFirestore } from "@firebase/config";
-import LoadingScreen from "@Loaders/LoadingScreen";
+import FeedLoader from "@Loaders/FeedLoader";
+import LessonLoader from "@Loaders/LessonLoader";
 
 const iconObjTemp = {
   cubes: "cubes",
@@ -117,7 +118,8 @@ export default function FeedPage() {
       style={{ height: data ? "" : `calc(100vh - (90px + 60px))` }}
     >
       <div className="py-6 h-full">
-        {(!data || data.length === 0) && <LoadingScreen />}
+        {!data && <LessonLoader />}
+
         {data &&
           data.map((group, groupIdx) => (
             <React.Fragment key={group[0].group + group[0].id}>
@@ -129,7 +131,7 @@ export default function FeedPage() {
                   group.length === 1 ? "md:w-[18rem]" : ""
                 }`}
               >
-                {group.map((lesson) => (
+                {group.map((lesson, lessonIdx) => (
                   <Dropdown
                     classNames=""
                     isAlpha={lesson.isAlpha}
@@ -137,6 +139,7 @@ export default function FeedPage() {
                     key={lesson.id}
                     langCode={router.query.pid}
                     docId={lesson.id}
+                    isUnlocked={groupIdx < 2}
                   >
                     <div className="flex w-[18rem] gap-x-6 mb-0">
                       <div>
@@ -145,14 +148,19 @@ export default function FeedPage() {
                                               py-0 px-0 ring-[9px] ${
                                                 groupIdx === 0
                                                   ? "ring-green-200"
-                                                  : "ring-purple-200"
+                                                  : groupIdx === 1
+                                                  ? "ring-purple-200"
+                                                  : "ring-slate-200"
                                               } 
                                               ring-offset-2 active:outline-none 
                                               active:ring-[12px] active:ring-offset-4 
                                               min-w-[3.8rem] max-w-[3.8rem] z-20 
                                               h-[3.8rem] mb-[0.85rem] first:mt-0 
                                               rounded-full mx-auto md:ml-3`}
-                          style={{ backgroundColor: lesson.bgColor }}
+                          style={{
+                            backgroundColor:
+                              groupIdx > 1 ? "#aaaaaa" : lesson.bgColor,
+                          }}
                         >
                           <span className="text-[1.8rem] leading-[3.8rem]">
                             <FontAwesomeIcon

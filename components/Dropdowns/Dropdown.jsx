@@ -1,7 +1,6 @@
 /**
  * React imports.
  */
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useRef } from "react";
 
@@ -9,12 +8,6 @@ import { useRef } from "react";
  * This component's styles.
  */
 import styles from "./Dropdown.module.css";
-
-/**
- * Vendor-defined UI components/utilites/etc.
- */
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLightbulb } from "@fortawesome/free-regular-svg-icons";
 
 /**
  * Developer-defined UI components/hooks/constants.
@@ -33,6 +26,7 @@ export default function Dropdown({
   isGroup,
   langCode,
   docId,
+  isUnlocked,
 }) {
   const router = useRouter();
 
@@ -40,7 +34,7 @@ export default function Dropdown({
   const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
 
   const onClick = () => {
-    setIsActive(!isActive);
+    if (isUnlocked) setIsActive(!isActive);
   };
 
   const navigateToIntro = () => {
@@ -73,21 +67,18 @@ export default function Dropdown({
           <div className={styles.arrowHead}></div>
           <ul className="text-center">
             <li className="border-b border-b-[#dddddd]">
-              <a className="font-bold" onClick={navigateToIntro}>
-                <span className="heavy-span inline-block border-b-[0.15rem] last:border-b-0 py-[1.9rem] border-dotted border-[#282828] cursor-pointer px-3">
-                  <strong>
-                    Read Tips &nbsp;
-                    <FontAwesomeIcon
-                      icon={faLightbulb}
-                      className="cursor-pointer text-[#222222]"
-                    />
-                  </strong>
+              <a onClick={navigateToIntro}>
+                <span
+                  className="inline-block border-b-[0.15rem] 
+                             py-[1.9rem] border-dotted border-[#282828] 
+                             cursor-pointer px-3"
+                >
+                  Read Tips
                 </span>
               </a>
             </li>
             <li>
               <a className="cursor-pointer" onClick={navigateToQuest}>
-                {/* <ActionButton>{actionText}</ActionButton> */}
                 <ActionButtonA size="lg">{actionText}</ActionButtonA>
               </a>
             </li>

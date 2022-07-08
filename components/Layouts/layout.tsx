@@ -67,15 +67,17 @@ const Layout: React.FC<ILayout> = ({ children }): JSX.Element => {
       <ToastProvider>
         <QueryClientProvider client={queryClient}>
           <ConnectivityListener />
-          {/* <RouteGuard> */}
-          {loading && <TopBarProgress />}
-          <Head>
-            <title>Mmūō - Learn Languages the fun and easy way</title>
-          </Head>
-          <Navbar />
-          {children}
-          <Footer />
-          {/* </RouteGuard> */}{" "}
+          <RouteGuard>
+            {loading && <TopBarProgress />}
+            <Head>
+              <title>Mmūō - Learn Languages the fun and easy way</title>
+            </Head>
+            <Navbar />
+
+            {children}
+
+            {!router.query.hasOwnProperty("docId") && <Footer />}
+          </RouteGuard>
         </QueryClientProvider>
       </ToastProvider>
     </AuthProvider>
