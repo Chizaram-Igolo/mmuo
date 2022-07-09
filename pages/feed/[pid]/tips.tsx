@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import type { ReactElement } from "react";
 import { useState, useEffect } from "react";
+import { useQuery } from "react-query";
 
 /**
  * Developer-defined UI components/hooks/constants.
@@ -16,29 +17,31 @@ import ActionButtonB from "@Buttons/ActionButtonB";
 
 import { collection, getDocs, query, limit } from "firebase/firestore";
 import { projectFirestore } from "@firebase/config";
-import LoadingScreen from "@Loaders/LoadingScreen";
+import LessonLoader from "@Loaders/LessonLoader";
 
 export default function Tips() {
   const router = useRouter();
 
   const [intro, setIntro] = useState("");
 
-  useEffect(() => {
-    async function fetchLessonIntro() {
-      const q = query(
-        collection(projectFirestore, `lessons/${router.query.docId}/intro`),
-        limit(1)
-      );
+  const { isLoading, error, data } = useQuery(
+    "lessonIntro",
+    () => {
+      return fetchLessonIntro();
+    },
+    { cacheTime: 0 }
+  );
 
-      const querySnapshot = await getDocs(q);
+  async function fetchLessonIntro() {
+    const q = query(
+      collection(projectFirestore, `lessons/${router.query.docId}/intro`),
+      limit(1)
+    );
 
-      if (!querySnapshot.empty) {
-        setIntro(querySnapshot.docs[0].data().intro);
-      }
-    }
+    const querySnapshot = await getDocs(q);
 
-    fetchLessonIntro();
-  }, [router.query.docId]);
+    return querySnapshot.docs[0].data().intro as string;
+  }
 
   return (
     <>
@@ -47,8 +50,8 @@ export default function Tips() {
                    z-20 min-h-[28rem] bg-white"
       >
         <div className="py-6 w-[100%] lg:w-[60%]">
-          {!intro && <LoadingScreen />}
-          {intro && intro}
+          {isLoading && <LessonLoader />}
+          {!isLoading && data}
           {/* <>
             <h2 className="text-[#333333] mb-4">Welcome</h2>
             <p className="mb-4">

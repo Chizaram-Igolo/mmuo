@@ -71,7 +71,7 @@ export default function Dropdown({
                 <span
                   className="inline-block border-b-[0.15rem] 
                              py-[1.9rem] border-dotted border-[#282828] 
-                             cursor-pointer px-3"
+                             cursor-pointer px-3 font-WorkSans_SemiBold"
                 >
                   Read Tips
                 </span>

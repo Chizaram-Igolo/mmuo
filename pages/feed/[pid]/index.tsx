@@ -37,7 +37,6 @@ import Layout from "@components/Layouts/layout";
  */
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { projectFirestore } from "@firebase/config";
-import FeedLoader from "@Loaders/FeedLoader";
 import LessonLoader from "@Loaders/LessonLoader";
 
 const iconObjTemp = {
@@ -61,10 +60,10 @@ export default function FeedPage() {
   const [docs, setDocs] = useState<ILesson[][]>([]);
 
   const { isLoading, error, data } = useQuery("lessonDocs", () => {
-    return fetchLessonIntro();
+    return fetchLessonsList();
   });
 
-  async function fetchLessonIntro() {
+  async function fetchLessonsList() {
     const fetchedDocs: ILesson[] = [];
 
     const q = query(

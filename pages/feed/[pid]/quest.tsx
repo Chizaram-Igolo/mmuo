@@ -18,6 +18,8 @@ import ActionButtonA from "@components/Buttons/ActionButtonA";
 import { useAuth } from "@contexts/AuthContext";
 import LessonLoader from "@Loaders/LessonLoader";
 import FeedLoader from "@Loaders/FeedLoader";
+import Flip from "../flip";
+import AnswerFlip from "@components/Quest/AnswerFlip";
 
 interface IQuestion {
   id: string;
@@ -72,7 +74,7 @@ export default function Quest() {
       questionsSnapshot.forEach((doc) => {
         const { question, options, type, answer } = doc.data();
 
-        // console.log(doc.data());
+        console.log(doc.data());
 
         docs.push({
           id: doc.id,
@@ -101,22 +103,40 @@ export default function Quest() {
 
           {questions.length > 0 && (
             <>
-              {questions[0].type === "select-words-translate" &&
-                questions[0].question.split(" ").map((word, idx) => (
-                  <>
-                    <span
-                      key={idx}
-                      className="text-xl underline underline-offset-[8px] 
+              {questions[0].type === "select-words-translate" && (
+                <>
+                  <p className="mt-0 space-x-2">
+                    {questions[0].question.split(" ").map((word, wordIdx) => (
+                      <>
+                        <span
+                          key={wordIdx}
+                          className="text-xl underline underline-offset-[8px] 
                              decoration-dotted decoration-2 decoration-slate-400 
                              cursor-pointer"
-                    >
-                      {word}
-                    </span>
-                    {idx < questions[0].question.split(" ").length - 1 && " "}
-                  </>
-                ))}
+                        >
+                          {word}
+                        </span>
+                      </>
+                    ))}
+                  </p>
 
-              <div className="flex flex-column mt-64">
+                  <AnswerFlip options={questions[0].options} />
+
+                  {/* <div className="mt-0">
+                    {questions[0].options.map((option, optionIdx) => (
+                      <span
+                        className="px-4 py-4 border rounded-lg mr-4 last:mr-0 
+                                   cursor-pointer"
+                        key={optionIdx}
+                      >
+                        {option}
+                      </span>
+                    ))}
+                  </div> */}
+                </>
+              )}
+
+              <div className="flex flex-column mt-4">
                 <a className="cursor-pointer w-full">
                   <ActionButtonA size="lg" onClick={moveToNext}>
                     Check Answer

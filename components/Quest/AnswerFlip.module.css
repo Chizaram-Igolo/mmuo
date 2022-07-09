@@ -1,0 +1,36 @@
+.flip-destination {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 46px,
+    #263032 46px,
+    #263032 47px,
+    transparent 47px,
+    transparent 50px
+  );
+}
+.flip-destination .flip-word {
+  margin: 0 0.125rem 0.5rem;
+}
+.flip-container:empty {
+  background: #263032;
+}
+.flip-word {
+  appearance: none;
+  all: unset;
+  box-sizing: border-box;
+  background: #122023;
+  border: 1px solid #596265;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 700;
+  user-select: none;
+  color: inherit;
+}
+.flip-word:active,
+.flip-word:focus {
+  transition: 0.25s ease;
+  transform: scale(1.05, 1.05) translateY(-0.25rem);
+  background: #1b2f34;
+}
