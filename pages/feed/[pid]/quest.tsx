@@ -32,6 +32,8 @@ interface IQuestion {
 export default function Quest() {
   const { user, loading } = useAuth();
 
+  const [notSaved] = useState(true);
+
   const router = useRouter();
 
   const [showResult, setShowResult] = useState(false);
@@ -74,7 +76,7 @@ export default function Quest() {
       questionsSnapshot.forEach((doc) => {
         const { question, options, type, answer } = doc.data();
 
-        console.log(doc.data());
+        // console.log(doc.data());
 
         docs.push({
           id: doc.id,
@@ -91,6 +93,34 @@ export default function Quest() {
 
     fetchLessonIntro();
   }, [router.query.docId]);
+
+  useEffect(() => {
+    const confirmationMessage = "Changes you made may not be saved.";
+    const beforeUnloadHandler = (e: BeforeUnloadEvent) => {
+      (e || window.event).returnValue = confirmationMessage;
+      return confirmationMessage; // Gecko + Webkit, Safari, Chrome etc.
+    };
+    const beforeRouteHandler = (url: string) => {
+      console.log("not at all");
+      if (router.pathname !== url && !confirm(confirmationMessage)) {
+        // to inform NProgress or something ...
+        router.events.emit("routeChangeError");
+        // tslint:disable-next-line: no-string-throw
+        throw `Route change to "${url}" was aborted (this error can be safely ignored). See https://github.com/zeit/next.js/issues/2476.`;
+      }
+    };
+    if (notSaved) {
+      window.addEventListener("beforeunload", beforeUnloadHandler);
+      router.events.on("routeChangeStart", beforeRouteHandler);
+    } else {
+      window.removeEventListener("beforeunload", beforeUnloadHandler);
+      router.events.off("routeChangeStart", beforeRouteHandler);
+    }
+    return () => {
+      window.removeEventListener("beforeunload", beforeUnloadHandler);
+      router.events.off("routeChangeStart", beforeRouteHandler);
+    };
+  }, [notSaved]);
 
   return (
     <>

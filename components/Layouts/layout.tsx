@@ -54,10 +54,12 @@ const Layout: React.FC<ILayout> = ({ children }): JSX.Element => {
     const hideTopbar = () => setLoading(false);
 
     router.events.on("routeChangeStart", showTopbar);
+    router.events.on("routeChangeError", hideTopbar);
     router.events.on("routeChangeComplete", hideTopbar);
 
     return () => {
       router.events.off("routeChangeStart", showTopbar);
+      router.events.off("routeChangeError", hideTopbar);
       router.events.off("routeChangeComplete", hideTopbar);
     };
   }, [router.events]);
