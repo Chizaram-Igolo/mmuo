@@ -44,16 +44,23 @@ export default function Home() {
                   <Image src={ear} width={72} height={72} />
                 </div>
                 <div>
-                  <Image src={lips} width={72} height={72} />
+                  <Image src={lips} alt="" width={72} height={72} />
                 </div>
                 <div>
-                  <Image src={select} width={72} height={72} />
+                  <Image src={select} alt="" width={72} height={72} />
                 </div>
               </div>
 
               <div className="flex pt-6 space-x-28">
                 <div>
-                  <Image src={text} width={72} height={72} />
+                  <Image
+                    src={text}
+                    alt=""
+                    width={72}
+                    height={72}
+                    blurDataURL="URL"
+                    placeholder="blur"
+                  />
                 </div>
               </div>
             </div>

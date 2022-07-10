@@ -16,7 +16,12 @@ const RouteGuard: React.FC<IRouteGuard> = ({ children }) => {
      * Authentication check is done, user is not signed in, and
      * user is trying to access page other than home page.
      */
-    if (!loading && !user && router.pathname !== "/") {
+    if (
+      !loading &&
+      !user &&
+      router.pathname !== "/" &&
+      router.pathname !== "/auth/signin"
+    ) {
       router.push("/auth/signin");
     }
 
@@ -27,7 +32,7 @@ const RouteGuard: React.FC<IRouteGuard> = ({ children }) => {
     if (!loading && user && router.pathname === "/") {
       router.push("/feed/ig");
     }
-  }, [user, loading, router.pathname]);
+  }, [user, loading, router]);
 
   /**
    * Present loading screen while checking to see if user is signed in.

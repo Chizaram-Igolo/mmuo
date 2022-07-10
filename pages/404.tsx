@@ -34,7 +34,7 @@ export default function Custom404() {
         </div>
 
         <div className={styles.text}>
-          Oops. The page you're looking for doesn't exist.
+          Oops. The page you&apos;re looking for doesn&apos;t exist.
         </div>
 
         <div className="flex space-x-4">

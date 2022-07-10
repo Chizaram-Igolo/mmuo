@@ -120,7 +120,7 @@ export default function Quest() {
       window.removeEventListener("beforeunload", beforeUnloadHandler);
       router.events.off("routeChangeStart", beforeRouteHandler);
     };
-  }, [notSaved]);
+  }, [notSaved, router.events, router.pathname]);
 
   return (
     <>

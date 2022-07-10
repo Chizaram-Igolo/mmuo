@@ -3,12 +3,7 @@
  */
 import { useRouter } from "next/router";
 import Script from "next/script";
-import type { ReactElement } from "react";
 
-/**
- * Developer-defined UI components/hooks/constants.
- */
-import Layout from "@Layouts/layout";
 import styles from "./flip.module.css";
 
 interface IFlip {
@@ -16,10 +11,6 @@ interface IFlip {
 }
 
 const Flip: React.FC<IFlip> = ({ options }) => {
-  const router = useRouter();
-
-  const words = ["Marc", "horse", "speak", "woman", "I", "American", "An"];
-
   return (
     <>
       <div className="py-6 w-[100%] lg:w-[60%]">
@@ -40,21 +31,23 @@ const Flip: React.FC<IFlip> = ({ options }) => {
                 className={`origin my-0 mx-auto flex flex-row flex-wrap 
                             justify-center items-start max-w-[275px]`}
               >
-                {options.map((option, optionIdx) => (
-                  <div
-                    className={`btn-container mt-0 mb-[0.25rem] mx-[0.125rem] 
+                {options &&
+                  options.length > 0 &&
+                  options.map((option, optionIdx) => (
+                    <div
+                      className={`btn-container mt-0 mb-[0.25rem] mx-[0.125rem] 
                                 pb-[0.125rem] flex flex-col justify-start 
                                 rounded-lg bg-[#596265] box-content 
                                 duration-[250] ease-in`}
-                    key={optionIdx}
-                  >
-                    <button
-                      className={`word ${styles["flip-word"]} mt-0 mb-[0.5rem] mx-[0.125rem]`}
+                      key={optionIdx}
                     >
-                      {option}
-                    </button>
-                  </div>
-                ))}
+                      <button
+                        className={`word ${styles["flip-word"]} mt-0 mb-[0.5rem] mx-[0.125rem]`}
+                      >
+                        {option}
+                      </button>
+                    </div>
+                  ))}
               </div>
             </div>
           </div>
