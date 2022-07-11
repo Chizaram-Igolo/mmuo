@@ -1,6 +1,6 @@
 .container,
 .menu-container {
-  position: relative;
+  /* position: relative; */
   /* display: flex; */
   /* justify-content: center; */
   /* align-items: center; */
@@ -9,15 +9,15 @@
 .menu-trigger {
   /* background: #ffffff; */
   /* border-radius: 90px; */
-  cursor: pointer;
+  /* cursor: pointer; */
   /* display: flex; */
   /* justify-content: space-between; */
   /* align-items: center; */
   /* padding: 4px 6px; */
   /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); */
-  border: none;
+  /* border: none; */
   /* vertical-align: middle; */
-  transition: box-shadow 0.4s ease;
+  /* transition: box-shadow 0.4s ease; /*
   /* margin-left: auto;  */
   /* Strictly for positioning */
 }

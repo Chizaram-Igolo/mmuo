@@ -17,6 +17,7 @@
     "baseUrl": "./",
     "paths": {
       "@Footer": ["components/Layouts/Footer"],
+      "@TextComponents/*": ["components/TextComponents/*"],
       "@Loaders/*": ["components/Loaders/*"],
       "@Buttons/*": ["components/Buttons/*"],
       "@Inputs/*": ["components/Inputs/*"],

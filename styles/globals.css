@@ -101,15 +101,6 @@ a {
     resize: none;
   }
 
-  h1 {
-    @apply text-5xl;
-    @apply leading-tight;
-    @apply tracking-tighter;
-    font-family: "WorkSans_Bold", sans-serif;
-    @apply font-extrabold;
-    /* @apply text-stone-800; */
-  }
-
   h2 {
     @apply text-3xl;
     /* @apply text-stone-800; */
@@ -138,10 +129,8 @@ a {
   }
 
   .leading-text {
-    @apply text-xl;
     @apply leading-snug;
     @apply text-zinc-600;
-    font-family: "WorkSans", sans-serif;
   }
 }
 
@@ -152,11 +141,8 @@ a {
 }
 
 .app-title {
-  font-family: Acworth;
-}
-
-.css-oztn6x {
-  font-family: WorkSans_SemiBold;
+  font-family: Indigo;
+  letter-spacing: 2px;
 }
 
 .columns.is-gapless:last-child {
@@ -194,13 +180,6 @@ a {
   padding: 0 !important;
 }
 
-.css-3uq0cx .column {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 @media print, screen and (min-width: 769px) {
   .column.is-4,
   .column.is-4-tablet {
@@ -215,24 +194,6 @@ a {
   flex-grow: 1;
   flex-shrink: 1;
   padding: 0.75rem;
-}
-
-.css-evfhg6.title {
-  font-family: "WorkSans_Bold", sans-serif;
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 48px;
-  margin-bottom: 0;
-}
-
-.css-pz3cfz > .title {
-  color: #080b2d;
-  margin: 0;
-}
-
-.css-pz3cfz > p {
-  color: #545372;
-  margin: 0;
 }
 
 /* .subtitle:not(:last-child),
@@ -252,49 +213,6 @@ a {
 a {
   /* color: #5b6886; */
   text-decoration: none;
-}
-
-.css-evfhg6 {
-  /* margin: 0 auto; */
-  max-width: 870px;
-}
-
-.css-161xfmy > .title {
-  color: #4d4f03;
-  font-size: 62px;
-  font-weight: 600;
-  line-height: 1.125;
-}
-
-.css-161xfmy .subtitle,
-.css-161xfmy .title {
-  word-break: break-word;
-}
-
-.css-evfhg6.subtitle.medium,
-.css-evfhg6.subtitle p.medium,
-.css-evfhg6.subtitle.medium p,
-.css-evfhg6.subtitle p.medium p {
-  font-family: "WorkSans_Medium";
-  font-size: 20px;
-  font-weight: 500;
-  -webkit-letter-spacing: -0.3px;
-  -moz-letter-spacing: -0.3px;
-  -ms-letter-spacing: -0.3px;
-  letter-spacing: -0.3px;
-  line-height: 28px;
-}
-
-.css-161xfmy .title:not(.is-spaced) + .subtitle {
-  margin-top: -1.25rem;
-}
-
-.css-p011hi > .subtitle {
-  color: #535772;
-  font-size: 16px;
-  font-weight: normal;
-  line-height: 24px;
-  margin-top: 0 !important;
 }
 
 @media print,

@@ -22,3 +22,8 @@
   font-family: "WorkSans_ExtraBold";
   src: url("/fonts/WorkSans/WorkSans-Bold.ttf") format("truetype");
 }
+
+@font-face {
+  font-family: Indigo;
+  src: url("/fonts/Indigo/Indigo.otf") format("opentype");
+}

@@ -2,6 +2,7 @@
  * React imports.
  */
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { useState } from "react";
 
 /**
@@ -81,7 +82,7 @@ export default function SignInForm() {
   return (
     <form onSubmit={signInUser}>
       <div>
-        <FormHeader text="Sign in to get started!" error={error} />
+        <FormHeader error={error} />
 
         <div className="relative inline-flex flex-col mt-4 w-full">
           <TextInput
@@ -111,8 +112,21 @@ export default function SignInForm() {
       </AuthButton>
 
       <FormFooter
-        authRoute="/auth/signup"
-        authText="New here? Sign up for Mmuo."
+        authText={
+          <>
+            <Link href="/auth/signup">
+              <a className="underline underline-offset-4 decoration-1">
+                Sign up for Mmuo
+              </a>
+            </Link>
+            &nbsp; | &nbsp;
+            <Link href="/auth/forgot-password">
+              <a className="underline underline-offset-4 decoration-1">
+                Forgot password
+              </a>
+            </Link>
+          </>
+        }
       />
     </form>
   );

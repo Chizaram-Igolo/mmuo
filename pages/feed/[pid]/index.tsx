@@ -104,7 +104,11 @@ export default function FeedPage() {
 
   const chainLineSVG = (
     <div className="max-w-[4rem] ml-10">
-      <svg height="44" width="500" className="block w-[6px] mt-2 mb-0">
+      <svg
+        height="44"
+        width="500"
+        className="block w-[4px] sm:w-[6px] mt-2 mb-0"
+      >
         <line className="vert-dash-line" x1="0" y1="0" x2="0" y2="40" />
       </svg>
     </div>
@@ -112,7 +116,7 @@ export default function FeedPage() {
 
   return (
     <section
-      className="py-4 pb-24 px-8 md:px-18 lg:px-20 xl:px-24 z-20 
+      className="py-4 pb-24 px-5 md:px-18 lg:px-20 xl:px-24 z-20 
                        min-h-[28rem]"
       style={{ height: data ? "" : `calc(100vh - (90px + 60px))` }}
     >

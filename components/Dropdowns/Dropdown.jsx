@@ -53,9 +53,13 @@ export default function Dropdown({
     : {};
 
   return (
-    <div className={`${styles.container} md:w-fit ${classNamesStr}`}>
-      <div className={`${styles["menu-container"]}`} ref={dropdownRef}>
-        <div onClick={onClick} className={`${styles["menu-trigger"]}`}>
+    <div className={`relative md:w-fit ${classNamesStr}`}>
+      <div className="relative" ref={dropdownRef}>
+        <div
+          onClick={onClick}
+          className="cursor-pointer border-none transition-shadow 
+                     duration-[400] ease-in"
+        >
           {children}
         </div>
         <nav

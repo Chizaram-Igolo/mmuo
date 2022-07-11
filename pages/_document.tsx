@@ -28,9 +28,14 @@ export default class MyDocument extends Document {
             as="font"
             type="font/ttf"
             crossOrigin="anonymous"
+          />{" "}
+          <link
+            rel="preload"
+            href="/fonts/Indigo/Indigo.ttf"
+            as="font"
+            type="font/ttf"
+            crossOrigin="anonymous"
           />
-
-          {/* <Script src="/a.js" strategy="beforeInteractive" />  */}
         </Head>
         <body>
           <Main />

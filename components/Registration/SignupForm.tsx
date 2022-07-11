@@ -2,6 +2,7 @@
  * React imports.
  */
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { useState } from "react";
 
 /**
@@ -82,7 +83,7 @@ export default function SignUpForm() {
   return (
     <form onSubmit={signUpUser}>
       <div>
-        <FormHeader text="Sign up to get started!" error={error} />
+        <FormHeader error={error} />
 
         <div className="relative inline-flex flex-col mt-4 w-full">
           <TextInput
@@ -122,9 +123,23 @@ export default function SignUpForm() {
       </AuthButton>
 
       <FormFooter
-        authRoute="/auth/signin"
-        authText="Already have an account? Sign in."
-        termsText="By signing up you agree to the Terms of Service."
+        authText={
+          <Link href="/auth/signin">
+            <a className="underline underline-offset-4 decoration-1">
+              Already have an account? Sign in.
+            </a>
+          </Link>
+        }
+        termsText={
+          <span>
+            By signing up you agree to the{" "}
+            <Link href="/auth/signin">
+              <a className="underline underline-offset-4 decoration-1">
+                Terms of Service.
+              </a>
+            </Link>
+          </span>
+        }
         termsRoute="/legal/terms-of-service-agreement/"
       />
     </form>

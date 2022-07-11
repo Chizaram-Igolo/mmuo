@@ -27,6 +27,7 @@ interface IAlertBox {
   severity: Color;
   isOpen: boolean;
   keepOpen: boolean;
+  showAction?: boolean;
 }
 
 const AlertBox: React.FC<IAlertBox> = ({
@@ -34,6 +35,7 @@ const AlertBox: React.FC<IAlertBox> = ({
   severity,
   isOpen,
   keepOpen,
+  showAction,
 }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(isOpen);
@@ -61,16 +63,20 @@ const AlertBox: React.FC<IAlertBox> = ({
             severity === "success" ? "border-success" : ""
           } ${severity === "error" ? "border-danger" : ""} mb-0`}
           action={
-            <IconButton
-              aria-label="close"
-              color="inherit"
-              size="small"
-              onClick={() => {
-                setOpen(false);
-              }}
-            >
-              <CloseIcon fontSize="inherit" />
-            </IconButton>
+            showAction ? (
+              <IconButton
+                aria-label="close"
+                color="inherit"
+                size="small"
+                onClick={() => {
+                  setOpen(false);
+                }}
+              >
+                <CloseIcon fontSize="inherit" />
+              </IconButton>
+            ) : (
+              <></>
+            )
           }
         >
           <div className="font-['WorkSans']">{message}</div>

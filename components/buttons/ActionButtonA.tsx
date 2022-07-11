@@ -17,7 +17,6 @@ const ActionButtonA: React.FC<IActionButtonA> = ({
   onClick,
 }) => {
   return (
-    // <div className={``}>
     <button
       className={`w-full text-center 
         ${size === "lg" ? "h-12" : size === "md" ? "h-10" : "h-9"} 
@@ -37,7 +36,6 @@ const ActionButtonA: React.FC<IActionButtonA> = ({
     >
       {children}
     </button>
-    // </div>
   );
 };
 

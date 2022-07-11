@@ -46,10 +46,7 @@ export default function Feed() {
 
   return (
     <>
-      <section
-        className="py-4 px-0 md:px-18 lg:px-20 xl:px-24 z-20 
-                        bg-blue-900 min-h-[28rem]"
-      >
+      <section className="px-0 md:px-18 lg:px-20 xl:px-24 z-20 min-h-[28rem]">
         <div className="flex flex-col md:flex-row mb-8">
           <div className="flex-1 min-w-[20rem] max-w-[28rem] z-20 mx-auto">
             <div

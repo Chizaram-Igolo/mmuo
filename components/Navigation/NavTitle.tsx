@@ -16,9 +16,7 @@ const NavTitle: React.FC<INavTitle> = ({ loading, user }) => {
       <Link href={!loading && user ? "/feed/ig" : "/"}>
         <a>
           <span className="sr-only">Mmuo</span>
-          <h2 className="text-gray-800 app-title text-[2rem] space-x-8">
-            mmuo
-          </h2>
+          <h2 className="text-green-600 app-title text-[1.8rem]">mmuo</h2>
         </a>
       </Link>
     </div>

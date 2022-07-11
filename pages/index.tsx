@@ -14,32 +14,62 @@ import AnimatedBackground from "@components/AnimatedBackground";
 /**
  * Image assets.
  */
-import ear from "@public/images/ear.svg";
-import lips from "@public/images/lips.svg";
-import select from "@public/images/select.svg";
-import text from "@public/images/text.svg";
+// import ear from "@public/images/ear.svg";
+// import lips from "@public/images/lips.svg";
+// import select from "@public/images/select.svg";
+// import text from "@public/images/text.svg";
+import H1 from "@TextComponents/H1";
+import Para from "@TextComponents/Para";
+import ActionButtonA from "@Buttons/ActionButtonA";
+import Link from "next/link";
+import AuthButton from "@Buttons/AuthButton";
+import SocialAuthButton from "@Buttons/SocialAuthButton";
+import FormFooter from "@Registration/FormFooter";
+import AuthButtonSection from "@Registration/AuthButtonSection";
 
 export default function Home() {
   return (
     <>
-      <AnimatedBackground />
+      <div className="hidden md:block">
+        <AnimatedBackground />
+      </div>
 
-      <section className="py-4 px-8 md:px-18 lg:px-20 xl:px-24 z-20">
-        <div className="flex flex-col md:flex-row mb-8">
+      <section className="px-5 sm:px-8 md:px-18 lg:px-20 xl:px-24 z-20">
+        <div className="flex flex-col md:flex-row">
           <div
-            className="md:flex-1 lg:flex-[1.4] xl:flex-[1.6] mt-8 mb-8 
+            className="md:flex-1 lg:flex-[1.3] xl:flex-[1.6] mt-8 mb-8 
                        md:mr-12 lg:mr-16 z-20"
           >
-            <div className="mb-2">
-              <h1>
-                Language learning made easy and fun. <br />
-              </h1>
-              <p className="leading-text mt-6">
+            <div className="mb-2 pt-4">
+              <H1>Language learning made easy and fun.</H1>
+
+              <Para
+                className="text-base md:text-xl leading-snug text-zinc-600 
+                           mt-6"
+              >
                 Learn any language you want at your own pace in a fun and
                 interactive way.
-              </p>
+              </Para>
 
-              <div className="flex pt-8 space-x-28">
+              {/* Mobile Signin form */}
+              <div className="md:hidden">
+                <AuthButtonSection />
+              </div>
+
+              <div className="md:hidden">
+                <FormFooter
+                  authText={
+                    <Link href="/auth/signup">
+                      <a className="underline underline-offset-4 decoration-1">
+                        New here? Sign up for Mmuo.
+                      </a>
+                    </Link>
+                  }
+                />
+              </div>
+              {/* End of Mobile Signin form */}
+
+              {/* <div className="flex pt-8 space-x-28">
                 <div>
                   <Image src={ear} width={72} height={72} />
                 </div>
@@ -50,7 +80,6 @@ export default function Home() {
                   <Image src={select} alt="" width={72} height={72} />
                 </div>
               </div>
-
               <div className="flex pt-6 space-x-28">
                 <div>
                   <Image
@@ -62,14 +91,16 @@ export default function Home() {
                     placeholder="blur"
                   />
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
 
           <div className="flex-1 z-20">
             <div
-              className="relative rounded-lg text-[#080b2d] 
-                         py-5 px-12 "
+              className="relative text-[#080b2d] 
+                         md:ml-8 lg:ml-12 hidden md:block bg-white  
+                         py-8 px-2 md:px-8 xl:px-9 rounded-b-md
+                         sm:shadow-[0_5px_5px_0px_rgba(0,8,36,0.2)]"
             >
               <SignInForm />
             </div>

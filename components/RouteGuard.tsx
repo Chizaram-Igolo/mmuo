@@ -20,7 +20,10 @@ const RouteGuard: React.FC<IRouteGuard> = ({ children }) => {
       !loading &&
       !user &&
       router.pathname !== "/" &&
-      router.pathname !== "/auth/signin"
+      router.pathname !== "/auth/signin" &&
+      router.pathname !== "/auth/signup" &&
+      router.pathname !== "/auth/forgot-password" &&
+      router.pathname !== "/auth/success-forgot-password"
     ) {
       router.push("/auth/signin");
     }

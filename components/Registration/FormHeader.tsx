@@ -4,16 +4,31 @@
 import AlertBox from "@Alerts/AlertBox";
 
 interface IFormHeader {
-  text: string;
-  error: string;
+  text?: string;
+  success?: string;
+  error?: string;
 }
 
-const FormHeader: React.FC<IFormHeader> = ({ text, error }) => {
+const FormHeader: React.FC<IFormHeader> = ({ text, success, error }) => {
   return (
     <>
-      {/* <p className="font-WorkSans_SemiBold text-[#535772] text-base tracking-[-0.01875rem] leading-6 m-0 text-center">
-        {text}
-      </p> */}
+      {text && (
+        <p
+          className="text-[#535772] text-base tracking-[-0.01875rem] 
+                      leading-6 m-0 mb-4"
+        >
+          {text}
+        </p>
+      )}
+
+      {success && (
+        <AlertBox
+          message={success}
+          severity="success"
+          isOpen={success.length > 0}
+          keepOpen={true}
+        />
+      )}
 
       {error && (
         <AlertBox
@@ -21,6 +36,7 @@ const FormHeader: React.FC<IFormHeader> = ({ text, error }) => {
           severity="error"
           isOpen={error.length > 0}
           keepOpen={true}
+          showAction={true}
         />
       )}
     </>
