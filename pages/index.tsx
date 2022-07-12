@@ -1,7 +1,8 @@
 /**
  * React imports.
  */
-import { ReactElement } from "react";
+import type { ReactElement } from "react";
+import { useState } from "react";
 import Image from "next/image";
 
 /**
@@ -20,14 +21,14 @@ import AnimatedBackground from "@components/AnimatedBackground";
 // import text from "@public/images/text.svg";
 import H1 from "@TextComponents/H1";
 import Para from "@TextComponents/Para";
-import ActionButtonA from "@Buttons/ActionButtonA";
 import Link from "next/link";
-import AuthButton from "@Buttons/AuthButton";
-import SocialAuthButton from "@Buttons/SocialAuthButton";
+import FormHeader from "@Registration/FormHeader";
 import FormFooter from "@Registration/FormFooter";
 import AuthButtonSection from "@Registration/AuthButtonSection";
 
 export default function Home() {
+  const [error, setError] = useState("");
+
   return (
     <>
       <div className="hidden md:block">
@@ -44,7 +45,7 @@ export default function Home() {
               <H1>Language learning made easy and fun.</H1>
 
               <Para
-                className="text-base md:text-xl leading-snug text-zinc-600 
+                className="text-base md:text-xl leading-normal md:leading-[1.6] text-zinc-600 
                            mt-6"
               >
                 Learn any language you want at your own pace in a fun and
@@ -53,11 +54,16 @@ export default function Home() {
 
               {/* Mobile Signin form */}
               <div className="md:hidden">
+                {error && <FormHeader error={error} />}
+              </div>
+
+              <div className="md:hidden">
                 <AuthButtonSection />
               </div>
 
               <div className="md:hidden">
                 <FormFooter
+                  setError={setError}
                   authText={
                     <Link href="/auth/signup">
                       <a className="underline underline-offset-4 decoration-1">

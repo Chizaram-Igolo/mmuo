@@ -39,6 +39,10 @@ export default function SignInForm() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const clearMessage = () => {
+    setError("");
+  };
+
   async function signInUser(e: React.FormEvent) {
     e.preventDefault();
 
@@ -73,7 +77,7 @@ export default function SignInForm() {
       router.push("/feed");
     } catch (err) {
       if (err instanceof FirebaseError) authErrorMessage(err, setError);
-      else setError("Sorry, something went wrong");
+      else setError("Sorry, something went wrong. Please try again.");
     }
 
     setLoading(false);
@@ -82,7 +86,7 @@ export default function SignInForm() {
   return (
     <form onSubmit={signInUser}>
       <div>
-        <FormHeader error={error} />
+        <FormHeader error={error} clearMessage={clearMessage} />
 
         <div className="relative inline-flex flex-col mt-4 w-full">
           <TextInput
@@ -112,6 +116,7 @@ export default function SignInForm() {
       </AuthButton>
 
       <FormFooter
+        setError={setError}
         authText={
           <>
             <Link href="/auth/signup">

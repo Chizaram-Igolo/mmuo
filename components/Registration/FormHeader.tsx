@@ -7,9 +7,15 @@ interface IFormHeader {
   text?: string;
   success?: string;
   error?: string;
+  clearMessage?: () => void;
 }
 
-const FormHeader: React.FC<IFormHeader> = ({ text, success, error }) => {
+const FormHeader: React.FC<IFormHeader> = ({
+  text,
+  success,
+  error,
+  clearMessage,
+}) => {
   return (
     <>
       {text && (
@@ -27,6 +33,7 @@ const FormHeader: React.FC<IFormHeader> = ({ text, success, error }) => {
           severity="success"
           isOpen={success.length > 0}
           keepOpen={true}
+          clearMessage={clearMessage ? clearMessage : () => {}}
         />
       )}
 
@@ -37,6 +44,7 @@ const FormHeader: React.FC<IFormHeader> = ({ text, success, error }) => {
           isOpen={error.length > 0}
           keepOpen={true}
           showAction={true}
+          clearMessage={clearMessage ? clearMessage : () => {}}
         />
       )}
     </>

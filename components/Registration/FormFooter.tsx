@@ -1,25 +1,53 @@
-/**
- * React imports.
- */
-import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 /**
  * Developer-defined UI components/hooks/constants.
  */
 import SocialAuthButton from "@Buttons/SocialAuthButton";
+import { useAuth } from "@contexts/AuthContext";
+import { FirebaseError } from "firebase/app";
+import { authErrorMessage } from "@helpers/auth";
 
 interface IFormFooter {
   authText: React.ReactNode | string;
   termsText?: React.ReactNode | string;
   termsHyperLinkText?: string;
   termsRoute?: string;
+  setError: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const FormFooter: React.FC<IFormFooter> = ({
   authText,
   termsText,
   termsRoute,
+  setError,
 }) => {
+  const router = useRouter();
+  const { user, googleSignIn, facebookSignIn } = useAuth();
+
+  const handleGoogleSignIn = async () => {
+    try {
+      let err: FirebaseError = await googleSignIn();
+      if (err) authErrorMessage(err, setError);
+    } catch (err: any) {
+      setError("Sorry, something went wrong. Please try again.");
+    }
+  };
+
+  const handleFacebookSignIn = async () => {
+    try {
+      let err: FirebaseError = await facebookSignIn();
+      if (err) authErrorMessage(err, setError);
+    } catch (err: any) {
+      setError("Sorry, something went wrong. Please try again.");
+    }
+  };
+
+  // useEffect(() => {
+  //   if (user !== null) router.push("/feed");
+  // }, [user]);
+
   return (
     <>
       <div>
@@ -39,8 +67,16 @@ const FormFooter: React.FC<IFormFooter> = ({
           className="flex flex-col gap-2 lg:gap-2 xl:gap-4 sm:flex-row 
                      md:flex-col xl:flex-row justify-between"
         >
-          <SocialAuthButton type="Google" label="Google" />
-          <SocialAuthButton type="Facebook" label="Facebook" />
+          <SocialAuthButton
+            type="Google"
+            label="Google"
+            onClick={handleGoogleSignIn}
+          />
+          <SocialAuthButton
+            type="Facebook"
+            label="Facebook"
+            onClick={handleFacebookSignIn}
+          />
         </div>
       </div>
       {termsText && termsRoute && (

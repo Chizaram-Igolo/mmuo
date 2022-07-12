@@ -74,7 +74,7 @@ export default function SignUpForm() {
       }
     } catch (err: any) {
       if (err instanceof FirebaseError) authErrorMessage(err, setError);
-      else setError("Sorry, something went wrong");
+      else setError("Sorry, something went wrong. Please try again.");
     }
 
     setLoading(false);
@@ -123,6 +123,7 @@ export default function SignUpForm() {
       </AuthButton>
 
       <FormFooter
+        setError={setError}
         authText={
           <Link href="/auth/signin">
             <a className="underline underline-offset-4 decoration-1">

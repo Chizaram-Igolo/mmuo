@@ -29,6 +29,7 @@ import NavTitle from "./NavTitle";
 import NavMenu from "./NavMenu";
 import HamburgerButton from "./HamburgerButton";
 import NavAuthSection from "./NavAuthSection";
+import { appAuth } from "@firebase/config";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -37,6 +38,19 @@ function classNames(...classes: string[]) {
 export default function Nav() {
   const [error, setError] = useState("");
   const { user, signout, loading } = useAuth();
+
+  // let photoUrl: string = (user?.photoURL +
+  //   "?height=500&access_token=" +
+  //   user?.token) as string;
+  // // user.updateProfile(photoUrl: photoUrl);
+
+  // appAuth.updateProfile(user, {
+  //   // @ts-ignore
+
+  //   photoUrl: photoUrl,
+  // });
+
+  console.log(user);
 
   const router = useRouter();
 
@@ -109,7 +123,11 @@ export default function Nav() {
                         <span className="sr-only">Open user menu</span>
                         {user.photoURL && (
                           <Image
-                            src={user.photoURL}
+                            src={
+                              user.photoURL +
+                              "?access_token=" +
+                              user.accessToken
+                            }
                             alt="Profile Picture"
                             width={32}
                             height={32}
@@ -239,7 +257,11 @@ export default function Nav() {
                         <div className="flex-shrink-0">
                           {user.photoURL && (
                             <Image
-                              src={user.photoURL}
+                              src={
+                                user.photoURL +
+                                "?height=500&access_token=" +
+                                user.accessToken
+                              }
                               alt="Profile Picture"
                               width={32}
                               height={32}

@@ -71,9 +71,27 @@ export function authErrorMessage(
   setError: Dispatch<SetStateAction<string>>
 ) {
   /**
-   * Register
+   * Pop-up sign in (Google/Facebook)
    */
-  if (err.code === "auth/email-already-in-use") {
+  if (
+    err.code === "auth/popup-closed-by-user" ||
+    err.code === "auth/cancelled-popup-request"
+  ) {
+    // Do nothing if the user intentionally closes the pop up.
+  } else if (err.code === "auth/account-exists-with-different-credential") {
+    setError(
+      "This account has already been linked to another social auth provider." +
+        " Please try the other auth provider."
+    );
+  } else if (err.code === "auth/popup-blocked") {
+    setError(
+      "The sign in request was blocked. Please adjust your browser settings and try again later."
+    );
+  } else if (err.code === "auth/email-already-in-use") {
+    /**
+     * Register
+     */
+    console.log(err.name);
     setError("Email address already in use.");
   } else if (err.code === "auth/wrong-password") {
     /**
@@ -90,7 +108,10 @@ export function authErrorMessage(
     );
   } else if (err.code === "auth/user-not-found") {
     setError("No user with this account exists.");
-  } else if (err.message.indexOf("offline") !== -1) {
+  } else if (
+    err.hasOwnProperty("message") &&
+    err.message.indexOf("offline") !== -1
+  ) {
     /**
      * Generic
      */

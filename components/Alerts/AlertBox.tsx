@@ -28,6 +28,7 @@ interface IAlertBox {
   isOpen: boolean;
   keepOpen: boolean;
   showAction?: boolean;
+  clearMessage?: () => void;
 }
 
 const AlertBox: React.FC<IAlertBox> = ({
@@ -36,6 +37,7 @@ const AlertBox: React.FC<IAlertBox> = ({
   isOpen,
   keepOpen,
   showAction,
+  clearMessage = () => {},
 }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(isOpen);
@@ -70,6 +72,7 @@ const AlertBox: React.FC<IAlertBox> = ({
                 size="small"
                 onClick={() => {
                   setOpen(false);
+                  clearMessage();
                 }}
               >
                 <CloseIcon fontSize="inherit" />

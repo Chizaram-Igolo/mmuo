@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { FIRST_YEAR_OF_PUBLICATION } from "@utils/constants";
 
 export default function Footer() {
@@ -13,6 +15,16 @@ export default function Footer() {
               ? `${FIRST_YEAR_OF_PUBLICATION} - ${currYear}`
               : `${currYear}`}
             &nbsp;Mmuo, Dibia Inc. All rights reserved.
+          </p>
+
+          <p className="mt-1 text-sm md:text-sm font-medium leading-6">
+            <Link href="/privacy-policy">
+              <a>Privacy Policy</a>
+            </Link>
+            &nbsp; | &nbsp;
+            <Link href="/terms-of-use">
+              <a>Terms of Use</a>
+            </Link>
           </p>
         </div>
       </div>

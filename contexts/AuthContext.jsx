@@ -1,5 +1,12 @@
 import { useEffect, useState, useContext, createContext } from "react";
 import {
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+  signInWithRedirect,
+  signInWithPopup,
+} from "firebase/auth";
+
+import {
   auth,
   appAuth,
   projectDatabase,
@@ -13,6 +20,20 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [userProfile, setUserProfile] = useState(null);
+
+  const googleSignIn = () => {
+    const provider = new GoogleAuthProvider();
+    return signInWithPopup(auth, provider).catch((error) => {
+      return error;
+    });
+  };
+
+  const facebookSignIn = () => {
+    const provider = new FacebookAuthProvider();
+    return signInWithPopup(auth, provider).catch((error) => {
+      return error;
+    });
+  };
 
   const signup = (email, password) =>
     appAuth.createUserWithEmailAndPassword(auth, email, password);
@@ -65,6 +86,8 @@ export const AuthProvider = ({ children }) => {
     userProfile,
     signup,
     signin,
+    googleSignIn,
+    facebookSignIn,
     signout,
     resetPassword,
     updateEmail,

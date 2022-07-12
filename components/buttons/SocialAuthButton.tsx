@@ -12,12 +12,17 @@ import githubLogo from "@public/images/github-logo.svg";
 interface ISocialAuthButton {
   type: string;
   label: string;
+  onClick?: () => void;
 }
 
-const SocialAuthButton: React.FC<ISocialAuthButton> = ({ type, label }) => {
+const SocialAuthButton: React.FC<ISocialAuthButton> = ({
+  type,
+  label,
+  onClick,
+}) => {
   return (
-    <a
-      href="#"
+    <button
+      type="button"
       className="flex w-full sm:w-[80%] md:w-full xl:w-[100%] 
                        items-center justify-center self-center bg-white 
                        mb-2 border border-[#c0c2d3] rounded-lg 
@@ -25,6 +30,7 @@ const SocialAuthButton: React.FC<ISocialAuthButton> = ({ type, label }) => {
                        hover:shadow-[0_2px_0_rgb(222,225,231)] box-border 
                        text-[#000824] font-medium py-2 px-2 transition-all 
                        duration-200"
+      onClick={onClick}
     >
       {type.toLowerCase() === "google" && (
         <>
@@ -49,7 +55,7 @@ const SocialAuthButton: React.FC<ISocialAuthButton> = ({ type, label }) => {
           &nbsp; {label}
         </>
       )}
-    </a>
+    </button>
   );
 };
 

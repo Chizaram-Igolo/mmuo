@@ -6,7 +6,7 @@ interface IH1 {
 const H1: React.FC<IH1> = ({ classNames, children }) => {
   return (
     <h1
-      className={`text-4xl md:text-5xl leading-tight tracking-tighter 
+      className={`text-4xl md:text-5xl leading-tight md:leading-snug tracking-tighter 
                  font-WorkSans_Bold ${classNames}`}
     >
       {children}

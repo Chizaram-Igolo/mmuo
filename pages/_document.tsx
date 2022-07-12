@@ -31,7 +31,7 @@ export default class MyDocument extends Document {
           />{" "}
           <link
             rel="preload"
-            href="/fonts/Indigo/Indigo.ttf"
+            href="/fonts/Indigo/Indigo.otf"
             as="font"
             type="font/ttf"
             crossOrigin="anonymous"
