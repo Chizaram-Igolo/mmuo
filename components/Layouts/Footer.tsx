@@ -22,7 +22,7 @@ export default function Footer() {
               <a>Privacy Policy</a>
             </Link>
             &nbsp; | &nbsp;
-            <Link href="/terms-of-use">
+            <Link href="/terms-of-service">
               <a>Terms of Use</a>
             </Link>
           </p>

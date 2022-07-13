@@ -30,7 +30,7 @@ export default function ForgotPasswordForm() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const [isEmailSent, setIsEmailSent] = useState(true);
+  const [isEmailSent, setIsEmailSent] = useState(false);
 
   async function signInUser(e: React.FormEvent) {
     e.preventDefault();

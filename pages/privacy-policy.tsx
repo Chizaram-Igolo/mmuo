@@ -1,5 +1,3 @@
-import type { ReactElement } from "react";
-
 import Layout from "@Layouts/layout";
 
 export default function PrivacyPolicy() {
@@ -230,9 +228,7 @@ export default function PrivacyPolicy() {
           information;
         </p>
         <p>0.13. for any other purpose with your consent.</p>
-        <p>
-          6. <span className="font-WorkSans_SemiBold">Retention of Data</span>
-        </p>
+        <p className="font-WorkSans_SemiBold">6. Retention of Data</p>
         <p>
           We will retain your Personal Data only for as long as is necessary for
           the purposes set out in this Privacy Policy. We will retain and use
@@ -248,9 +244,7 @@ export default function PrivacyPolicy() {
           our Service, or we are legally obligated to retain this data for
           longer time periods.
         </p>
-        <p>
-          7. <span className="font-WorkSans_SemiBold">Transfer of Data</span>
-        </p>
+        <p className="font-WorkSans_SemiBold">7. Transfer of Data</p>
         <p>
           Your information, including Personal Data, may be transferred to – and
           maintained on – computers located outside of your state, province,
@@ -273,9 +267,7 @@ export default function PrivacyPolicy() {
           organisation or a country unless there are adequate controls in place
           including the security of your data and other personal information.
         </p>
-        <p>
-          8. <span className="font-WorkSans_SemiBold">Disclosure of Data</span>
-        </p>
+        <p className="font-WorkSans_SemiBold">8. Disclosure of Data</p>
         <p>
           We may disclose personal information that we collect, or you provide:
         </p>
@@ -324,9 +316,7 @@ export default function PrivacyPolicy() {
           the rights, property, or safety of the Company, our customers, or
           others.
         </p>
-        <p>
-          9. <span className="font-WorkSans_SemiBold">Security of Data</span>
-        </p>
+        <p className="font-WorkSans_SemiBold">9. Security of Data</p>
         <p>
           The security of your data is important to us but remember that no
           method of transmission over the Internet or method of electronic
@@ -334,12 +324,9 @@ export default function PrivacyPolicy() {
           means to protect your Personal Data, we cannot guarantee its absolute
           security.
         </p>
-        <p>
-          10.{" "}
-          <span className="font-WorkSans_SemiBold">
-            Your Data Protection Rights Under General Data Protection Regulation
-            (GDPR)
-          </span>
+        <p className="font-WorkSans_SemiBold">
+          10. Your Data Protection Rights Under General Data Protection
+          Regulation (GDPR)
         </p>
         <p>
           If you are a resident of the European Union (EU) and European Economic
@@ -399,12 +386,9 @@ export default function PrivacyPolicy() {
           please contact your local data protection authority in the European
           Economic Area (EEA).
         </p>
-        <p>
-          11.{" "}
-          <span className="font-WorkSans_SemiBold">
-            Your Data Protection Rights under the California Privacy Protection
-            Act (CalOPPA)
-          </span>
+        <p className="font-WorkSans_SemiBold">
+          11. Your Data Protection Rights under the California Privacy
+          Protection Act (CalOPPA)
         </p>
         <p>
           CalOPPA is the first state law in the nation to require commercial
@@ -445,12 +429,9 @@ export default function PrivacyPolicy() {
           You can enable or disable Do Not Track by visiting the Preferences or
           Settings page of your web browser.
         </p>
-        <p>
-          12.{" "}
-          <span className="font-WorkSans_SemiBold">
-            Your Data Protection Rights under the California Consumer Privacy
-            Act (CCPA)
-          </span>
+        <p className="font-WorkSans_SemiBold">
+          12. Your Data Protection Rights under the California Consumer Privacy
+          Act (CCPA)
         </p>
         <p>
           If you are a California resident, you are entitled to learn what data
@@ -500,29 +481,24 @@ export default function PrivacyPolicy() {
           make this request, the information provided may be limited to the
           personal information we collected about you in the previous 12 months.
         </p>
-        <p>
-          <span className="font-WorkSans_SemiBold">
-            0.2. To delete your personal information. If you make this request,
-            we will delete the personal information we hold about you as of the
-            date of your request from our records and direct any service
-            providers to do the same. In some cases, deletion may be
-            accomplished through de-identification of the information. If you
-            choose to delete your personal information, you may not be able to
-            use certain functions that require your personal information to
-            operate.
-          </span>
+        <p className="font-WorkSans_SemiBold">
+          0.2. To delete your personal information. If you make this request, we
+          will delete the personal information we hold about you as of the date
+          of your request from our records and direct any service providers to
+          do the same. In some cases, deletion may be accomplished through
+          de-identification of the information. If you choose to delete your
+          personal information, you may not be able to use certain functions
+          that require your personal information to operate.
         </p>
-        <p>
-          <span className="font-WorkSans_SemiBold">
-            0.3. To stop selling your personal information. We don’t sell or
-            rent your personal information to any third parties for any purpose.
-            We do not sell your personal information for monetary consideration.
-            However, under some circumstances, a transfer of personal
-            information to a third party, or within our family of companies,
-            without monetary consideration may be considered a “sale” under
-            California law. You are the only owner of your Personal Data and can
-            request disclosure or deletion at any time.
-          </span>
+        <p className="font-WorkSans_SemiBold">
+          0.3. To stop selling your personal information. We don’t sell or rent
+          your personal information to any third parties for any purpose. We do
+          not sell your personal information for monetary consideration.
+          However, under some circumstances, a transfer of personal information
+          to a third party, or within our family of companies, without monetary
+          consideration may be considered a “sale” under California law. You are
+          the only owner of your Personal Data and can request disclosure or
+          deletion at any time.
         </p>
         <p>
           If you submit a request to stop selling your personal information, we
@@ -549,9 +525,7 @@ export default function PrivacyPolicy() {
           the official California Legislative Information website. The CCPA took
           effect on 01/01/2020.
         </p>
-        <p>
-          13. <span className="font-WorkSans_SemiBold">Service Providers</span>
-        </p>
+        <p className="font-WorkSans_SemiBold">13. Service Providers</p>
         <p>
           We may employ third party companies and individuals to facilitate our
           Service (
@@ -564,40 +538,29 @@ export default function PrivacyPolicy() {
           these tasks on our behalf and are obligated not to disclose or use it
           for any other purpose.
         </p>
-        <p>
-          14. <span className="font-WorkSans_SemiBold">Analytics</span>
-        </p>
+        <p className="font-WorkSans_SemiBold">14. Analytics</p>
         <p>
           We may use third-party Service Providers to monitor and analyze the
           use of our Service.
         </p>
-        <p>
-          15. <span className="font-WorkSans_SemiBold">CI/CD tools</span>
-        </p>
+        <p className="font-WorkSans_SemiBold">15. CI/CD tools</p>
         <p>
           We may use third-party Service Providers to automate the development
           process of our Service.
         </p>
-        <p>
-          16. <span className="font-WorkSans_SemiBold">Advertising</span>
-        </p>
+        <p className="font-WorkSans_SemiBold">16. Advertising</p>
         <p>
           We may use third-party Service Providers to show advertisements to you
           to help support and maintain our Service.
         </p>
-        <p>
-          17.{" "}
-          <span className="font-WorkSans_SemiBold">Behavioral Remarketing</span>
-        </p>
+        <p className="font-WorkSans_SemiBold">17. Behavioral Remarketing</p>
         <p>
           We may use remarketing services to advertise on third party websites
           to you after you visited our Service. We and our third-party vendors
           use cookies to inform, optimise and serve ads based on your past
           visits to our Service.
         </p>
-        <p>
-          18. <span className="font-WorkSans_SemiBold">Payments</span>
-        </p>
+        <p className="font-WorkSans_SemiBold">18. Payments</p>
         <p>
           We may provide paid products and/or services within Service. In that
           case, we use third-party services for payment processing (e.g. payment
@@ -613,10 +576,7 @@ export default function PrivacyPolicy() {
           Discover. PCI-DSS requirements help ensure the secure handling of
           payment information.
         </p>
-        <p>
-          19.{" "}
-          <span className="font-WorkSans_SemiBold">Links to Other Sites</span>
-        </p>
+        <p className="font-WorkSans_SemiBold">19. Links to Other Sites</p>
         <p>
           Our Service may contain links to other sites that are not operated by
           us. If you click a third party link, you will be directed to that
@@ -627,29 +587,21 @@ export default function PrivacyPolicy() {
           We have no control over and assume no responsibility for the content,
           privacy policies or practices of any third party sites or services.
         </p>
+        <p className="font-WorkSans_SemiBold">20. Children’s Privacy</p>
         <p>
-          20.{" "}
-          <span className="font-WorkSans_SemiBold">
-            <span className="font-WorkSans_SemiBold">Children’s Privacy</span>
-          </span>
-        </p>
-        <p>
-          Our Services are not intended for use by children under the age of 18
+          Our Services are not intended for use by children under the age of 13
           (<span className="font-WorkSans_SemiBold">“Child”</span> or{" "}
           <span className="font-WorkSans_SemiBold">“Children”</span>).
         </p>
         <p>
           We do not knowingly collect personally identifiable information from
-          Children under 18. If you become aware that a Child has provided us
+          Children under 13. If you become aware that a Child has provided us
           with Personal Data, please contact us. If we become aware that we have
           collected Personal Data from Children without verification of parental
           consent, we take steps to remove that information from our servers.
         </p>
-        <p>
-          21.{" "}
-          <span className="font-WorkSans_SemiBold">
-            Changes to This Privacy Policy
-          </span>
+        <p className="font-WorkSans_SemiBold">
+          21. Changes to This Privacy Policy
         </p>
         <p>
           We may update our Privacy Policy from time to time. We will notify you
@@ -665,9 +617,7 @@ export default function PrivacyPolicy() {
           changes. Changes to this Privacy Policy are effective when they are
           posted on this page.
         </p>
-        <p>
-          22. <span className="font-WorkSans_SemiBold">Contact Us</span>
-        </p>
+        <p className="font-WorkSans_SemiBold">22. Contact Us</p>
         <p>
           If you have any questions about this Privacy Policy, please contact us
           by email:{" "}
@@ -681,6 +631,6 @@ export default function PrivacyPolicy() {
   );
 }
 
-PrivacyPolicy.getLayout = function getLayout(page: ReactElement) {
+PrivacyPolicy.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout>{page}</Layout>;
 };

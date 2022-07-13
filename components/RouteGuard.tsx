@@ -25,7 +25,7 @@ const RouteGuard: React.FC<IRouteGuard> = ({ children }) => {
       router.pathname !== "/auth/forgot-password" &&
       router.pathname !== "/auth/success-forgot-password" &&
       router.pathname !== "/privacy-policy" &&
-      router.pathname !== "/terms-of-use"
+      router.pathname !== "/terms-of-service"
     ) {
       router.push("/");
     }
@@ -34,9 +34,9 @@ const RouteGuard: React.FC<IRouteGuard> = ({ children }) => {
      * Authentication check is done, user is signed in, and
      * user is trying to access the home page.
      */
-    if (!loading && user && router.pathname === "/") {
-      router.push("/feed/ig");
-    }
+    // if (!loading && user && router.pathname === "/") {
+    //   router.push("/feed/ig");
+    // }
   }, [user, loading, router]);
 
   /**

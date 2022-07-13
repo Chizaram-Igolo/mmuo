@@ -25,14 +25,20 @@ import { projectDatabase } from "@firebase/config";
 /**
  *
  * @param emailOrUsername
+ * @param checkFor
  * @returns a Datasnapshot object
- * Checks if a user with this username exists and returns a snapshot.
+ * Checks if a user with this username or email exists and returns a snapshot.
  */
-export async function getUserSnapshot(emailOrUsername: string) {
+export async function getUserSnapshot(
+  emailOrUsername: string,
+  checkFor = "username"
+) {
+  let orderByField = checkFor === "username" ? "username" : "email";
+
   return await get(
     query(
       ref(projectDatabase, "users"),
-      orderByChild("username"),
+      orderByChild(orderByField),
       equalTo(emailOrUsername),
       limitToFirst(1)
     )

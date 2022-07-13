@@ -13,26 +13,55 @@ import {
   ref,
   onValue,
 } from "../firebase/config";
+import { getUserSnapshot } from "@helpers/auth";
+import { updateDBRecord } from "@helpers/user";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [socialCredAccessToken, setSocialCredAccessToken] = useState(null);
   const [loading, setLoading] = useState(true);
   const [userProfile, setUserProfile] = useState(null);
 
   const googleSignIn = () => {
+    // await updateDBRecord(user, "Google");
+
     const provider = new GoogleAuthProvider();
-    return signInWithPopup(auth, provider).catch((error) => {
-      return error;
-    });
+    return signInWithPopup(auth, provider)
+      .then((result) => {})
+      .catch((error) => {
+        return error;
+      });
   };
 
   const facebookSignIn = () => {
+    // await updateDBRecord(user, "Google");
+
     const provider = new FacebookAuthProvider();
-    return signInWithPopup(auth, provider).catch((error) => {
-      return error;
-    });
+    return signInWithPopup(auth, provider)
+      .then(async (result) => {
+        const credential = FacebookAuthProvider.credentialFromResult(result);
+        const accessToken = credential.accessToken;
+        setSocialCredAccessToken(accessToken);
+
+        /**
+         * Check if this user exists already. If they do not,
+         * create a record for them.
+         */
+        const snapshot = await getUserSnapshot(result.user.email, "email");
+
+        if (!snapshot.exists()) {
+          await updateDBRecord(
+            { ...result.user, socialCredAccessToken: socialCredAccessToken },
+            "Facebook",
+            result.user.photoURL + "?access_token=" + accessToken
+          );
+        }
+      })
+      .catch((error) => {
+        return error;
+      });
   };
 
   const signup = (email, password) =>
@@ -41,7 +70,11 @@ export const AuthProvider = ({ children }) => {
   const signin = (email, password) =>
     appAuth.signInWithEmailAndPassword(auth, email, password);
 
-  const signout = () => appAuth.signOut(auth).then(() => setLoading(true));
+  const signout = () =>
+    appAuth.signOut(auth).then(() => {
+      setSocialCredAccessToken(null);
+      setLoading(true);
+    });
 
   const resetPassword = (email) => appAuth.sendPasswordResetEmail(auth, email);
 
@@ -88,6 +121,7 @@ export const AuthProvider = ({ children }) => {
     signin,
     googleSignIn,
     facebookSignIn,
+    socialCredAccessToken,
     signout,
     resetPassword,
     updateEmail,

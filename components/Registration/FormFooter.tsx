@@ -13,14 +13,12 @@ interface IFormFooter {
   authText: React.ReactNode | string;
   termsText?: React.ReactNode | string;
   termsHyperLinkText?: string;
-  termsRoute?: string;
   setError: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const FormFooter: React.FC<IFormFooter> = ({
   authText,
   termsText,
-  termsRoute,
   setError,
 }) => {
   const router = useRouter();
@@ -79,14 +77,12 @@ const FormFooter: React.FC<IFormFooter> = ({
           />
         </div>
       </div>
-      {termsText && termsRoute && (
+      {termsText && (
         <p
           className="text-[#535772] text-[0.875rem] leading-6 mt-4 mb-0 mx-0 
                  text-center"
         >
-          <a href={termsRoute} title="Terms of Service">
-            {termsText}
-          </a>
+          {termsText}
         </p>
       )}
       <hr className="mt-5" />

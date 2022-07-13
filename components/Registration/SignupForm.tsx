@@ -62,7 +62,7 @@ export default function SignUpForm() {
           displayName: username,
         });
 
-        await updateDBRecord(user);
+        await updateDBRecord(user, "Email");
 
         setUsername("");
         setEmail("");
@@ -132,16 +132,21 @@ export default function SignUpForm() {
           </Link>
         }
         termsText={
-          <span>
-            By signing up you agree to the{" "}
-            <Link href="/auth/signin">
+          <>
+            By signing up you agree to our{" "}
+            <Link href="/terms-of-service">
               <a className="underline underline-offset-4 decoration-1">
-                Terms of Service.
+                Terms of Service
+              </a>
+            </Link>{" "}
+            and{" "}
+            <Link href="/privacy-policy">
+              <a className="underline underline-offset-4 decoration-1">
+                Privacy Policy.
               </a>
             </Link>
-          </span>
+          </>
         }
-        termsRoute="/legal/terms-of-service-agreement/"
       />
     </form>
   );
