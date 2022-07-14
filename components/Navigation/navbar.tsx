@@ -10,12 +10,7 @@ import { Fragment, useState } from "react";
  * Vendor-defined UI components/hooks/utilities/etc.
  */
 import { Popover, Transition, Menu } from "@headlessui/react";
-import {
-  ChartBarIcon,
-  CursorClickIcon,
-  BellIcon,
-  XIcon,
-} from "@heroicons/react/outline";
+import { BellIcon, XIcon } from "@heroicons/react/outline";
 
 /**
  * Context provider containing application-wide state.
@@ -73,9 +68,9 @@ export default function Nav() {
       className={`sticky top-0 ${
         router.pathname === "/" || router.pathname.indexOf("auth") !== -1
           ? "shadow-[0_1px_2px_0px_rgba(0,8,36,0.2)]"
-          : "border-b shadow-[0px_2px_0px_rgba(180,184,183,0.1)]"
-      } border-slate-900/10 z-50 h-[60px] backdrop-blur-sm bg-white/90 
-        supports-backdrop-blur:bg-white/90`}
+          : "border-b shadow-[0_1px_2px_0px_rgba(180,184,183,0.1)]"
+      } border-slate-900/10 h-[60px] backdrop-blur-sm bg-white/90 
+        supports-backdrop-blur:bg-white/90 z-[100]`}
     >
       <div className="h-full mx-auto px-5 md:px-8 lg:px-20 xl:px-24 z-[100]">
         <div

@@ -1,9 +1,4 @@
 /**
- * React imports.
- */
-import { ReactElement } from "react";
-
-/**
  * Developer-defined UI components/hooks/constants.
  */
 import Layout from "@components/Layouts/layout";
@@ -14,7 +9,7 @@ export default function SignIn() {
   return <SignInForm />;
 }
 
-SignIn.getLayout = function getLayout(page: ReactElement) {
+SignIn.getLayout = function getLayout(page: React.ReactElement) {
   return (
     <Layout>
       <AuthLayout>{page}</AuthLayout>

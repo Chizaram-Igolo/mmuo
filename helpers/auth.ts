@@ -93,11 +93,12 @@ export function authErrorMessage(
     setError(
       "The sign in request was blocked. Please adjust your browser settings and try again later."
     );
+  } else if (err.code === "auth/internal-error") {
+    setError("Sorry, an error occurred on our end. Please try again later.");
   } else if (err.code === "auth/email-already-in-use") {
     /**
      * Register
      */
-    console.log(err.name);
     setError("Email address already in use.");
   } else if (err.code === "auth/wrong-password") {
     /**

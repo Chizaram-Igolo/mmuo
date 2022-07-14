@@ -1,13 +1,8 @@
-/**
- * React imports.
- */
-import { ReactNode } from "react";
-
 interface IActionButtonA {
   size?: "sm" | "md" | "lg";
   onClick?: () => void;
   outlined?: boolean;
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 const ActionButtonA: React.FC<IActionButtonA> = ({
