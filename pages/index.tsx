@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import { useState } from "react";
 
 /**
@@ -5,12 +6,15 @@ import { useState } from "react";
  */
 import Layout from "@components/Layouts/layout";
 import SignInForm from "@Registration/SigninForm";
-import AnimatedBackground from "@components/AnimatedBackground";
+const AnimatedBackground = dynamic(
+  () => import("@components/AnimatedBackground")
+);
 
 import H1 from "@TextComponents/H1";
 import Para from "@TextComponents/Para";
 import Link from "next/link";
-import FormHeader from "@Registration/FormHeader";
+
+const FormHeader = dynamic(() => import("@Registration/FormHeader"));
 import FormFooter from "@Registration/FormFooter";
 import AuthButtonSection from "@Registration/AuthButtonSection";
 

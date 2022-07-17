@@ -114,7 +114,7 @@ export default function Nav() {
                       <Menu.Button className="max-w-xs bg-transparent rounded-full flex items-center text-sm focus:outline-none active:ring-2 active:ring-offset-2 active:ring-offset-gray-800 active:ring-white">
                         <span className="sr-only">Open user menu</span>
                         {user.photoURL && (
-                          <img
+                          <Image
                             src={
                               user.providerData[0].providerId.indexOf(
                                 "facebook"
@@ -252,7 +252,7 @@ export default function Nav() {
                       <div className="flex items-center px-5">
                         <div className="flex-shrink-0">
                           {user.photoURL && (
-                            <img
+                            <Image
                               src={
                                 user.providerData[0].providerId.indexOf(
                                   "facebook"

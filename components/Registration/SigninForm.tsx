@@ -28,6 +28,8 @@ import TextInput from "@components/Inputs/TextInput";
 import AuthButton from "@components/Buttons/AuthButton";
 import FormHeader from "./FormHeader";
 import FormFooter from "./FormFooter";
+import ReconcileAccountsForm from "./ReconcileAccountsForm";
+import { IUserCred } from "./ReconcileAccountsForm";
 
 export default function SignInForm() {
   const { signin } = useAuth();
@@ -38,6 +40,8 @@ export default function SignInForm() {
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const [userCred, setUserCred] = useState<IUserCred | null>(null);
 
   const clearMessage = () => {
     setError("");
@@ -76,63 +80,78 @@ export default function SignInForm() {
 
       router.push("/feed");
     } catch (err) {
-      if (err instanceof FirebaseError) authErrorMessage(err, setError);
-      else setError("Sorry, something went wrong. Please try again.");
+      if (err instanceof FirebaseError) {
+        /**
+         * Check if this email is in use through a social auth provider.
+         */
+        if (err.code === "auth/wrong-password") {
+          const snapshot = await getUserSnapshot(emailOrUsername, "email");
+          setUserCred(getUserObject(snapshot));
+        } else {
+          authErrorMessage(err, setError);
+        }
+      } else setError("Sorry, something went wrong. Please try again.");
     }
 
     setLoading(false);
   }
 
   return (
-    <form onSubmit={signInUser}>
-      <div>
-        <FormHeader error={error} clearMessage={clearMessage} />
+    <>
+      {!userCred && (
+        <form onSubmit={signInUser}>
+          <div>
+            <FormHeader error={error} clearMessage={clearMessage} />
 
-        <div className="relative inline-flex flex-col mt-4 w-full">
-          <TextInput
-            type="text"
-            minLength={2}
-            name="emailOrUsername"
-            placeholder="Email or Username"
-            value={emailOrUsername}
-            onChangeFunc={(e) => setEmailOrUsername(e.target.value)}
-            required
+            <div className="relative inline-flex flex-col mt-4 w-full">
+              <TextInput
+                type="text"
+                minLength={2}
+                name="emailOrUsername"
+                placeholder="Email or Username"
+                value={emailOrUsername}
+                onChangeFunc={(e) => setEmailOrUsername(e.target.value)}
+                required
+              />
+
+              <TextInput
+                type="password"
+                minLength={8}
+                name="password"
+                placeholder="Password"
+                value={password}
+                onChangeFunc={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+          </div>
+
+          <AuthButton loading={loading}>
+            <span className="font-WorkSans_Bold">Sign in</span>
+          </AuthButton>
+
+          <FormFooter
+            setError={setError}
+            authText={
+              <>
+                <Link href="/auth/signup">
+                  <a className="underline underline-offset-4 decoration-1">
+                    Sign up for Mmuo
+                  </a>
+                </Link>
+                &nbsp; | &nbsp;
+                <Link href="/auth/forgot-password">
+                  <a className="underline underline-offset-4 decoration-1">
+                    Forgot password
+                  </a>
+                </Link>
+              </>
+            }
           />
+        </form>
+      )}
 
-          <TextInput
-            type="password"
-            minLength={8}
-            name="password"
-            placeholder="Password"
-            value={password}
-            onChangeFunc={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-      </div>
-
-      <AuthButton loading={loading}>
-        <span className="font-WorkSans_Bold">Sign in</span>
-      </AuthButton>
-
-      <FormFooter
-        setError={setError}
-        authText={
-          <>
-            <Link href="/auth/signup">
-              <a className="underline underline-offset-4 decoration-1">
-                Sign up for Mmuo
-              </a>
-            </Link>
-            &nbsp; | &nbsp;
-            <Link href="/auth/forgot-password">
-              <a className="underline underline-offset-4 decoration-1">
-                Forgot password
-              </a>
-            </Link>
-          </>
-        }
-      />
-    </form>
+      {userCred && <ReconcileAccountsForm userCred={userCred} />}
+    </>
   );
 }

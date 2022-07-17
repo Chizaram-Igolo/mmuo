@@ -33,7 +33,7 @@ export default class MyDocument extends Document {
             rel="preload"
             href="/fonts/Indigo/Indigo.otf"
             as="font"
-            type="font/ttf"
+            type="font/otf"
             crossOrigin="anonymous"
           />
         </Head>

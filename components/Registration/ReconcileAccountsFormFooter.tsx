@@ -8,14 +8,16 @@ import SocialAuthButton from "@Buttons/SocialAuthButton";
 import { useAuth } from "@contexts/AuthContext";
 import { handleFacebookSignIn, handleGoogleSignIn } from "@helpers/auth";
 
-interface IFormFooter {
+interface IReconcileAccountsFormFooter {
+  loginType: string | undefined;
   authText: React.ReactNode | string;
   termsText?: React.ReactNode | string;
   termsHyperLinkText?: string;
   setError: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const FormFooter: React.FC<IFormFooter> = ({
+const ReconcileAccountsFormFooter: React.FC<IReconcileAccountsFormFooter> = ({
+  loginType,
   authText,
   termsText,
   setError,
@@ -51,26 +53,40 @@ const FormFooter: React.FC<IFormFooter> = ({
                      after:absolute after:top-1/2 after:right-0 
                      after:bg-[#c0c2d3]"
         >
-          or sign in with
+          continue signin with
         </p>
         <div
           className="flex flex-col gap-2 lg:gap-2 xl:gap-4 sm:flex-row 
                      md:flex-col xl:flex-row justify-between"
         >
-          <SocialAuthButton
-            type="Google"
-            label="Google"
-            onClick={onGoogleSignIn}
-            loading={googleLoading}
-          />
-          <SocialAuthButton
-            type="Facebook"
-            label="Facebook"
-            onClick={onFacebookSignIn}
-            loading={facebookLoading}
-          />
+          {loginType?.toLowerCase() === "google" && (
+            <SocialAuthButton
+              type="Google"
+              label="Google"
+              onClick={onGoogleSignIn}
+              loading={googleLoading}
+            />
+          )}
+
+          {loginType?.toLowerCase() === "facebook" && (
+            <SocialAuthButton
+              type="Facebook"
+              label="Facebook"
+              onClick={onFacebookSignIn}
+              loading={facebookLoading}
+            />
+          )}
         </div>
+
+        {/* <hr className="mt-5" /> */}
+        <p
+          className="text-slate-700 text-[0.875rem] leading-6 mt-4 mb-0 mx-0 
+                   text-center"
+        >
+          {authText}
+        </p>
       </div>
+      <hr className="mt-5" />
       {termsText && (
         <p
           className="text-[#535772] text-[0.875rem] leading-6 mt-4 mb-0 mx-0 
@@ -79,15 +95,8 @@ const FormFooter: React.FC<IFormFooter> = ({
           {termsText}
         </p>
       )}
-      <hr className="mt-5" />
-      <p
-        className="text-slate-700 text-[0.875rem] leading-6 mt-4 mb-0 mx-0 
-                   text-center"
-      >
-        {authText}
-      </p>
     </>
   );
 };
 
-export default FormFooter;
+export default ReconcileAccountsFormFooter;

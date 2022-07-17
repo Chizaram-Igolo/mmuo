@@ -91,10 +91,14 @@ export function authErrorMessage(
     );
   } else if (err.code === "auth/popup-blocked") {
     setError(
-      "The sign in request was blocked. Please adjust your browser settings and try again later."
+      "The sign in request was blocked. Please adjust your browser " +
+        "settings and try again later."
     );
   } else if (err.code === "auth/internal-error") {
-    setError("Sorry, an error occurred on our end. Please try again later.");
+    setError(
+      "Sorry, an error occurred on our end or your internet connection " +
+        "isn't very good right now. Please try again later."
+    );
   } else if (err.code === "auth/email-already-in-use") {
     /**
      * Register
@@ -126,4 +130,34 @@ export function authErrorMessage(
   } else {
     setError(err.message);
   }
+}
+
+export async function handleGoogleSignIn(
+  setGoogleLoading: Dispatch<SetStateAction<boolean>>,
+  googleSignIn: () => Promise<FirebaseError>,
+  setError: Dispatch<SetStateAction<string>>
+) {
+  setGoogleLoading(true);
+  try {
+    let err: FirebaseError = await googleSignIn();
+    if (err) authErrorMessage(err, setError);
+  } catch (err: any) {
+    setError("Sorry, something went wrong. Please try again.");
+  }
+  setGoogleLoading(false);
+}
+
+export async function handleFacebookSignIn(
+  setFacebookLoading: Dispatch<SetStateAction<boolean>>,
+  facebookSignIn: () => Promise<FirebaseError>,
+  setError: Dispatch<SetStateAction<string>>
+) {
+  setFacebookLoading(true);
+  try {
+    let err: FirebaseError = await facebookSignIn();
+    if (err) authErrorMessage(err, setError);
+  } catch (err: any) {
+    setError("Sorry, something went wrong. Please try again.");
+  }
+  setFacebookLoading(false);
 }

@@ -70,7 +70,7 @@ export default function Feed() {
                         /> */}
 
                         <Image
-                          src={"/" + ng.src}
+                          src={ng.src}
                           alt="Google Logo"
                           width={48}
                           height={48}

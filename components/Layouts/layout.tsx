@@ -31,7 +31,8 @@ import { AuthProvider } from "@contexts/AuthContext";
 import { TopBarProgressConfig } from "@utils/constants";
 import Navbar from "@Navigation/Navbar";
 import Footer from "@Footer";
-import RouteGuard from "@components/RouteGuard";
+import RouteGuard from "@components/RouteGuard"; 
+import ErrorBoundary from '@ErrorBoundaries/ErrorBoundary';
 
 TopBarProgress.config(TopBarProgressConfig);
 
@@ -68,7 +69,8 @@ const Layout: React.FC<ILayout> = ({ children }): JSX.Element => {
     <AuthProvider>
       <ToastProvider>
         <QueryClientProvider client={queryClient}>
-          <ConnectivityListener />
+          <ConnectivityListener /> 
+          <ErrorBoundary router={router}>
           <RouteGuard>
             {loading && <TopBarProgress />}
             <Head>
@@ -79,7 +81,8 @@ const Layout: React.FC<ILayout> = ({ children }): JSX.Element => {
             {children}
 
             {!router.query.hasOwnProperty("docId") && <Footer />}
-          </RouteGuard>
+          </RouteGuard> 
+          </ErrorBoundary>
         </QueryClientProvider>
       </ToastProvider>
     </AuthProvider>

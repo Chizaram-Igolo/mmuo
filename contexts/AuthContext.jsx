@@ -29,7 +29,17 @@ export const AuthProvider = ({ children }) => {
 
     const provider = new GoogleAuthProvider();
     return signInWithPopup(auth, provider)
-      .then((result) => {})
+      .then(async (result) => {
+        /**
+         * Check if this user exists already. If they do not,
+         * create a record for them.
+         */
+        const snapshot = await getUserSnapshot(result.user.email, "email");
+
+        if (!snapshot.exists()) {
+          await updateDBRecord({ ...result.user }, "Google");
+        }
+      })
       .catch((error) => {
         return error;
       });
@@ -55,7 +65,7 @@ export const AuthProvider = ({ children }) => {
           await updateDBRecord(
             { ...result.user, socialCredAccessToken: socialCredAccessToken },
             "Facebook",
-            result.user.photoURL + "?access_token=" + accessToken
+            result.user.photoURL + "?height=128&access_token=" + accessToken
           );
         }
       })
